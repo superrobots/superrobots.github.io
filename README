@@ -38,3 +38,13 @@ SuperRobots is a web app for showcasing your robot team!
 ## License
 
 MIT
+
+## Publishing
+
+This repository publishes the static site contained in the `src/` folder to GitHub Pages using GitHub Actions.
+
+- The site is built (no build step required) and the contents of `src/` are deployed on every push to `main`.
+- A custom domain is configured via the repository `CNAME` file (value: `superrobots.org`).
+- If you need to change the published branch or directory, edit the workflow at `.github/workflows/pages.yml`.
+
+To disable the automated deployment, remove or disable the workflow in the repository settings.
