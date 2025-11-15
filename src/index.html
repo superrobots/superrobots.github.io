@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperRobots Team</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f8fb;
+            margin: 0;
+            padding: 0;
+            color: #222;
+        }
+        header {
+            background: #263159;
+            color: #fff;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        main {
+            max-width: 800px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(38,49,89,0.08);
+            padding: 2rem;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 2.5rem;
+        }
+        .team-section {
+            margin-top: 2rem;
+        }
+        .team-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+        }
+        .team-member {
+            background: #e6eaf3;
+            border-radius: 6px;
+            padding: 1rem;
+            flex: 1 1 180px;
+            min-width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            color: #888;
+            padding: 1rem 0;
+            margin-top: 2rem;
+            font-size: 0.95rem;
+        }
+        .tab-nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0;
+            border-bottom: 3px solid #d1d7e6;
+            position: relative;
+            background: transparent;
+        }
+        .tab-nav li {
+            flex: 1 1 0;
+            text-align: center;
+            position: relative;
+        }
+        .tab-link {
+            display: inline-block;
+            padding: 0.9rem 0 0.7rem 0;
+            width: 100%;
+            color: #fff;
+            background: #263159;
+            border: 2px solid #d1d7e6;
+            border-bottom: none;
+            border-radius: 16px 16px 0 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            position: relative;
+            z-index: 1;
+        }
+        .tab-link.active,
+        .tab-link:focus {
+            background: #fff;
+            color: #263159;
+            border-bottom: 3px solid #fff;
+            z-index: 2;
+        }
+        .tab-link:not(.active):hover {
+            background: #435681;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SuperRobots Team</h1>
+        <p>Innovating the future, one robot at a time.</p>
+        <nav style="margin-top:0;">
+            <ul class="tab-nav">
+                <li><a href="#home" class="tab-link active">Home</a></li>
+                <li><a href="#projects" class="tab-link">Projects</a></li>
+                <li><a href="#gallery" class="tab-link">Gallery</a></li>
+                <li><a href="#contact" class="tab-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h2>
+                <img src="images/favicon.png" alt="SuperRobots Icon" style="width:2.2rem;height:2.2rem;vertical-align:middle;margin-right:0.5rem;border-radius:6px;">
+                Welcome!
+            </h2>
+            <p>
+                We are the SuperRobots team, passionate about building intelligent and helpful robots. 
+                Our mission is to create technology that improves lives and inspires the next generation of innovators.
+            </p>
+            <p>
+                SuperRobots is a 
+                <a href="https://www.firstlegoleague.org/" target="_blank" rel="noopener">First Lego League (FLL)</a>
+                Challenge competitive team, Team ID #70620.
+            </p>
+            <p>
+                Our team is made up of 5th graders from Soleado Elementary School, except Jeremy, who is from Silverspur Elementary School. Rigel is our youngest member and is in 3rd grade. We share a passion for robotics and learning, and each of us brings unique talents and interests to the team!
+            </p>
+            <section class="team-section">
+                <h2>Meet the Team</h2>
+                <ul class="team-list">
+                    <li class="team-member">
+                        <img src="images/stella.jpg" alt="Stella" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
+                        <strong>Stella</strong><br>
+                        Future Project Manager<br>
+                        5th Grader, Soleado Elementary<br>
+                        <em>Loves dancing</em>
+                    </li>
+                    <li class="team-member">
+                        <img src="images/sarah.jpg" alt="Sarah" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
+                        <strong>Sarah</strong><br>
+                        Future AI Specialist<br>
+                        5th Grader, Soleado Elementary<br>
+                        <em>Plays tennis</em>
+                    </li>
+                    <li class="team-member">
+                        <img src="images/chuyan.jpg" alt="Chuyan" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
+                        <strong>Chuyan</strong><br>
+                        Future Robotics Designer<br>
+                        5th Grader, Soleado Elementary<br>
+                        <em>Plays violin</em>
+                    </li>
+                    <li class="team-member">
+                        <img src="images/jeremy.jpg" alt="Jeremy" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
+                        <strong>Jeremy</strong><br>
+                        Future Software Developer<br>
+                        5th Grader, Silverspur Elementary<br>
+                        <em>Plays chess and soccer</em>
+                    </li>
+                    <li class="team-member">
+                        <img src="images/rigel.jpg" alt="Rigel" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
+                        <strong>Rigel</strong><br>
+                        Future Tech Support Engineer<br>
+                        3rd Grader, Soleado Elementary<br>
+                        <em>Plays soccer</em>
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section id="projects" style="display:none;">
+            <h2>Projects</h2>
+            <p>
+                Visit our code and open source work on our
+                <a href="https://github.com/superrobots" target="_blank" rel="noopener">GitHub organization</a>.
+            </p>
+            <section style="margin-bottom:2rem;">
+                <h3>2023 SuperPowered Season</h3>
+                <p>
+                    <strong>FIRST LEGO League SuperPowered</strong> challenged teams to explore how energy is generated, stored, distributed, and consumed. Teams designed, built, and programmed LEGO robots to complete missions on a themed field, focusing on innovative solutions for energy challenges in our world.
+                </p>
+                <ul>
+                    <li>Learned about renewable and non-renewable energy sources.</li>
+                    <li>Designed and built a robot to complete energy-themed missions.</li>
+                    <li>Developed a project to improve energy efficiency in our community.</li>
+                    <li>Practiced teamwork, problem-solving, and presentation skills.</li>
+                </ul>
+                <p>
+                    <a href="https://www.firstlegoleague.org/season/2023-2024-superpowered" target="_blank" rel="noopener">Learn more about SuperPowered</a>
+                </p>
+            </section>
+            <section style="margin-bottom:2rem;">
+                <h3>2024 Masterpiece Season</h3>
+                <p>
+                    <strong>FIRST LEGO League Masterpiece</strong> invites teams to imagine and innovate in the world of creative arts and entertainment. Teams use STEM and robotics to solve challenges related to sharing their passions and talents with the world, making performances and art more accessible and engaging.
+                </p>
+                <ul>
+                    <li>Explored how technology can enhance creative expression and communication.</li>
+                    <li>Built and programmed robots to complete missions inspired by the arts.</li>
+                    <li>Created a project to help people share their stories and talents.</li>
+                    <li>Strengthened collaboration, creativity, and technical skills.</li>
+                </ul>
+                <p>
+                    <a href="https://www.firstlegoleague.org/season/2024-2025-masterpiece" target="_blank" rel="noopener">Learn more about Masterpiece</a>
+                </p>
+            </section>
+            <section>
+                <h3>2025 Unearthed Season</h3>
+                <p>
+                    <strong>FIRST LEGO League Unearthed</strong> is the 2025-2026 season challenge, where teams will dig into the fascinating world beneath our feet! Teams will explore how we interact with the ground, discover underground mysteries, and use STEM and robotics to solve real-world problems related to geology, archaeology, and the environment.
+                </p>
+                <ul>
+                    <li>Investigate underground resources and how they impact our lives.</li>
+                    <li>Design and program robots to complete missions inspired by digging, discovery, and preservation.</li>
+                    <li>Develop innovative solutions for sustainable use of underground spaces.</li>
+                    <li>Enhance teamwork, research, and creative problem-solving skills.</li>
+                </ul>
+                <p>
+                    <a href="https://www.firstlegoleague.org/season/2025-2026-unearthed" target="_blank" rel="noopener">Learn more about Unearthed</a>
+                </p>
+            </section>
+        </section>
+        <section id="gallery" style="display:none;">
+            <h2>Gallery</h2>
+            <p>Photos and videos from our events and competitions.</p>
+            <!-- Team Slideshow -->
+            <div class="slideshow-container" style="max-width:500px; margin:2rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
+                <img class="team-slide" src="images/superrobts_team1.jpg" alt="SuperRobots Team 1" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition:opacity 0.5s;">
+                <img class="team-slide" src="images/superrobts_team2.jpg" alt="SuperRobots Team 2" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:none; transition:opacity 0.5s;">
+                <img class="team-slide" src="images/superrobts_team3.jpg" alt="SuperRobots Team 3" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:none; transition:opacity 0.5s;">
+                <button class="slide-btn" onclick="plusSlides(-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
+                <button class="slide-btn" onclick="plusSlides(1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
+                <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;">
+                    <span class="dot" onclick="currentSlide(0)" style="height:12px;width:12px;background:#fff;opacity:0.7;border-radius:50%;display:inline-block;cursor:pointer;"></span>
+                    <span class="dot" onclick="currentSlide(1)" style="height:12px;width:12px;background:#fff;opacity:0.7;border-radius:50%;display:inline-block;cursor:pointer;"></span>
+                    <span class="dot" onclick="currentSlide(2)" style="height:12px;width:12px;background:#fff;opacity:0.7;border-radius:50%;display:inline-block;cursor:pointer;"></span>
+                </div>
+            </div>
+            <!-- Team Video -->
+            <section class="video-section" style="margin-top:2rem;">
+                <h2>Team Video</h2>
+                <video width="100%" style="max-width:500px; display:block; margin:0 auto; border-radius:10px; background:#000;" controls>
+                    <source src="videos/2023_superpowered.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </section>
+        </section>
+        <section id="contact" style="display:none;">
+            <h2>Contact</h2>
+            <p>
+                For questions or to connect with our team, please email us at:<br>
+                <a href="mailto:superrobots.team@gmail.com">superrobots.team@gmail.com</a>
+            </p>
+            <p>
+                <strong>Team ID:</strong> #70620
+            </p>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 SuperRobots Team. All rights reserved.
+    </footer>
+    <script>
+        let slideIndex = 0;
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("team-slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n >= slides.length) slideIndex = 0;
+            if (n < 0) slideIndex = slides.length - 1;
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                if (dots[i]) dots[i].style.opacity = "0.7";
+            }
+            slides[slideIndex].style.display = "block";
+            if (dots[slideIndex]) dots[slideIndex].style.opacity = "1";
+        }
+        function plusSlides(n) {
+            slideIndex += n;
+            showSlides(slideIndex);
+        }
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlides(slideIndex);
+        }
+        window.onload = function() {
+            showSlides(slideIndex);
+        };
+        // Tab navigation logic with tab shape highlighting
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Remove active from all tabs
+                document.querySelectorAll('.tab-link').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+                // Hide all sections
+                document.querySelectorAll('main > section').forEach(sec => sec.style.display = 'none');
+                // Show the selected section
+                const id = this.getAttribute('href').replace('#','');
+                if (id) {
+                    document.getElementById(id).style.display = '';
+                }
+            });
+        });
+        // Show home by default
+        document.getElementById('home').style.display = '';
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+# SuperRobots
+
+SuperRobots is a web app for showcasing your robot team!
+
+## Features
+
+- Team member profiles
+- Robot gallery
+- Team achievements
+- Contact form
+
+## Getting Started
+
+1. Clone the repository:
+    ```
+    git clone https://github.com/yourusername/superrobots.git
+    ```
+2. Install dependencies:
+    ```
+    npm install
+    ```
+3. Start the development server:
+    ```
+    npm start
+    ```
+
+## Folder Structure
+
+- `/src` - Source code
+- `/public` - Static assets
+
+## Tech Stack
+
+- React (frontend)
+- Node.js/Express (backend)
+- MongoDB (database)
+
+## License
+
+MIT
