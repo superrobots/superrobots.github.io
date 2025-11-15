@@ -103,6 +103,32 @@
             background: #435681;
             color: #fff;
         }
+        /* Awards grid */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .award-item {
+            background: #f7f9fc;
+            border-radius: 8px;
+            padding: 0.5rem;
+            text-align: center;
+            box-shadow: 0 1px 6px rgba(38,49,89,0.06);
+        }
+        .award-item img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            display: block;
+        }
+        .award-caption {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -114,6 +140,7 @@
                 <li><a href="#home" class="tab-link active">Home</a></li>
                 <li><a href="#projects" class="tab-link">Projects</a></li>
                 <li><a href="#gallery" class="tab-link">Gallery</a></li>
+                <li><a href="#awards" class="tab-link">Awards</a></li>
                 <li><a href="#contact" class="tab-link">Contact</a></li>
             </ul>
         </nav>
@@ -252,6 +279,63 @@
                     <source src="videos/2023_superpowered.mov" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+            </section>
+        </section>
+        <section id="awards" style="display:none;">
+            <h2>Awards</h2>
+            <p>
+                At the Warner Middle School Qualifier (2025) we won two major awards:
+                <strong>FLL Robot Performance</strong> and <strong>FLL Robot Design</strong>.
+            </p>
+
+            <section id="robot-performance" class="award-section">
+                <h3>FLL Robot Performance</h3>
+                <p>Photos from our performance and the ceremony.</p>
+                <div class="awards-grid">
+                    <div class="award-item">
+                        <img src="images/awards/IMG_2787.jpg" alt="Receiving Robot Performance award" loading="lazy">
+                        <div class="award-caption">Receiving Robot Performance award</div>
+                    </div>
+                    <div class="award-item">
+                        <img src="images/awards/IMG_2809.jpg" alt="Team celebrating on stage" loading="lazy">
+                        <div class="award-caption">Team celebrating on stage</div>
+                    </div>
+                    <div class="award-item">
+                        <img src="images/awards/IMG_2811.jpg" alt="Close-up of plaque" loading="lazy">
+                        <div class="award-caption">Close-up of plaque</div>
+                    </div>
+                    <div class="award-item">
+                        <img src="images/awards/IMG_2814.jpg" alt="Team photo with judges" loading="lazy">
+                        <div class="award-caption">Team photo with judges</div>
+                    </div>
+                    <div class="award-item">
+                        <img src="images/awards/25096469b34110dfd459c806e1bdc31f.jpg" alt="On-stage moment" loading="lazy">
+                        <div class="award-caption">On-stage moment</div>
+                    </div>
+                    <div class="award-item">
+                        <img src="images/awards/770644848ae6e7defa6f280c3eac6f2d.jpg" alt="Judges and team" loading="lazy">
+                        <div class="award-caption">Judges and team</div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="robot-design" class="award-section" style="margin-top:1.5rem;">
+                <h3>FLL Robot Design</h3>
+                <p>Photos focused on our robot and design work.</p>
+                <div class="awards-grid">
+                    <div class="award-item">
+                        <img src="images/robot/IMG_2657.jpg" alt="Robot design 1" loading="lazy">
+                        <div class="award-caption">Robot design: mechanism details</div>
+                    </div>
+                    <div class="award-item">
+                        <img src="images/robot/IMG_2710.jpg" alt="Robot design 2" loading="lazy">
+                        <div class="award-caption">Robot design: attachment and sensors</div>
+                    </div>
+                    <div class="award-item">
+                        <img src="images/robot/IMG_2711.jpg" alt="Robot design 3" loading="lazy">
+                        <div class="award-caption">Robot design: team setup</div>
+                    </div>
+                </div>
             </section>
         </section>
         <section id="contact" style="display:none;">
