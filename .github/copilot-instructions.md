@@ -7,7 +7,8 @@ This repository hosts the SuperRobots team website, a static site for FIRST LEGO
 ## Technology Stack
 
 - **Frontend**: Pure HTML5, CSS3, and vanilla JavaScript
-- **No build framework**: Despite the README mentioning React, this is a static HTML site with no build step
+- **No build framework**: This is a static HTML site with no build step
+  - **Note**: The README is outdated and incorrectly mentions React, npm dependencies, and a `/src` folder that don't exist
 - **Hosting**: GitHub Pages (deployed from `gh-pages` branch)
 - **Deployment**: Automated via GitHub Actions (`.github/workflows/pages.yml`)
 
@@ -85,7 +86,6 @@ This repository hosts the SuperRobots team website, a static site for FIRST LEGO
 ## Important Notes
 
 - **Single-file architecture**: Everything is in `index.html` - do not split into multiple HTML files
-- **No package.json**: Despite README instructions, this project has no npm dependencies
 - **Image optimization**: Keep images reasonably sized for web (< 500KB per image)
 - **Testing**: Open `index.html` in a browser to test changes locally
 - **Browser compatibility**: Ensure compatibility with modern browsers (Chrome, Firefox, Safari, Edge)
