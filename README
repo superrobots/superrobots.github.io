@@ -1,50 +1,96 @@
 # SuperRobots
 
-SuperRobots is a web app for showcasing your robot team!
+The official website for the SuperRobots FIRST LEGO League (FLL) Challenge competitive team (Team ID #70620).
+
+## About
+
+SuperRobots is a FIRST LEGO League team made up of students from Soleado Elementary School and Silverspur Elementary School. We are passionate about robotics, STEM learning, and building innovative solutions to real-world challenges. This website showcases our team, projects, achievements, and journey through FLL competitions.
+
+Visit us at: [superrobots.org](https://superrobots.org)
 
 ## Features
 
-- Team member profiles
-- Robot gallery
-- Team achievements
-- Contact form
+The website includes:
 
-## Getting Started
+- **Team Profiles**: Meet our team members and learn about their interests and roles
+- **Projects**: Details about our FLL season challenges (SuperPowered, Masterpiece, Unearthed)
+- **Gallery**: Photos and videos from our competitions and events
+- **Awards**: Our achievements including FLL Robot Performance and Robot Design awards
+- **Contact**: Ways to reach out to our team
+
+## Technology
+
+This is a static website built with:
+- **HTML/CSS/JavaScript**: No frameworks, just vanilla web technologies
+- **GitHub Pages**: Automated deployment via GitHub Actions
+- **Custom Domain**: Configured via CNAME to serve at superrobots.org
+
+## Repository Structure
+
+```
+superrobots.github.io/
+├── index.html          # Main website file
+├── images/             # Team photos, awards, and robot images
+├── videos/             # Team videos and recordings
+├── CNAME               # Custom domain configuration
+├── .github/workflows/  # GitHub Pages deployment automation
+└── README              # This file
+```
+
+## Local Development
+
+To view the website locally:
 
 1. Clone the repository:
-    ```
-    git clone https://github.com/yourusername/superrobots.git
-    ```
-2. Install dependencies:
-    ```
-    npm install
-    ```
-3. Start the development server:
-    ```
-    npm start
-    ```
+   ```bash
+   git clone https://github.com/superrobots/superrobots.github.io.git
+   cd superrobots.github.io
+   ```
 
-## Folder Structure
+2. Open the website in your browser:
+   ```bash
+   # Option 1: Open index.html directly in a browser
+   open index.html  # macOS
+   start index.html # Windows
+   xdg-open index.html # Linux
 
-- `/src` - Source code
-- `/public` - Static assets
+   # Option 2: Use a simple HTTP server (recommended)
+   python3 -m http.server 8000
+   # Then visit http://localhost:8000 in your browser
+   ```
 
-## Tech Stack
+## Deployment
 
-- React (frontend)
-- Node.js/Express (backend)
-- MongoDB (database)
+The website is automatically deployed to GitHub Pages:
+
+- **Trigger**: Every push to the `main` branch
+- **Process**: GitHub Actions workflow copies all files to the `gh-pages` branch
+- **Custom Domain**: Configured via the `CNAME` file (superrobots.org)
+- **Workflow**: `.github/workflows/pages.yml`
+
+To modify the deployment configuration, edit the workflow file or adjust repository settings in GitHub.
+
+## Contributing
+
+This is the official website for the SuperRobots FLL team. If you're a team member or coach and want to contribute:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/update-content`)
+3. Make your changes to `index.html` or add new assets
+4. Commit your changes (`git commit -m 'Update team information'`)
+5. Push to the branch (`git push origin feature/update-content`)
+6. Open a Pull Request
+
+For major changes, please discuss with the team coaches first.
+
+## Team Information
+
+- **Team ID**: #70620
+- **Organization**: FIRST LEGO League Challenge
+- **Contact**: superrobots.team@gmail.com
+- **Website**: [superrobots.org](https://superrobots.org)
+- **GitHub**: [github.com/superrobots](https://github.com/superrobots)
 
 ## License
 
-MIT
-
-## Publishing
-
-This repository publishes the static site contained in the `src/` folder to GitHub Pages using GitHub Actions.
-
-- The site is built (no build step required) and the contents of `src/` are deployed on every push to `main`.
-- A custom domain is configured via the repository `CNAME` file (value: `superrobots.org`).
-- If you need to change the published branch or directory, edit the workflow at `.github/workflows/pages.yml`.
-
-To disable the automated deployment, remove or disable the workflow in the repository settings.
+© 2025 SuperRobots Team. All rights reserved.
