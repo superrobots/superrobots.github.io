@@ -21,7 +21,7 @@ The website includes:
 ## Technology
 
 This is a static website built with:
-- **HTML/CSS/JavaScript**: No frameworks, just vanilla web technologies
+- **React**: Frontend framework for building the user interface
 - **GitHub Pages**: Automated deployment via GitHub Actions
 - **Custom Domain**: Configured via CNAME to serve at superrobots.org
 
