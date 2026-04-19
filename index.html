@@ -3,478 +3,1000 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperRobots Team</title>
+    <title>SuperRobots - Super Robots Game</title>
     <link rel="icon" type="image/png" href="images/favicon.png">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f8fb;
             margin: 0;
             padding: 0;
-            color: #222;
-        }
-        header {
-            background: #263159;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(38,49,89,0.08);
-            padding: 2rem;
-        }
-        h1 {
-            margin-top: 0;
-            font-size: 2.5rem;
-        }
-        .team-section {
-            margin-top: 2rem;
-        }
-        .team-list {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f8fafc;
             display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            list-style: none;
-            padding: 0;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden;
         }
-        .team-member {
-            background: #e6eaf3;
-            border-radius: 6px;
+
+        header {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: #f8fafc;
+        }
+
+        .layout-container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
             padding: 1rem;
-            flex: 1 1 180px;
-            min-width: 150px;
+            gap: 1rem;
+        }
+
+        /* LEFT PANEL: CODE EDITOR */
+        .editor-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem;
+            max-width: 400px;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .editor-header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .blocks-palette {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .block-btn {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .block-btn:hover {
+            background: rgba(56, 189, 248, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .block-btn:active {
+            transform: translateY(0);
+        }
+
+        .code-sequence-container {
+            flex: 1;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1rem;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .code-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: monospace;
+            font-size: 0.95rem;
+            animation: slideIn 0.2s ease-out;
+            border-left: 4px solid #38bdf8;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .code-item.dragging {
+            opacity: 0.5;
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.4);
+            border-left: 4px solid #f59e0b;
+        }
+
+        .code-item.drag-over {
+            background: rgba(56, 189, 248, 0.2);
+            border-top: 3px solid #38bdf8;
+            padding-top: calc(0.6rem - 3px);
+            transform: translateY(2px);
+            transition: all 0.2s;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 0;
+            margin-left: 10px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .delete-btn:hover {
+            opacity: 1;
+        }
+
+        .controls {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .run-btn {
+            flex: 2;
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
+            transition: all 0.2s;
+        }
+
+        .run-btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.4);
+        }
+
+        .reset-btn {
+            flex: 1;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #94a3b8;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+        /* RIGHT PANEL: SIMULATION */
+        .simulation-panel {
+            flex: 2;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-        }
-        footer {
-            text-align: center;
-            color: #888;
-            padding: 1rem 0;
-            margin-top: 2rem;
-            font-size: 0.95rem;
-        }
-        .tab-nav {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            list-style: none;
-            padding: 0;
-            border-bottom: 3px solid #d1d7e6;
+            justify-content: center;
             position: relative;
-            background: transparent;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
         }
-        .tab-nav li {
-            flex: 1 1 0;
-            text-align: center;
-            position: relative;
-        }
-        .tab-link {
-            display: inline-block;
-            padding: 0.9rem 0 0.7rem 0;
-            width: 100%;
-            color: #fff;
-            background: #263159;
-            border: 2px solid #d1d7e6;
-            border-bottom: none;
-            border-radius: 16px 16px 0 0;
-            font-weight: bold;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
-            position: relative;
-            z-index: 1;
-        }
-        .tab-link.active,
-        .tab-link:focus {
-            background: #fff;
-            color: #263159;
-            border-bottom: 3px solid #fff;
-            z-index: 2;
-        }
-        .tab-link:not(.active):hover {
-            background: #435681;
-            color: #fff;
-        }
-        /* Awards grid */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .award-item {
-            background: #f7f9fc;
+
+        .canvas-container {
+            background: #cbd5e1;
             border-radius: 8px;
-            padding: 0.5rem;
-            text-align: center;
-            box-shadow: 0 1px 6px rgba(38,49,89,0.06);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 4px solid #475569;
         }
-        .award-item img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 6px;
+
+        canvas {
             display: block;
         }
-        .award-caption {
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
-            color: #333;
+
+        .status-overlay {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
+
+        .status-overlay.visible {
+            opacity: 1;
+        }
+
+        .status-overlay.success { color: #4ade80; }
+        .status-overlay.error { color: #f87171; }
+
     </style>
 </head>
 <body>
+
     <header>
-        <h1>SuperRobots Team</h1>
-        <p>Innovating the future, one robot at a time.</p>
-        <nav style="margin-top:0;">
-            <ul class="tab-nav">
-                <li><a href="#home" class="tab-link active">Home</a></li>
-                <li><a href="#projects" class="tab-link">Projects</a></li>
-                <li><a href="#gallery" class="tab-link">Gallery</a></li>
-                <li><a href="#awards" class="tab-link">Awards</a></li>
-                <li><a href="#contact" class="tab-link">Contact</a></li>
-            </ul>
-        </nav>
+        <h1>Super Robots Game</h1>
+        <a href="team.html" class="back-link">👥 SuperRobots Team</a>
     </header>
-    <main>
-        <section id="home">
-            <h2>
-                <img src="images/favicon.png" alt="SuperRobots Icon" style="width:2.2rem;height:2.2rem;vertical-align:middle;margin-right:0.5rem;border-radius:6px;">
-                Welcome!
-            </h2>
-            <p>
-                We are the SuperRobots team, passionate about building intelligent and helpful robots. 
-                Our mission is to create technology that improves lives and inspires the next generation of innovators.
-            </p>
-            <p>
-                SuperRobots is a 
-                <a href="https://www.firstlegoleague.org/" target="_blank" rel="noopener">First Lego League (FLL)</a>
-                Challenge competitive team, Team ID #70620.
-            </p>
-            <p>
-                Our team is made up of 5th graders from Soleado Elementary School, except Jeremy, who is from Silverspur Elementary School. Rigel is our youngest member and is in 3rd grade. We share a passion for robotics and learning, and each of us brings unique talents and interests to the team!
-            </p>
-            <section class="team-section">
-                <h2>Meet the Team</h2>
-                <ul class="team-list">
-                    <li class="team-member">
-                        <img src="images/stella.jpg" alt="Stella" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Stella</strong><br>
-                        Future Project Manager<br>
-                        5th Grader, Soleado Elementary<br>
-                        <em>Loves dancing</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/sarah.jpg" alt="Sarah" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Sarah</strong><br>
-                        Future AI Specialist<br>
-                        5th Grader, Soleado Elementary<br>
-                        <em>Plays tennis</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/chuyan.jpg" alt="Chuyan" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Chuyan</strong><br>
-                        Future Robotics Designer<br>
-                        5th Grader, Soleado Elementary<br>
-                        <em>Plays violin</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/jeremy.jpg" alt="Jeremy" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Jeremy</strong><br>
-                        Future Software Developer<br>
-                        5th Grader, Silverspur Elementary<br>
-                        <em>Plays chess and soccer</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/rigel.jpg" alt="Rigel" width="140" height="140" style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Rigel</strong><br>
-                        Future Tech Support Engineer<br>
-                        3rd Grader, Soleado Elementary<br>
-                        <em>Plays soccer</em>
-                    </li>
-                </ul>
-            </section>
-        </section>
-        <section id="projects" style="display:none;">
-            <h2>Projects</h2>
-            <p>
-                Visit our code and open source work on our
-                <a href="https://github.com/superrobots" target="_blank" rel="noopener">GitHub organization</a>.
-            </p>
-            <section style="margin-bottom:2rem;">
-                <h3>2023 SuperPowered Season</h3>
-                <p>
-                    <strong>FIRST LEGO League SuperPowered</strong> challenged teams to explore how energy is generated, stored, distributed, and consumed. Teams designed, built, and programmed LEGO robots to complete missions on a themed field, focusing on innovative solutions for energy challenges in our world.
-                </p>
-                <ul>
-                    <li>Learned about renewable and non-renewable energy sources.</li>
-                    <li>Designed and built a robot to complete energy-themed missions.</li>
-                    <li>Developed a project to improve energy efficiency in our community.</li>
-                    <li>Practiced teamwork, problem-solving, and presentation skills.</li>
-                </ul>
-                <p>
-                    <a href="https://www.firstlegoleague.org/season/2023-2024-superpowered" target="_blank" rel="noopener">Learn more about SuperPowered</a>
-                </p>
-            </section>
-            <section style="margin-bottom:2rem;">
-                <h3>2024 Masterpiece Season</h3>
-                <p>
-                    <strong>FIRST LEGO League Masterpiece</strong> invites teams to imagine and innovate in the world of creative arts and entertainment. Teams use STEM and robotics to solve challenges related to sharing their passions and talents with the world, making performances and art more accessible and engaging.
-                </p>
-                <ul>
-                    <li>Explored how technology can enhance creative expression and communication.</li>
-                    <li>Built and programmed robots to complete missions inspired by the arts.</li>
-                    <li>Created a project to help people share their stories and talents.</li>
-                    <li>Strengthened collaboration, creativity, and technical skills.</li>
-                </ul>
-                <p>
-                    <a href="https://www.firstlegoleague.org/season/2024-2025-masterpiece" target="_blank" rel="noopener">Learn more about Masterpiece</a>
-                </p>
-            </section>
-            <section>
-                <h3>2025 Unearthed Season</h3>
-                <p>
-                    <strong>FIRST LEGO League Unearthed</strong> is the 2025-2026 season challenge, where teams will dig into the fascinating world beneath our feet! Teams will explore how we interact with the ground, discover underground mysteries, and use STEM and robotics to solve real-world problems related to geology, archaeology, and the environment.
-                </p>
-                <ul>
-                    <li>Investigate underground resources and how they impact our lives.</li>
-                    <li>Design and program robots to complete missions inspired by digging, discovery, and preservation.</li>
-                    <li>Develop innovative solutions for sustainable use of underground spaces.</li>
-                    <li>Enhance teamwork, research, and creative problem-solving skills.</li>
-                </ul>
-                <p>
-                    <a href="https://www.firstlegoleague.org/season/2025-2026-unearthed" target="_blank" rel="noopener">Learn more about Unearthed</a>
-                </p>
-            </section>
-        </section>
-        <section id="gallery" style="display:none;">
-            <h2>Gallery</h2>
-            <p>Photos and videos from our events and competitions.</p>
-            <!-- Team Slideshow -->
-            <div class="slideshow-container" style="max-width:500px; margin:2rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
-                <img class="team-slide" src="images/superrobts_team1.jpg" alt="SuperRobots Team 1" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:block; transition:opacity 0.5s;">
-                <img class="team-slide" src="images/superrobts_team2.jpg" alt="SuperRobots Team 2" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:none; transition:opacity 0.5s;">
-                <img class="team-slide" src="images/superrobts_team3.jpg" alt="SuperRobots Team 3" style="width:100%; aspect-ratio:16/9; object-fit:cover; display:none; transition:opacity 0.5s;">
-                <button class="slide-btn" onclick="plusSlides(-1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                <button class="slide-btn" onclick="plusSlides(1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:8px;">
-                    <span class="dot" onclick="currentSlide(0)" style="height:12px;width:12px;background:#fff;opacity:0.7;border-radius:50%;display:inline-block;cursor:pointer;"></span>
-                    <span class="dot" onclick="currentSlide(1)" style="height:12px;width:12px;background:#fff;opacity:0.7;border-radius:50%;display:inline-block;cursor:pointer;"></span>
-                    <span class="dot" onclick="currentSlide(2)" style="height:12px;width:12px;background:#fff;opacity:0.7;border-radius:50%;display:inline-block;cursor:pointer;"></span>
+
+    <div class="layout-container">
+        
+        <!-- Code Editor workspace -->
+        <div class="editor-panel">
+            <div class="editor-header">
+                <h2>Command Blocks</h2>
+                <div style="display:flex; gap: 0.5rem; align-items: center;">
+                    <span id="star-score" style="display:none; color: #fbbf24; font-weight: bold; background: rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; border-radius: 6px;">⭐ 0/0</span>
+                    <select id="level-selector" onchange="changeLevel(this.value)" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 6px; font-weight: 600; cursor: pointer; outline: none; appearance: auto; -webkit-appearance: auto;">
+                    </select>
                 </div>
             </div>
-            <!-- 2025 Unearthed Photos -->
-            <section style="margin-top:2rem;">
-                <h3>2025 Unearthed Season</h3>
-                <h4>Practice Sessions</h4>
-                <div class="slideshow-container" data-slideshow="practice" style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_4566.jpg" alt="Practice session" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_4567.jpg" alt="Working on robot" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_4572.jpg" alt="Team collaboration" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7247.jpg" alt="Robot testing" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7248.jpg" alt="Mission practice" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7249.jpg" alt="Team strategy" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7426.jpg" alt="Robot adjustments" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7427.jpg" alt="Practice run" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7456.jpg" alt="Team working together" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7457.jpg" alt="Robot programming" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7678.jpg" alt="Mission preparation" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7679.jpg" alt="Field setup" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7680.jpg" alt="Practice session" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7787.JPG" alt="Team preparation" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7824.jpg" alt="Robot modifications" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('practice', -1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('practice', 1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;"><span class="practice-counter">1 / 15</span></div>
-                </div>
-                <h4>Competition Game</h4>
-                <div class="slideshow-container" data-slideshow="game" style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
-                    <img class="game-slide" src="images/2025_unearthed/game/2420237f6d57ae058eeab30297bc6420.jpg" alt="Competition game" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
-                    <img class="game-slide" src="images/2025_unearthed/game/55f0992918cba426fe499f263af45bdf.jpg" alt="Robot in action" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="game-slide" src="images/2025_unearthed/game/f68a63d37df9836e0297b8d4db009bd6.jpg" alt="Game field" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="game-slide" src="images/2025_unearthed/game/IMG_7885.jpg" alt="Team at competition" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="game-slide" src="images/2025_unearthed/game/IMG_7889.jpg" alt="Competition moment" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('game', -1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('game', 1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;"><span class="game-counter">1 / 5</span></div>
-                </div>
-                <h4>Research Project</h4>
-                <div class="slideshow-container" data-slideshow="research" style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
-                    <img class="research-slide" src="images/2025_unearthed/research/IMG_7930.jpg" alt="Research presentation" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
-                    <img class="research-slide" src="images/2025_unearthed/research/IMG_7931.jpg" alt="Team research" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="research-slide" src="images/2025_unearthed/research/IMG_7936.jpg" alt="Presenting findings" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="research-slide" src="images/2025_unearthed/research/IMG_7938.jpg" alt="Research display" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="research-slide" src="images/2025_unearthed/research/IMG_7939.jpg" alt="Project work" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="research-slide" src="images/2025_unearthed/research/Weixin Image_20251129151111_564_35.png" alt="Research material" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="research-slide" src="images/2025_unearthed/research/Weixin Image_20251129151115_566_35.jpg" alt="Team research work" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('research', -1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('research', 1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;"><span class="research-counter">1 / 7</span></div>
-                </div>
-            </section>
-            <!-- Team Videos -->
-            <section class="video-section" style="margin-top:2rem;">
-                <h3>Team Videos</h3>
-                <h4>2023 SuperPowered Season</h4>
-                <video width="100%" style="max-width:500px; display:block; margin:0 auto 1.5rem auto; border-radius:10px; background:#000;" controls>
-                    <source src="videos/2023_superpowered.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <h4>2025 Unearthed Qualifier (Score: 420) - Part 1</h4>
-                <video width="100%" style="max-width:500px; display:block; margin:0 auto 1.5rem auto; border-radius:10px; background:#000;" controls>
-                    <source src="videos/2025_unearthed_qualifier_420_part1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <h4>2025 Unearthed Qualifier (Score: 420) - Part 2</h4>
-                <video width="100%" style="max-width:500px; display:block; margin:0 auto 1.5rem auto; border-radius:10px; background:#000;" controls>
-                    <source src="videos/2025_unearthed_qualifier_420_part2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </section>
-        </section>
-        <section id="awards" style="display:none;">
-            <h2>Awards</h2>
-            <p>
-                At the Warner Middle School Qualifier (2025) we won two major awards:
-                <strong>FLL Robot Performance</strong> and <strong>FLL Robot Design</strong>.
-            </p>
+            
+            <div id="level-intro-text" style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid #38bdf8; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.85rem; color: #bae6fd; margin-bottom: 1rem; line-height: 1.4;">
+                Welcome! Reach the goal flag 🏁 to win.
+            </div>
 
-            <section id="robot-performance" class="award-section">
-                <h3>FLL Robot Performance</h3>
-                <p>Photos from our performance and the ceremony.</p>
-                <div class="slideshow-container" data-slideshow="performance" style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/IMG_2787.jpg" alt="Receiving Robot Performance award" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/IMG_2801.jpg" alt="Team recognition" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/IMG_2803.jpg" alt="Celebrating achievement" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/IMG_2809.jpg" alt="Team celebrating on stage" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/IMG_2811.jpg" alt="Close-up of plaque" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/IMG_2814.jpg" alt="Team photo with judges" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/e74deb8d9740f894e973051e6b7a52dd.jpg" alt="Awards ceremony" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="performance-slide" src="images/2025_unearthed/awards/IMG_7907.jpg" alt="Award celebration" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('performance', -1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('performance', 1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;"><span class="performance-counter">1 / 8</span></div>
-                </div>
-            </section>
+            <div class="blocks-palette" id="blocks-palette">
+                <!-- Commands will be dynamically generated here -->
+            </div>
 
-            <section id="robot-design" class="award-section" style="margin-top:1.5rem;">
-                <h3>FLL Robot Design</h3>
-                <p>Photos focused on our robot and design work.</p>
-                <div class="slideshow-container" data-slideshow="robotdesign" style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
-                    <img class="robotdesign-slide" src="images/robot/IMG_2657.jpg" alt="Robot design: mechanism details" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
-                    <img class="robotdesign-slide" src="images/robot/IMG_2710.jpg" alt="Robot design: attachment and sensors" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="robotdesign-slide" src="images/robot/IMG_2711.jpg" alt="Robot design: team setup" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="robotdesign-slide" src="images/robot/IMG_7852.jpg" alt="Robot design: detailed view" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="robotdesign-slide" src="images/robot/IMG_7854.jpg" alt="Robot design: components" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <img class="robotdesign-slide" src="images/robot/IMG_7855.jpg" alt="Robot design: complete assembly" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('robotdesign', -1)" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('robotdesign', 1)" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;"><span class="robotdesign-counter">1 / 6</span></div>
-                </div>
-            </section>
-        </section>
-        <section id="contact" style="display:none;">
-            <h2>Contact</h2>
-            <p>
-                For questions or to connect with our team, please email us at:<br>
-                <a href="mailto:zhutoulala@gmail.com">zhutoulala@gmail.com</a>
-            </p>
-            <p>
-                <strong>Team ID:</strong> #70620
-            </p>
-        </section>
-    </main>
-    <footer>
-        &copy; 2025 SuperRobots Team. All rights reserved.
-    </footer>
+            <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #94a3b8;">Your Code Sequence:</h3>
+            <div class="code-sequence-container" id="code-list">
+                <!-- Commands will be injected here -->
+            </div>
+
+            <div class="controls">
+                <button class="reset-btn" onclick="clearCode()">Clear Code</button>
+                <button class="run-btn" id="runBtn" onclick="runCode()">▶ Run Code</button>
+            </div>
+        </div>
+
+        <!-- Simulation Viewer -->
+        <div class="simulation-panel">
+            <div id="status" class="status-overlay"></div>
+            <div class="canvas-container">
+                <canvas id="simCanvas" width="500" height="500"></canvas>
+            </div>
+        </div>
+
+    </div>
+
     <script>
-        let slideIndex = 0;
-        const slideshowIndices = {
-            'team': 0,
-            'practice': 0,
-            'game': 0,
-            'research': 0,
-            'performance': 0,
-            'robotdesign': 0
+        const canvas = document.getElementById('simCanvas');
+        const ctx = canvas.getContext('2d');
+        const codeList = document.getElementById('code-list');
+        const statusEl = document.getElementById('status');
+        const runBtn = document.getElementById('runBtn');
+
+        let commands = [];
+        let isRunning = false;
+
+        // Grid Configuration
+        let gridSize = 5;
+        let tileSize = canvas.width / gridSize;
+        
+        const allBlocks = {
+            'moveForward': '↑ Move Forward',
+            'moveBackward': '↓ Move Back',
+            'turnLeft': '↺ Turn Left',
+            'turnRight': '↻ Turn Right',
+            'jump': '⇈ Jump',
+            'uTurn': '↵ U-Turn',
+            'repeat': '⟳ Repeat',
+            'endRepeat': '⤶ End Repeat',
+            'smash': '💥 Smash',
+            'wait': '💤 Wait'
         };
 
-        function showSlides(n) {
-            const slides = document.getElementsByClassName("team-slide");
-            const dots = document.getElementsByClassName("dot");
-            if (n >= slides.length) slideIndex = 0;
-            if (n < 0) slideIndex = slides.length - 1;
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                if (dots[i]) dots[i].style.opacity = "0.7";
+        // Game State
+        const levels = [
+            {
+                introText: "Let's get started! Use Move Forward and Turn commands to navigate to the Flag 🏁.",
+                gridSize: 5,
+                availableBlocks: ['moveForward', 'turnLeft', 'turnRight'],
+                start: {x: 0, y: 4}, direction: 0,
+                goal: {x: 4, y: 0},
+                obstacles: [{x: 2, y: 2}, {x: 2, y: 3}, {x: 3, y: 2}]
+            },
+            {
+                introText: "Loops! You can now use the Repeat block to run commands multiple times without rewriting them.",
+                gridSize: 6,
+                availableBlocks: ['moveForward', 'moveBackward', 'turnLeft', 'turnRight', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 0}, direction: 1, 
+                goal: {x: 5, y: 5},
+                obstacles: [{x: 2, y: 0}, {x: 2, y: 1}, {x: 2, y: 2}, {x: 2, y: 4}, {x: 4, y: 3}, {x: 4, y: 4}, {x: 4, y: 5}]
+            },
+            {
+                introText: "Use U-Turn and Repeat to snake your way around the heavy walls to the goal.",
+                gridSize: 8,
+                availableBlocks: ['moveForward', 'moveBackward', 'turnLeft', 'turnRight', 'uTurn', 'repeat', 'endRepeat'],
+                start: {x: 1, y: 7}, direction: 0,
+                goal: {x: 6, y: 1},
+                obstacles: [
+                    {x: 1, y: 5}, {x: 2, y: 5}, {x: 3, y: 5}, {x: 4, y: 5}, 
+                    {x: 4, y: 4}, {x: 4, y: 3}, {x: 4, y: 2},
+                    {x: 6, y: 3}, {x: 7, y: 3}
+                ]
+            },
+            {
+                introText: "You have the Jump block! Jump lets you hop exactly 2 squares forward, leaping over solid walls.",
+                gridSize: 10,
+                availableBlocks: ['moveForward', 'moveBackward', 'turnLeft', 'turnRight', 'uTurn', 'jump', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 9}, direction: 1,
+                goal: {x: 9, y: 0},
+                obstacles: [
+                    {x: 3, y: 9}, {x: 3, y: 8}, {x: 3, y: 7}, {x: 3, y: 6}, {x: 3, y: 5}, {x: 3, y: 4}, {x: 3, y: 3}, {x: 3, y: 2}, {x: 3, y: 1}, {x: 3, y: 0},
+                    {x: 7, y: 0}, {x: 7, y: 1}, {x: 7, y: 2}, {x: 7, y: 3}, {x: 7, y: 4}, {x: 7, y: 5}, {x: 7, y: 6}, {x: 7, y: 7}, {x: 7, y: 8}
+                ]
+            },
+            {
+                introText: "Looks like a scattered maze. Plan your jumps and loops carefully!",
+                gridSize: 12,
+                availableBlocks: ['moveForward', 'moveBackward', 'turnLeft', 'turnRight', 'uTurn', 'jump', 'repeat', 'endRepeat'],
+                start: {x: 5, y: 11}, direction: 0,
+                goal: {x: 5, y: 0},
+                obstacles: [
+                    {x: 4, y: 10}, {x: 5, y: 10}, {x: 6, y: 10},
+                    {x: 2, y: 8}, {x: 3, y: 8}, {x: 4, y: 8}, {x: 5, y: 8}, {x: 6, y: 8}, {x: 7, y: 8}, {x: 8, y: 8}, {x: 9, y: 8},
+                    {x: 5, y: 6}, {x: 5, y: 5}, {x: 5, y: 4},
+                    {x: 3, y: 2}, {x: 4, y: 2}, {x: 6, y: 2}, {x: 7, y: 2}
+                ]
+            },
+            {
+                introText: "Stars Intro ⭐! Collect all the golden stars to unlock the goal.",
+                gridSize: 7,
+                availableBlocks: ['moveForward', 'turnLeft', 'turnRight', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 6}, direction: 1,
+                goal: {x: 3, y: 3},
+                obstacles: [
+                    {x: 2, y: 2}, {x: 2, y: 3}, {x: 2, y: 4},
+                    {x: 4, y: 2}, {x: 4, y: 3}, {x: 4, y: 4},
+                    {x: 3, y: 2}
+                ],
+                stars: [{x: 0, y: 0}, {x: 6, y: 6}]
+            },
+            {
+                introText: "Breakables Intro 📦! Some obstacles are wooden crates. Use the Smash command to blast through them!",
+                gridSize: 8,
+                availableBlocks: ['moveForward', 'turnLeft', 'turnRight', 'smash', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 7}, direction: 1,
+                goal: {x: 7, y: 0},
+                obstacles: [
+                    {x: 2, y: 7}, {x: 2, y: 6}, {x: 2, y: 4}, {x: 2, y: 3}, {x: 2, y: 2}, {x: 2, y: 1}, {x: 2, y: 0},
+                    {x: 5, y: 7}, {x: 5, y: 6}, {x: 5, y: 5}, {x: 5, y: 4}, {x: 5, y: 3}, {x: 5, y: 2}, {x: 5, y: 0}
+                ],
+                breakables: [{x: 2, y: 5}, {x: 5, y: 1}],
+                stars: [{x: 1, y: 5}, {x: 4, y: 1}]
+            },
+            {
+                introText: "Smash, gather, wait! Use the Wait command if you need a breather, and don't forget the stars.",
+                gridSize: 9,
+                availableBlocks: ['moveForward', 'turnLeft', 'turnRight', 'wait', 'smash', 'repeat', 'endRepeat'],
+                start: {x: 4, y: 8}, direction: 0,
+                goal: {x: 4, y: 0},
+                obstacles: [
+                    {x: 0, y: 6}, {x: 1, y: 6}, {x: 2, y: 6}, {x: 3, y: 6}, {x: 5, y: 6}, {x: 6, y: 6}, {x: 7, y: 6}, {x: 8, y: 6},
+                    {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 5, y: 2}, {x: 6, y: 2}, {x: 7, y: 2}, {x: 8, y: 2}
+                ],
+                breakables: [{x: 4, y: 6}, {x: 4, y: 2}],
+                stars: [{x: 1, y: 4}, {x: 7, y: 4}]
+            },
+            {
+                introText: "Portals Intro 🌀! Stepping onto a purple portal will instantly teleport you across the map.",
+                gridSize: 6,
+                availableBlocks: ['moveForward', 'moveBackward', 'turnLeft', 'turnRight'],
+                start: {x: 0, y: 5}, direction: 1,
+                goal: {x: 5, y: 0},
+                obstacles: [
+                    {x: 0, y: 4}, {x: 1, y: 4}, {x: 2, y: 4}, {x: 3, y: 4}, {x: 4, y: 4}, {x: 5, y: 4},
+                    {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}, {x: 5, y: 2}
+                ],
+                portals: [
+                    {x: 5, y: 5, destX: 0, destY: 3},
+                    {x: 5, y: 3, destX: 0, destY: 1}
+                ],
+                stars: [{x: 2, y: 5}, {x: 2, y: 3}, {x: 2, y: 1}]
+            },
+            {
+                introText: "The Ultimate Challenge! Combine portals, breakable walls, loops, and stars. Good luck!",
+                gridSize: 12,
+                availableBlocks: ['moveForward', 'turnLeft', 'turnRight', 'uTurn', 'jump', 'smash', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 11}, direction: 1,
+                goal: {x: 11, y: 0},
+                obstacles: [
+                    {x: 2, y: 11}, {x: 2, y: 10}, {x: 2, y: 9}, {x: 2, y: 8}, {x: 2, y: 7},
+                    {x: 4, y: 0}, {x: 4, y: 1}, {x: 4, y: 2}, {x: 4, y: 3}, {x: 4, y: 4},
+                    {x: 6, y: 11}, {x: 6, y: 10}, {x: 6, y: 9}, {x: 8, y: 0}, {x: 8, y: 1}, {x: 8, y: 2}
+                ],
+                breakables: [{x: 2, y: 6}, {x: 4, y: 5}],
+                portals: [
+                    {x: 11, y: 11, destX: 5, destY: 2},
+                    {x: 0, y: 0, destX: 7, destY: 10}
+                ],
+                stars: [{x: 0, y: 8}, {x: 5, y: 0}, {x: 11, y: 4}, {x: 10, y: 10}]
             }
-            slides[slideIndex].style.display = "block";
-            if (dots[slideIndex]) dots[slideIndex].style.opacity = "1";
+        ];
+
+        let currentLevel = 0;
+        let robot;
+        let mapData;
+        let activeStars = [];
+        let activeBreakables = [];
+        let totalStars = 0;
+
+        function updateStarUI() {
+            let el = document.getElementById('star-score');
+            if(totalStars > 0) {
+                el.style.display = 'inline-block';
+                el.innerText = `⭐ ${totalStars - activeStars.length} / ${totalStars}`;
+            } else {
+                el.style.display = 'none';
+            }
         }
 
-        function changeSlide(slideshowName, direction) {
-            const slides = document.getElementsByClassName(slideshowName + "-slide");
-            const counter = document.querySelector('.' + slideshowName + '-counter');
+        function loadLevel() {
+            mapData = levels[currentLevel];
+            gridSize = mapData.gridSize;
+            tileSize = canvas.width / gridSize;
             
-            if (slides.length === 0) return;
+            robot = {
+                x: mapData.start.x,
+                y: mapData.start.y,
+                dir: mapData.direction
+            };
+            const selector = document.getElementById('level-selector');
+            if (selector) selector.value = currentLevel;
+
+            let introEl = document.getElementById('level-intro-text');
+            if (introEl) introEl.innerText = mapData.introText || '';
             
-            slideshowIndices[slideshowName] += direction;
-            
-            if (slideshowIndices[slideshowName] >= slides.length) {
-                slideshowIndices[slideshowName] = 0;
-            }
-            if (slideshowIndices[slideshowName] < 0) {
-                slideshowIndices[slideshowName] = slides.length - 1;
-            }
-            
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            
-            slides[slideshowIndices[slideshowName]].style.display = "block";
-            
-            if (counter) {
-                counter.textContent = (slideshowIndices[slideshowName] + 1) + ' / ' + slides.length;
-            }
+            renderPalette();
+            resetSimulation();
         }
 
-        function plusSlides(n) {
-            slideIndex += n;
-            showSlides(slideIndex);
-        }
-        function currentSlide(n) {
-            slideIndex = n;
-            showSlides(slideIndex);
-        }
-        window.onload = function() {
-            showSlides(slideIndex);
-        };
-        // Tab navigation logic with tab shape highlighting
-        document.querySelectorAll('.tab-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                // Remove active from all tabs
-                document.querySelectorAll('.tab-link').forEach(a => a.classList.remove('active'));
-                this.classList.add('active');
-                // Hide all sections
-                document.querySelectorAll('main > section').forEach(sec => sec.style.display = 'none');
-                // Show the selected section
-                const id = this.getAttribute('href').replace('#','');
-                if (id) {
-                    document.getElementById(id).style.display = '';
-                }
+        function initLevels() {
+            const selector = document.getElementById('level-selector');
+            selector.innerHTML = '';
+            levels.forEach((l, i) => {
+                let opt = document.createElement('option');
+                opt.value = i;
+                opt.innerText = `Level ${i + 1}`;
+                opt.style.color = 'black';
+                selector.appendChild(opt);
             });
-        });
-        // Show home by default
-        document.getElementById('home').style.display = '';
+        }
+
+        function changeLevel(idx) {
+            if (isRunning) {
+                document.getElementById('level-selector').value = currentLevel;
+                return;
+            }
+            currentLevel = parseInt(idx);
+            commands = [];
+            renderCodeList();
+            loadLevel();
+        }
+
+        function renderPalette() {
+            const palette = document.getElementById('blocks-palette');
+            palette.innerHTML = '';
+            mapData.availableBlocks.forEach(blockKey => {
+                const btn = document.createElement('button');
+                btn.className = 'block-btn';
+                btn.onclick = () => addCommand(blockKey);
+                btn.innerText = allBlocks[blockKey];
+                palette.appendChild(btn);
+            });
+        }
+
+        // Palette & Code Sequence Logic
+        function addCommand(cmdStr) {
+            if (isRunning) return;
+            if (cmdStr === 'repeat') {
+                let times = prompt("How many times to repeat?", "3");
+                if (times && !isNaN(times) && parseInt(times) > 0) {
+                    commands.push(`repeat:${parseInt(times)}`);
+                }
+            } else if (cmdStr === 'endRepeat') {
+                commands.push('endRepeat');
+            } else {
+                commands.push(cmdStr);
+            }
+            renderCodeList();
+        }
+
+        function removeCommand(index) {
+            if (isRunning) return;
+            commands.splice(index, 1);
+            renderCodeList();
+        }
+
+        function clearCode() {
+            if (isRunning) return;
+            commands = [];
+            renderCodeList();
+            resetSimulation();
+        }
+
+        function resetSimulation() {
+            robot.x = mapData.start.x;
+            robot.y = mapData.start.y;
+            robot.dir = mapData.direction;
+            activeStars = mapData.stars ? JSON.parse(JSON.stringify(mapData.stars)) : [];
+            activeBreakables = mapData.breakables ? JSON.parse(JSON.stringify(mapData.breakables)) : [];
+            totalStars = activeStars.length;
+            updateStarUI();
+            hideStatus();
+            draw();
+        }
+
+        let draggedItemIndex = null;
+
+        function handleDragStart(e) {
+            if (isRunning) { e.preventDefault(); return; }
+            draggedItemIndex = parseInt(this.dataset.index);
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', this.dataset.index); // Firefox requires data to drag
+            setTimeout(() => this.classList.add('dragging'), 0);
+        }
+
+        function handleDragOver(e) {
+            if (isRunning) return false;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            return false;
+        }
+
+        function handleDragEnter(e) {
+            if (isRunning) return;
+            if (draggedItemIndex !== null && parseInt(this.dataset.index) !== draggedItemIndex) {
+                this.classList.add('drag-over');
+            }
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.stopPropagation();
+            if (isRunning || draggedItemIndex === null) return false;
+            
+            let targetIndex = parseInt(this.dataset.index);
+            
+            if (draggedItemIndex !== targetIndex) {
+                let item = commands.splice(draggedItemIndex, 1)[0];
+                commands.splice(targetIndex, 0, item);
+                renderCodeList(); // re-render will clean up styles
+            } else {
+                this.classList.remove('drag-over');
+                this.classList.remove('dragging');
+            }
+            return false;
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+            let items = document.querySelectorAll('.code-item');
+            items.forEach(item => item.classList.remove('drag-over'));
+            draggedItemIndex = null;
+        }
+
+        function renderCodeList() {
+            codeList.innerHTML = '';
+            let indent = 0;
+            commands.forEach((cmd, i) => {
+                const div = document.createElement('div');
+                div.className = 'code-item';
+                div.draggable = true;
+                div.dataset.index = i;
+                
+                div.addEventListener('dragstart', handleDragStart);
+                div.addEventListener('dragover', handleDragOver);
+                div.addEventListener('dragenter', handleDragEnter);
+                div.addEventListener('dragleave', handleDragLeave);
+                div.addEventListener('drop', handleDrop);
+                div.addEventListener('dragend', handleDragEnd);
+                
+                let label = '';
+                let currentIndent = indent;
+                
+                if(cmd === 'moveForward') label = '↑ Move Forward();';
+                else if(cmd === 'moveBackward') label = '↓ Move Backward();';
+                else if(cmd === 'turnLeft') label = '↺ Turn Left();';
+                else if(cmd === 'turnRight') label = '↻ Turn Right();';
+                else if(cmd === 'jump') label = '⇈ Jump();';
+                else if(cmd === 'uTurn') label = '↵ U-Turn();';
+                else if(cmd === 'smash') label = '💥 Smash();';
+                else if(cmd === 'wait') label = '💤 Wait();';
+                else if(cmd.startsWith('repeat:')) {
+                    let times = cmd.split(':')[1];
+                    label = `⟳ Repeat ${times} times:`;
+                    currentIndent = indent;
+                    indent++; 
+                }
+                else if(cmd === 'endRepeat') {
+                    indent = Math.max(0, indent - 1);
+                    currentIndent = indent;
+                    label = '⤶ End Repeat';
+                }
+
+                div.style.marginLeft = (currentIndent * 20) + 'px';
+                // Cursor visual for drag
+                div.style.cursor = isRunning ? 'default' : 'grab';
+
+                div.innerHTML = `
+                    <span style="pointer-events:none;">${i+1}. ${label}</span>
+                    <button class="delete-btn" onclick="removeCommand(${i})">✕</button>
+                `;
+                codeList.appendChild(div);
+            });
+            codeList.scrollTop = codeList.scrollHeight; // Auto scroll to bottom
+        }
+
+        function getExecutionPath() {
+            function parse(startIndex) {
+                let seq = [];
+                let j = startIndex;
+                while (j < commands.length) {
+                    let cmd = commands[j];
+                    if (cmd.startsWith('repeat:')) {
+                        let times = parseInt(cmd.split(':')[1]);
+                        let inner = parse(j + 1);
+                        for (let t = 0; t < times; t++) {
+                           seq.push({ cmd: 'highlight', uiIdx: j });
+                           seq = seq.concat(inner.seq);
+                        }
+                        if (inner.endIndex < commands.length && commands[inner.endIndex] === 'endRepeat') {
+                           seq.push({ cmd: 'highlight', uiIdx: inner.endIndex });
+                        }
+                        j = inner.endIndex + 1;
+                    } else if (cmd === 'endRepeat') {
+                        return { seq: seq, endIndex: j };
+                    } else {
+                        seq.push({ cmd: cmd, uiIdx: j });
+                        j++;
+                    }
+                }
+                return { seq: seq, endIndex: j };
+            }
+            return parse(0).seq;
+        }
+
+        // Simulation Execution
+        async function runCode() {
+            if (isRunning || commands.length === 0) return;
+            isRunning = true;
+            runBtn.disabled = true;
+            runBtn.style.opacity = '0.5';
+            hideStatus();
+            resetSimulation();
+
+            let codeItems = document.querySelectorAll('.code-item');
+            let path = getExecutionPath();
+
+            for (let i = 0; i < path.length; i++) {
+                let step = path[i];
+
+                // Highlight current command
+                codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
+                if (step.uiIdx < codeItems.length) {
+                    codeItems[step.uiIdx].style.borderLeftColor = '#fbbf24'; // yellow active
+                }
+
+                if (step.cmd === 'highlight') {
+                    await new Promise(r => setTimeout(r, 300));
+                    continue;
+                }
+
+                let success = executeCommand(step.cmd);
+                
+                draw();
+                
+                if (!success) {
+                    showStatus("Error: Crashed into obstacle or wall!", "error");
+                    break;
+                }
+
+                // Delay between steps for visual feedback
+                await new Promise(r => setTimeout(r, 600));
+
+                if (checkGoal()) {
+                    showStatus("Success! Goal Reached!", "success");
+                    // Highlight next level btn logic could go here
+                    setTimeout(() => {
+                        if (currentLevel < levels.length - 1) {
+                            currentLevel++;
+                            commands = [];
+                            renderCodeList();
+                            loadLevel();
+                        } else {
+                            showStatus("You beat all levels!", "success");
+                        }
+                    }, 2000);
+                    break;
+                }
+            }
+
+            codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
+            if (isRunning && !checkGoal() && commands.length > 0) {
+                let crashed = statusEl.classList.contains('error');
+                if (!crashed) {
+                    showStatus("Code finished. Goal not reached.", "error");
+                }
+            }
+
+            isRunning = false;
+            runBtn.disabled = false;
+            runBtn.style.opacity = '1';
+        }
+
+        function executeCommand(cmd) {
+            if (cmd === 'wait') return true;
+
+            let dx = 0, dy = 0;
+            if (robot.dir === 0) dy = -1; // Up
+            if (robot.dir === 1) dx = 1;  // Right
+            if (robot.dir === 2) dy = 1;  // Down
+            if (robot.dir === 3) dx = -1; // Left
+
+            if (cmd === 'turnLeft') {
+                robot.dir = (robot.dir + 3) % 4;
+                return true;
+            }
+            if (cmd === 'turnRight') {
+                robot.dir = (robot.dir + 1) % 4;
+                return true;
+            }
+            if (cmd === 'uTurn') {
+                robot.dir = (robot.dir + 2) % 4;
+                return true;
+            }
+            
+            let newX = robot.x;
+            let newY = robot.y;
+
+            if (cmd === 'smash') {
+                let targetX = robot.x + dx;
+                let targetY = robot.y + dy;
+                for (let i = 0; i < activeBreakables.length; i++) {
+                    if (activeBreakables[i].x === targetX && activeBreakables[i].y === targetY) {
+                        activeBreakables.splice(i, 1);
+                        break;
+                    }
+                }
+                return true;
+            }
+
+            if (cmd === 'moveForward') {
+                newX += dx;
+                newY += dy;
+            }
+            if (cmd === 'moveBackward') {
+                newX -= dx;
+                newY -= dy;
+            }
+            if (cmd === 'jump') {
+                newX += dx * 2;
+                newY += dy * 2;
+            }
+
+            // Check boundaries
+            if (newX < 0 || newX >= gridSize || newY < 0 || newY >= gridSize) {
+                return false;
+            }
+
+            // Check obstacles
+            if (mapData.obstacles) {
+                for (let obs of mapData.obstacles) {
+                    if (obs.x === newX && obs.y === newY) return false;
+                }
+            }
+            for (let obs of activeBreakables) {
+                if (obs.x === newX && obs.y === newY) return false;
+            }
+
+            robot.x = newX;
+            robot.y = newY;
+
+            // Check stars
+            for (let i = 0; i < activeStars.length; i++) {
+                if(activeStars[i].x === robot.x && activeStars[i].y === robot.y) {
+                    activeStars.splice(i, 1);
+                    updateStarUI();
+                    break;
+                }
+            }
+
+            // Check portals
+            if (mapData.portals) {
+                for (let p of mapData.portals) {
+                    if (p.x === robot.x && p.y === robot.y) {
+                        robot.x = p.destX;
+                        robot.y = p.destY;
+                        break;
+                    }
+                }
+            }
+
+            return true;
+        }
+
+        function checkGoal() {
+            return robot.x === mapData.goal.x && robot.y === mapData.goal.y && activeStars.length === 0;
+        }
+
+        function showStatus(msg, type) {
+            statusEl.textContent = msg;
+            statusEl.className = 'status-overlay visible ' + type;
+        }
+
+        function hideStatus() {
+            statusEl.className = 'status-overlay';
+        }
+
+        // Drawing / Rendering
+        function draw() {
+            // Clear
+            ctx.fillStyle = '#cbd5e1';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Draw Grid
+            ctx.strokeStyle = '#94a3b8';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= gridSize; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * tileSize, 0);
+                ctx.lineTo(i * tileSize, canvas.height);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i * tileSize);
+                ctx.lineTo(canvas.width, i * tileSize);
+                ctx.stroke();
+            }
+
+            // Draw Goal
+            if (activeStars.length > 0) {
+                ctx.fillStyle = '#fca5a5'; // Reddish, locked
+            } else {
+                ctx.fillStyle = '#bbf7d0'; // Green, open
+            }
+            ctx.fillRect(mapData.goal.x * tileSize + 2, mapData.goal.y * tileSize + 2, tileSize - 4, tileSize - 4);
+            ctx.font = `${tileSize * 0.6}px Arial`;
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            let goalEmoji = activeStars.length > 0 ? '🔒' : '🏁';
+            ctx.fillText(goalEmoji, mapData.goal.x * tileSize + tileSize/2, mapData.goal.y * tileSize + tileSize/2);
+
+            // Draw Portals
+            if (mapData.portals) {
+                ctx.font = `${tileSize * 0.7}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                for (let p of mapData.portals) {
+                    ctx.fillText('🌀', p.x * tileSize + tileSize/2, p.y * tileSize + tileSize/2);
+                }
+            }
+
+            // Draw Stars
+            for (let s of activeStars) {
+                ctx.fillText('⭐', s.x * tileSize + tileSize/2, s.y * tileSize + tileSize/2);
+            }
+
+            // Draw Obstacles
+            ctx.fillStyle = '#475569';
+            if (mapData.obstacles) {
+                for (let obs of mapData.obstacles) {
+                    ctx.fillRect(obs.x * tileSize + 2, obs.y * tileSize + 2, tileSize - 4, tileSize - 4);
+                    ctx.fillStyle = '#334155';
+                    ctx.fillRect(obs.x * tileSize + 10, obs.y * tileSize + 10, tileSize - 20, tileSize - 20); // Inner crate detail
+                    ctx.fillStyle = '#475569';
+                }
+            }
+
+            // Draw Breakables
+            ctx.fillStyle = '#8B4513';
+            for (let obs of activeBreakables) {
+                ctx.fillRect(obs.x * tileSize + 2, obs.y * tileSize + 2, tileSize - 4, tileSize - 4);
+                ctx.strokeStyle = '#654321';
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(obs.x * tileSize + 2, obs.y * tileSize + 2);
+                ctx.lineTo((obs.x+1) * tileSize - 2, (obs.y+1) * tileSize - 2);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo((obs.x+1) * tileSize - 2, obs.y * tileSize + 2);
+                ctx.lineTo(obs.x * tileSize + 2, (obs.y+1) * tileSize - 2);
+                ctx.stroke();
+            }
+
+            // Draw Robot
+            ctx.save();
+            ctx.translate(robot.x * tileSize + tileSize/2, robot.y * tileSize + tileSize/2);
+            // Rotate canvas based on direction (0=Up, 1=Right, 2=Down, 3=Left)
+            ctx.rotate(robot.dir * Math.PI / 2);
+            
+            // Robot Body
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath();
+            ctx.roundRect(-tileSize/3, -tileSize/3, tileSize/1.5, tileSize/1.5, 8);
+            ctx.fill();
+            
+            // Robot Eye/Front indicator
+            ctx.fillStyle = '#fff';
+            ctx.beginPath();
+            ctx.arc(0, -tileSize/4, 6, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#0ea5e9';
+            ctx.beginPath();
+            ctx.arc(0, -tileSize/4, 3, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Tires
+            ctx.fillStyle = '#1e293b';
+            ctx.fillRect(-tileSize/2.5, -tileSize/4, 8, tileSize/2);
+            ctx.fillRect(tileSize/2.5 - 8, -tileSize/4, 8, tileSize/2);
+
+            ctx.restore();
+        }
+
+        // Init
+        initLevels();
+        loadLevel();
+
     </script>
 </body>
 </html>
