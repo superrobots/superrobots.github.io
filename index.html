@@ -266,7 +266,17 @@
     </style>
 </head>
 <body>
-
+    <!-- Custom Prompt Modal -->
+    <div id="custom-prompt" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999; justify-content:center; align-items:center;">
+        <div style="background:#1e293b; padding:2rem; border-radius:12px; border: 1px solid #38bdf8; color:white; text-align:center; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+            <h3 style="margin-top:0;">How many times to repeat?</h3>
+            <input type="number" id="repeat-input" value="3" min="1" max="99" style="padding:0.5rem; font-size:1.2rem; width:100px; text-align:center; border-radius:6px; border:1px solid #94a3b8; background:#0f172a; color:white; margin-bottom:1rem;">
+            <div style="display:flex; gap:1rem; justify-content:center;">
+                <button onclick="submitPrompt()" style="background:#22c55e; color:white; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">OK</button>
+                <button onclick="cancelPrompt()" style="background:#ef4444; color:white; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Cancel</button>
+            </div>
+        </div>
+    </div>
     <header>
         <h1>Super Robots Game</h1>
         <a href="team.html" class="back-link">👥 SuperRobots Team</a>
@@ -279,6 +289,7 @@
             <div class="editor-header">
                 <h2>Command Blocks</h2>
                 <div style="display:flex; gap: 0.5rem; align-items: center;">
+                    <span id="block-limit" style="display:none; color: #f87171; font-weight: bold; background: rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; border-radius: 6px;">Blocks: 0/10</span>
                     <span id="star-score" style="display:none; color: #fbbf24; font-weight: bold; background: rgba(255,255,255,0.1); padding: 0.3rem 0.6rem; border-radius: 6px;">⭐ 0/0</span>
                     <select id="level-selector" onchange="changeLevel(this.value)" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 6px; font-weight: 600; cursor: pointer; outline: none; appearance: auto; -webkit-appearance: auto;">
                     </select>
@@ -337,6 +348,10 @@
             'uTurn': '↵ U-Turn',
             'repeat': '⟳ Repeat',
             'endRepeat': '⤶ End Repeat',
+            'whileClear': '🔁 While Path Clear',
+            'endWhile': '⤶ End While',
+            'ifBlocked': '🚫 If Obstacle Ahead',
+            'endIf': '⤶ End If',
             'smash': '💥 Smash',
             'wait': '💤 Wait'
         };
@@ -467,6 +482,119 @@
                     {x: 0, y: 0, destX: 7, destY: 10}
                 ],
                 stars: [{x: 0, y: 8}, {x: 5, y: 0}, {x: 11, y: 4}, {x: 10, y: 10}]
+            },
+            {
+                introText: "Intermediate Area! You must use the While Path Clear loop to reach the goal. Good luck!",
+                gridSize: 8,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'whileClear', 'endWhile'],
+                start: {x: 1, y: 7}, direction: 0,
+                goal: {x: 7, y: 1},
+                obstacles: [
+                    {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0}, {x: 6, y: 0}, {x: 7, y: 0},
+                    {x: 0, y: 1}, {x: 0, y: 2}, {x: 0, y: 3}, {x: 0, y: 4}, {x: 0, y: 5}, {x: 0, y: 6}, {x: 0, y: 7}
+                ]
+            },
+            {
+                introText: "Staircase! Combine loops to travel in a zigzag.",
+                gridSize: 10,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'whileClear', 'endWhile', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 9}, direction: 1,
+                goal: {x: 9, y: 0},
+                obstacles: [
+                    {x: 1, y: 9}, {x: 2, y: 8}, {x: 3, y: 7}, {x: 4, y: 6}, {x: 5, y: 5}, {x: 6, y: 4}, {x: 7, y: 3}, {x: 8, y: 2}, {x: 9, y: 1}
+                ]
+            },
+            {
+                introText: "Logic Time! Check for obstacles ahead. If blocked, Jump over them!",
+                gridSize: 8,
+                availableBlocks: ['moveForward', 'turnRight', 'ifBlocked', 'endIf', 'jump', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 4}, direction: 1,
+                goal: {x: 7, y: 4},
+                obstacles: [{x: 2, y: 4}, {x: 5, y: 4}]
+            },
+            {
+                introText: "Smash through the blockade conditionally! If an obstacle is ahead, smash it. Proceed until the goal.",
+                gridSize: 8,
+                maxBlocks: 8,
+                availableBlocks: ['moveForward', 'ifBlocked', 'endIf', 'smash', 'whileClear', 'endWhile', 'repeat', 'endRepeat'],
+                start: {x: 1, y: 6}, direction: 0,
+                goal: {x: 1, y: 0},
+                obstacles: [{x: 0, y: 4}, {x: 2, y: 4}, {x: 0, y: 2}, {x: 2, y: 2}],
+                breakables: [{x: 1, y: 4}, {x: 1, y: 2}]
+            },
+            {
+                introText: "Stars everywhere! Optimize your loops and collect them all.",
+                gridSize: 7,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'whileClear', 'endWhile', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 6}, direction: 1,
+                goal: {x: 3, y: 3},
+                obstacles: [
+                    {x: 6, y: 5}, {x: 5, y: 0}, {x: 1, y: 1}
+                ],
+                stars: [{x: 6, y: 6}, {x: 6, y: 0}, {x: 0, y: 0}]
+            },
+            {
+                introText: "Labyrinth! Careful navigation with conditionals is required here.",
+                gridSize: 10,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'whileClear', 'endWhile', 'ifBlocked', 'endIf', 'jump'],
+                start: {x: 0, y: 9}, direction: 1,
+                goal: {x: 5, y: 5},
+                obstacles: [
+                    {x: 2, y: 9}, {x: 2, y: 8}, {x: 2, y: 7}, {x: 2, y: 6},
+                    {x: 4, y: 0}, {x: 4, y: 1}, {x: 4, y: 2}, {x: 4, y: 3}, {x: 4, y: 4}, {x: 4, y: 5}, {x: 4, y: 6},
+                    {x: 6, y: 9}, {x: 6, y: 8}, {x: 6, y: 7}, {x: 6, y: 6}, {x: 6, y: 5}, {x: 6, y: 4}
+                ]
+            },
+            {
+                introText: "Block limit challenge! You can only use a few blocks. Group them wisely.",
+                gridSize: 6,
+                maxBlocks: 6,
+                availableBlocks: ['turnRight', 'moveForward', 'whileClear', 'endWhile', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 5}, direction: 0,
+                goal: {x: 3, y: 2},
+                obstacles: [
+                    {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0},
+                    {x: 5, y: 1}, {x: 5, y: 2}, {x: 5, y: 3}, {x: 5, y: 4}, {x: 5, y: 5},
+                    {x: 4, y: 5}, {x: 3, y: 5}, {x: 2, y: 5}, {x: 2, y: 4}, {x: 2, y: 3}, {x: 2, y: 2}
+                ]
+            },
+            {
+                introText: "Mixed logic: Use nested loops and if statements.",
+                gridSize: 9,
+                availableBlocks: ['turnRight', 'turnLeft', 'moveForward', 'whileClear', 'endWhile', 'ifBlocked', 'endIf', 'jump', 'smash', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 8}, direction: 1,
+                goal: {x: 8, y: 0},
+                obstacles: [
+                    {x: 2, y: 8}, {x: 4, y: 8}, {x: 6, y: 8},
+                    {x: 8, y: 6}, {x: 8, y: 4}, {x: 8, y: 2}
+                ],
+                breakables: [{x: 8, y: 7}, {x: 8, y: 5}, {x: 8, y: 3}, {x: 8, y: 1}],
+                stars: [{x: 8, y: 8}, {x: 0, y: 0}]
+            },
+            {
+                introText: "The big grid! Automation is heavily recommended to save time.",
+                gridSize: 14,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'whileClear', 'endWhile'],
+                start: {x: 13, y: 13}, direction: 3,
+                goal: {x: 0, y: 0},
+                obstacles: [
+                    {x: 0, y: 13}, {x: 1, y: 13}, {x: 2, y: 13}, {x: 3, y: 13}, {x: 4, y: 13}, {x: 5, y: 13}, {x: 6, y: 13},
+                    {x: 0, y: 12}, {x: 0, y: 11}, {x: 0, y: 10}, {x: 0, y: 9}, {x: 0, y: 8}, {x: 0, y: 7}, {x: 0, y: 6}
+                ]
+            },
+            {
+                introText: "Master of Logic! Use Repeat and If to smash your way across the L-shaped path. Precision is key!",
+                gridSize: 12,
+                maxBlocks: 14,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'ifBlocked', 'endIf', 'smash', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 11}, direction: 1,
+                goal: {x: 11, y: 0},
+                obstacles: [],
+                breakables: [
+                    {x: 4, y: 11}, {x: 8, y: 11},
+                    {x: 11, y: 7}, {x: 11, y: 3}
+                ],
+                stars: []
             }
         ];
 
@@ -482,6 +610,21 @@
             if(totalStars > 0) {
                 el.style.display = 'inline-block';
                 el.innerText = `⭐ ${totalStars - activeStars.length} / ${totalStars}`;
+            } else {
+                el.style.display = 'none';
+            }
+        }
+
+        function updateBlockUI() {
+            let el = document.getElementById('block-limit');
+            if (mapData && mapData.maxBlocks) {
+                el.style.display = 'inline-block';
+                el.innerText = `Blocks: ${commands.length} / ${mapData.maxBlocks}`;
+                if (commands.length > mapData.maxBlocks) {
+                    el.style.color = '#ef4444'; // Red
+                } else {
+                    el.style.color = '#f87171';
+                }
             } else {
                 el.style.display = 'none';
             }
@@ -510,13 +653,25 @@
         function initLevels() {
             const selector = document.getElementById('level-selector');
             selector.innerHTML = '';
+            
+            let groupBeginner = document.createElement('optgroup');
+            groupBeginner.label = "Beginner";
+            let groupIntermediate = document.createElement('optgroup');
+            groupIntermediate.label = "Intermediate";
+            
             levels.forEach((l, i) => {
                 let opt = document.createElement('option');
                 opt.value = i;
                 opt.innerText = `Level ${i + 1}`;
                 opt.style.color = 'black';
-                selector.appendChild(opt);
+                if (i < 10) {
+                    groupBeginner.appendChild(opt);
+                } else {
+                    groupIntermediate.appendChild(opt);
+                }
             });
+            selector.appendChild(groupBeginner);
+            selector.appendChild(groupIntermediate);
         }
 
         function changeLevel(idx) {
@@ -543,31 +698,53 @@
         }
 
         // Palette & Code Sequence Logic
+        function submitPrompt() {
+            let val = document.getElementById('repeat-input').value;
+            let times = parseInt(val);
+            if (!isNaN(times) && times > 0) {
+                commands.push(`repeat:${times}`);
+                renderCodeList();
+                updateBlockUI();
+            }
+            document.getElementById('custom-prompt').style.display = 'none';
+        }
+
+        function cancelPrompt() {
+            document.getElementById('custom-prompt').style.display = 'none';
+        }
+
         function addCommand(cmdStr) {
             if (isRunning) return;
+            if (mapData && mapData.maxBlocks && commands.length >= mapData.maxBlocks) {
+                alert(`Block limit reached for this level! (Max ${mapData.maxBlocks} blocks)`);
+                return;
+            }
             if (cmdStr === 'repeat') {
-                let times = prompt("How many times to repeat?", "3");
-                if (times && !isNaN(times) && parseInt(times) > 0) {
-                    commands.push(`repeat:${parseInt(times)}`);
-                }
+                document.getElementById('custom-prompt').style.display = 'flex';
+                document.getElementById('repeat-input').focus();
             } else if (cmdStr === 'endRepeat') {
                 commands.push('endRepeat');
+                renderCodeList();
+                updateBlockUI();
             } else {
                 commands.push(cmdStr);
+                renderCodeList();
+                updateBlockUI();
             }
-            renderCodeList();
         }
 
         function removeCommand(index) {
             if (isRunning) return;
             commands.splice(index, 1);
             renderCodeList();
+            updateBlockUI();
         }
 
         function clearCode() {
             if (isRunning) return;
             commands = [];
             renderCodeList();
+            updateBlockUI();
             resetSimulation();
         }
 
@@ -579,6 +756,7 @@
             activeBreakables = mapData.breakables ? JSON.parse(JSON.stringify(mapData.breakables)) : [];
             totalStars = activeStars.length;
             updateStarUI();
+            updateBlockUI();
             hideStatus();
             draw();
         }
@@ -625,6 +803,7 @@
                 this.classList.remove('drag-over');
                 this.classList.remove('dragging');
             }
+            updateBlockUI();
             return false;
         }
 
@@ -673,6 +852,26 @@
                     currentIndent = indent;
                     label = '⤶ End Repeat';
                 }
+                else if(cmd === 'whileClear') {
+                    label = `🔁 While Path Clear:`;
+                    currentIndent = indent;
+                    indent++; 
+                }
+                else if(cmd === 'endWhile') {
+                    indent = Math.max(0, indent - 1);
+                    currentIndent = indent;
+                    label = '⤶ End While';
+                }
+                else if(cmd === 'ifBlocked') {
+                    label = `🚫 If Obstacle Ahead:`;
+                    currentIndent = indent;
+                    indent++; 
+                }
+                else if(cmd === 'endIf') {
+                    indent = Math.max(0, indent - 1);
+                    currentIndent = indent;
+                    label = '⤶ End If';
+                }
 
                 div.style.marginLeft = (currentIndent * 20) + 'px';
                 // Cursor visual for drag
@@ -687,7 +886,28 @@
             codeList.scrollTop = codeList.scrollHeight; // Auto scroll to bottom
         }
 
-        function getExecutionPath() {
+        function isPathClearAhead() {
+            let dx = 0, dy = 0;
+            if (robot.dir === 0) dy = -1;
+            if (robot.dir === 1) dx = 1;
+            if (robot.dir === 2) dy = 1;
+            if (robot.dir === 3) dx = -1;
+            let nx = robot.x + dx;
+            let ny = robot.y + dy;
+            if (nx < 0 || nx >= gridSize || ny < 0 || ny >= gridSize) return false;
+            
+            if (mapData.obstacles) {
+                for (let obs of mapData.obstacles) {
+                    if (obs.x === nx && obs.y === ny) return false;
+                }
+            }
+            for (let obs of activeBreakables) {
+                if (obs.x === nx && obs.y === ny) return false;
+            }
+            return true;
+        }
+
+        function getExecutionAST() {
             function parse(startIndex) {
                 let seq = [];
                 let j = startIndex;
@@ -696,18 +916,20 @@
                     if (cmd.startsWith('repeat:')) {
                         let times = parseInt(cmd.split(':')[1]);
                         let inner = parse(j + 1);
-                        for (let t = 0; t < times; t++) {
-                           seq.push({ cmd: 'highlight', uiIdx: j });
-                           seq = seq.concat(inner.seq);
-                        }
-                        if (inner.endIndex < commands.length && commands[inner.endIndex] === 'endRepeat') {
-                           seq.push({ cmd: 'highlight', uiIdx: inner.endIndex });
-                        }
+                        seq.push({ type: 'repeat', times: times, body: inner.seq, uiIdx: j, endIdx: inner.endIndex });
                         j = inner.endIndex + 1;
-                    } else if (cmd === 'endRepeat') {
+                    } else if (cmd === 'whileClear') {
+                        let inner = parse(j + 1);
+                        seq.push({ type: 'whileClear', body: inner.seq, uiIdx: j, endIdx: inner.endIndex });
+                        j = inner.endIndex + 1;
+                    } else if (cmd === 'ifBlocked') {
+                        let inner = parse(j + 1);
+                        seq.push({ type: 'ifBlocked', body: inner.seq, uiIdx: j, endIdx: inner.endIndex });
+                        j = inner.endIndex + 1;
+                    } else if (cmd === 'endRepeat' || cmd === 'endWhile' || cmd === 'endIf') {
                         return { seq: seq, endIndex: j };
                     } else {
-                        seq.push({ cmd: cmd, uiIdx: j });
+                        seq.push({ type: 'action', cmd: cmd, uiIdx: j });
                         j++;
                     }
                 }
@@ -726,53 +948,100 @@
             resetSimulation();
 
             let codeItems = document.querySelectorAll('.code-item');
-            let path = getExecutionPath();
+            let ast = getExecutionAST();
+            
+            let successRun = true;
+            let goalReached = false;
 
-            for (let i = 0; i < path.length; i++) {
-                let step = path[i];
-
-                // Highlight current command
+            async function execNode(node) {
+                if (!isRunning) return false;
+                
+                // Highlight
                 codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
-                if (step.uiIdx < codeItems.length) {
-                    codeItems[step.uiIdx].style.borderLeftColor = '#fbbf24'; // yellow active
+                if (node.uiIdx != null && node.uiIdx < codeItems.length) {
+                    codeItems[node.uiIdx].style.borderLeftColor = '#fbbf24';
                 }
-
-                if (step.cmd === 'highlight') {
+                
+                if (node.type === 'action') {
+                    await new Promise(r => setTimeout(r, 600));
+                    let success = executeCommand(node.cmd);
+                    draw();
+                    if (!success) {
+                        showStatus("Error: Crashed into obstacle or wall!", "error");
+                        return false; 
+                    }
+                    if (checkGoal()) return 'goal';
+                    return true;
+                } else if (node.type === 'repeat') {
                     await new Promise(r => setTimeout(r, 300));
-                    continue;
-                }
-
-                let success = executeCommand(step.cmd);
-                
-                draw();
-                
-                if (!success) {
-                    showStatus("Error: Crashed into obstacle or wall!", "error");
-                    break;
-                }
-
-                // Delay between steps for visual feedback
-                await new Promise(r => setTimeout(r, 600));
-
-                if (checkGoal()) {
-                    showStatus("Success! Goal Reached!", "success");
-                    // Highlight next level btn logic could go here
-                    setTimeout(() => {
-                        if (currentLevel < levels.length - 1) {
-                            currentLevel++;
-                            commands = [];
-                            renderCodeList();
-                            loadLevel();
-                        } else {
-                            showStatus("You beat all levels!", "success");
+                    for (let t = 0; t < node.times; t++) {
+                        for (let child of node.body) {
+                            let res = await execNode(child);
+                            if (res === false || res === 'goal') return res;
                         }
-                    }, 2000);
-                    break;
+                    }
+                    if (node.endIdx < codeItems.length) {
+                        codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
+                        codeItems[node.endIdx].style.borderLeftColor = '#fbbf24';
+                        await new Promise(r => setTimeout(r, 300));
+                    }
+                    return true;
+                } else if (node.type === 'whileClear') {
+                     await new Promise(r => setTimeout(r, 300));
+                     while (isPathClearAhead()) {
+                          for (let child of node.body) {
+                              let res = await execNode(child);
+                              if (res === false || res === 'goal') return res;
+                          }
+                          if (!isRunning) return false;
+                          codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
+                          if (node.uiIdx < codeItems.length) codeItems[node.uiIdx].style.borderLeftColor = '#fbbf24';
+                          await new Promise(r => setTimeout(r, 300));
+                     }
+                     if (node.endIdx < codeItems.length) {
+                         codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
+                         codeItems[node.endIdx].style.borderLeftColor = '#fbbf24';
+                         await new Promise(r => setTimeout(r, 300));
+                     }
+                     return true;
+                } else if (node.type === 'ifBlocked') {
+                     await new Promise(r => setTimeout(r, 300));
+                     if (!isPathClearAhead()) {
+                          for (let child of node.body) {
+                              let res = await execNode(child);
+                              if (res === false || res === 'goal') return res;
+                          }
+                     }
+                     if (node.endIdx < codeItems.length) {
+                         codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
+                         codeItems[node.endIdx].style.borderLeftColor = '#fbbf24';
+                         await new Promise(r => setTimeout(r, 300));
+                     }
+                     return true;
                 }
             }
 
+            for (let node of ast) {
+                let res = await execNode(node);
+                if (res === false) { successRun = false; break; }
+                if (res === 'goal') { goalReached = true; break; }
+            }
+
             codeItems.forEach(el => el.style.borderLeftColor = 'transparent');
-            if (isRunning && !checkGoal() && commands.length > 0) {
+            
+            if (successRun && goalReached) {
+                showStatus("Success! Goal Reached!", "success");
+                setTimeout(() => {
+                    if (currentLevel < levels.length - 1) {
+                        currentLevel++;
+                        commands = [];
+                        renderCodeList();
+                        loadLevel();
+                    } else {
+                        showStatus("You beat all levels!", "success");
+                    }
+                }, 2000);
+            } else if (isRunning && !goalReached && commands.length > 0) {
                 let crashed = statusEl.classList.contains('error');
                 if (!crashed) {
                     showStatus("Code finished. Goal not reached.", "error");
