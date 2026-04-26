@@ -129,6 +129,35 @@
             font-size: 0.95rem;
             color: #333;
         }
+
+        @media (max-width: 768px) {
+            main {
+                margin: 1rem;
+                padding: 1rem;
+            }
+            .tab-nav {
+                flex-wrap: wrap;
+            }
+            .tab-nav li {
+                flex: 1 1 33%;
+            }
+            .tab-link {
+                font-size: 0.9rem;
+                padding: 0.6rem 0;
+                border-radius: 8px 8px 0 0;
+            }
+            header > a {
+                position: static !important;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            .team-member {
+                flex: 1 1 100%;
+            }
+        }
     </style>
 </head>
 <body>
