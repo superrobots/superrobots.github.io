@@ -583,18 +583,181 @@
                 ]
             },
             {
-                introText: "Master of Logic! Use Repeat and If to smash your way across the L-shaped path. Precision is key!",
+                introText: "Jump Street. Sequence your jumps precisely to clear the gaps.",
                 gridSize: 12,
-                maxBlocks: 14,
-                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'ifBlocked', 'endIf', 'smash', 'repeat', 'endRepeat'],
+                maxBlocks: 8,
+                availableBlocks: ['jump', 'moveForward', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 11}, direction: 1,
+                goal: {x: 11, y: 11},
+                obstacles: [
+                    {x:1,y:11}, {x:4,y:11}, {x:7,y:11}, {x:10,y:11}
+                ]
+            },
+            {
+                introText: "Portal Hopscotch! Plan your jumps and use conditionals to navigate the scattered portals.",
+                gridSize: 12,
+                maxBlocks: 10,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'jump', 'ifBlocked', 'endIf', 'repeat', 'endRepeat'],
                 start: {x: 0, y: 11}, direction: 1,
                 goal: {x: 11, y: 0},
-                obstacles: [],
-                breakables: [
-                    {x: 4, y: 11}, {x: 8, y: 11},
-                    {x: 11, y: 7}, {x: 11, y: 3}
+                obstacles: [
+                    {x: 2, y: 11}, {x: 2, y: 7}, {x: 2, y: 3}, 
+                    {x: 2, y: 0}, {x: 5, y: 0}, {x: 9, y: 0}, 
+                    {x: 6, y: 11}, {x: 10, y: 11}, {x: 4, y: 9}, {x: 8, y: 9},
+                    {x: 6, y: 7}, {x: 10, y: 7}, {x: 4, y: 5}, {x: 8, y: 5},
+                    {x: 6, y: 3}, {x: 10, y: 3}, {x: 4, y: 1}, {x: 8, y: 1}
                 ],
-                stars: []
+                portals: [
+                    {x: 4, y: 11, destX: 0, destY: 7},
+                    {x: 4, y: 7, destX: 0, destY: 3},
+                    {x: 4, y: 3, destX: 0, destY: 0}
+                ],
+                stars: [{x: 1, y: 11}, {x: 1, y: 7}, {x: 1, y: 3}]
+            },
+            {
+                introText: "The Smash Corridor! A long path blocked by breakables. Use loops and conditionals wisely.",
+                gridSize: 10,
+                maxBlocks: 8,
+                availableBlocks: ['moveForward', 'ifBlocked', 'endIf', 'smash', 'whileClear', 'endWhile'],
+                start: {x: 0, y: 5}, direction: 1,
+                goal: {x: 9, y: 5},
+                obstacles: [
+                    {x:0,y:4},{x:1,y:4},{x:2,y:4},{x:3,y:4},{x:4,y:4},{x:5,y:4},{x:6,y:4},{x:7,y:4},{x:8,y:4},{x:9,y:4},
+                    {x:0,y:6},{x:1,y:6},{x:2,y:6},{x:3,y:6},{x:4,y:6},{x:5,y:6},{x:6,y:6},{x:7,y:6},{x:8,y:6},{x:9,y:6}
+                ],
+                breakables: [{x: 2, y: 5}, {x: 5, y: 5}, {x: 8, y: 5}]
+            },
+            {
+                introText: "Starry Night. An open area with many stars to collect. Efficiency is key!",
+                gridSize: 8,
+                maxBlocks: 8,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'repeat', 'endRepeat'],
+                start: {x: 1, y: 1}, direction: 1,
+                goal: {x: 7, y: 7},
+                obstacles: [],
+                stars: [{x: 3, y: 1}, {x: 3, y: 3}, {x: 5, y: 3}, {x: 5, y: 5}, {x: 7, y: 5}]
+            },
+            {
+                introText: "The Gauntlet. Navigate tight turns with jumps. Low block limit!",
+                gridSize: 12,
+                maxBlocks: 6,
+                availableBlocks: ['turnLeft', 'turnRight', 'jump', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 0}, direction: 1,
+                goal: {x: 10, y: 10},
+                obstacles: [
+                    {x: 1, y: 0}, {x: 2, y: 1}, {x: 3, y: 2}, {x: 4, y: 3}, {x: 5, y: 4}, 
+                    {x: 6, y: 5}, {x: 7, y: 6}, {x: 8, y: 7}, {x: 9, y: 8}, {x: 10, y: 9}
+                ],
+                stars: [{x: 2, y: 2}, {x: 6, y: 6}]
+            },
+            {
+                introText: "Twin Paths. Symmetrical paths, but one is a trap! Observe and plan.",
+                gridSize: 12,
+                maxBlocks: 8,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'ifBlocked', 'endIf', 'jump', 'repeat', 'endRepeat'],
+                start: {x: 5, y: 11}, direction: 0,
+                goal: {x: 3, y: 0},
+                obstacles: [
+                    {x: 5, y: 8}, {x: 4, y: 9}, {x: 6, y: 9}, {x: 7, y: 4}
+                ],
+                stars: [{x: 3, y: 5}]
+            },
+            {
+                introText: "Teleportation Madness! Spatial reasoning is required to chain portals correctly.",
+                gridSize: 12,
+                maxBlocks: 6,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'whileClear', 'endWhile', 'jump', 'ifBlocked', 'endIf', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 11}, direction: 1,
+                goal: {x: 11, y: 0},
+                obstacles: [
+                    {x: 1, y: 11}, {x: 5, y: 11}, {x: 9, y: 11}
+                ],
+                portals: [
+                    {x: 0, y: 9, destX: 4, destY: 11},
+                    {x: 4, y: 9, destX: 8, destY: 11},
+                    {x: 8, y: 9, destX: 11, destY: 2}
+                ],
+                stars: [{x: 0, y: 9}, {x: 4, y: 9}, {x: 8, y: 9}]
+            },
+            {
+                introText: "The Great Wall. Patrol the perimeter and smash through the weak corner points!",
+                gridSize: 12,
+                maxBlocks: 8,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'smash', 'ifBlocked', 'endIf', 'repeat', 'endRepeat', 'whileClear', 'endWhile'],
+                start: {x: 0, y: 0}, direction: 1,
+                goal: {x: 1, y: 2},
+                obstacles: [],
+                breakables: [{x: 10, y: 0}, {x: 10, y: 10}, {x: 0, y: 10}, {x: 0, y: 2}],
+                stars: [{x: 10, y: 0}, {x: 10, y: 10}, {x: 0, y: 10}]
+            },
+            {
+                introText: "Conditional Chaos. Navigate the random-looking debris field.",
+                gridSize: 14,
+                maxBlocks: 12,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'ifBlocked', 'endIf', 'jump', 'whileClear', 'endWhile'],
+                start: {x: 0, y: 13}, direction: 1,
+                goal: {x: 13, y: 0},
+                obstacles: [
+                    {x:2,y:13},{x:3,y:12},{x:4,y:13},{x:5,y:11},
+                    {x:6,y:9},{x:7,y:10},{x:8,y:8},{x:9,y:7},
+                    {x:10,y:5},{x:11,y:6},{x:12,y:4},{x:13,y:3}
+                ]
+            },
+            {
+                introText: "The Grand Maze. The maze hides one perfect path — use portals, the right loops, and a conditional smash. Can you find the way?",
+                gridSize: 12,
+                maxBlocks: 12,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'ifBlocked', 'endIf', 'smash', 'whileClear', 'endWhile', 'jump', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 11}, direction: 1,
+                goal: {x: 11, y: 0},
+                obstacles: [
+                    // Full top border (clear at 11,0 = goal)
+                    {x:0,y:0},{x:1,y:0},{x:2,y:0},{x:3,y:0},{x:4,y:0},{x:5,y:0},{x:6,y:0},{x:7,y:0},{x:8,y:0},{x:9,y:0},{x:10,y:0},
+                    // Full left border (clear at 0,11 = start)
+                    {x:0,y:1},{x:0,y:2},{x:0,y:3},{x:0,y:4},{x:0,y:5},{x:0,y:6},{x:0,y:7},{x:0,y:8},{x:0,y:9},{x:0,y:10},
+                    // Dense horizontal divider at y=7 (player can't cut through)
+                    {x:1,y:7},{x:2,y:7},{x:3,y:7},{x:4,y:7},{x:5,y:7},{x:6,y:7},{x:7,y:7},{x:8,y:7},{x:9,y:7},{x:10,y:7},
+                    // Horizontal divider at y=4 (traps upper zone)
+                    {x:1,y:4},{x:2,y:4},{x:3,y:4},{x:4,y:4},{x:5,y:4},{x:6,y:4},{x:7,y:4},{x:8,y:4},{x:9,y:4},{x:10,y:4},
+                    // Vertical pillars creating dead-end corridors
+                    {x:4,y:5},{x:4,y:6},{x:4,y:8},{x:4,y:9},{x:4,y:10},
+                    {x:8,y:8},{x:8,y:9},{x:8,y:10},
+                    // Scattered wall texture
+                    {x:2,y:2},{x:3,y:2},{x:6,y:2},{x:7,y:2},
+                    {x:2,y:5},{x:3,y:5},{x:7,y:5},{x:8,y:5},{x:9,y:5},
+                    {x:6,y:9},{x:7,y:9},{x:5,y:10},{x:6,y:10},{x:7,y:10}
+                ],
+                breakables: [
+                    {x: 11, y: 5}
+                ],
+                portals: [
+                    {x: 7, y: 11, destX: 11, destY: 6}
+                ],
+                stars: [
+                    {x: 3, y: 11},
+                    {x: 6, y: 11},
+                    {x: 11, y: 3},
+                    {x: 11, y: 1}
+                ]
+            },
+            {
+                introText: "The Ultimate Architect. A massive challenge testing everything you've learned!",
+                gridSize: 15,
+                maxBlocks: 10,
+                availableBlocks: ['turnLeft', 'turnRight', 'moveForward', 'ifBlocked', 'endIf', 'smash', 'whileClear', 'endWhile', 'jump', 'repeat', 'endRepeat'],
+                start: {x: 0, y: 14}, direction: 1,
+                goal: {x: 4, y: 4},
+                obstacles: [
+                    {x: 0, y: 13}, {x: 1, y: 13}, {x: 2, y: 13}, {x: 3, y: 13}, {x: 4, y: 13}, {x: 5, y: 13}, {x: 6, y: 13}, {x: 7, y: 13}, {x: 8, y: 13}, {x: 9, y: 13}, {x: 10, y: 13}, {x: 11, y: 13}, {x: 12, y: 13}, {x: 13, y: 13}, {x: 14, y: 13},
+                    {x: 0, y: 9}, {x: 1, y: 9}, {x: 2, y: 9}, {x: 3, y: 9}, {x: 4, y: 9}, {x: 5, y: 9}, {x: 6, y: 9}, {x: 7, y: 9}, {x: 8, y: 9}, {x: 9, y: 9}, {x: 10, y: 9}, {x: 11, y: 9}, {x: 12, y: 9}, {x: 13, y: 9}, {x: 14, y: 9},
+                    {x: 0, y: 5}, {x: 1, y: 5}, {x: 2, y: 5}, {x: 3, y: 5}, {x: 4, y: 5}, {x: 5, y: 5}, {x: 6, y: 5}, {x: 7, y: 5}, {x: 8, y: 5}, {x: 9, y: 5}, {x: 10, y: 5}, {x: 11, y: 5}, {x: 12, y: 5}, {x: 13, y: 5}, {x: 14, y: 5}
+                ],
+                breakables: [{x: 12, y: 14}, {x: 8, y: 10}, {x: 4, y: 6}],
+                portals: [
+                    {x: 12, y: 12, destX: 0, destY: 10},
+                    {x: 8, y: 8, destX: 0, destY: 6}
+                ],
+                stars: [{x: 12, y: 12}, {x: 8, y: 8}]
             }
         ];
 
@@ -656,8 +819,13 @@
             
             let groupBeginner = document.createElement('optgroup');
             groupBeginner.label = "Beginner";
+            groupBeginner.style.color = 'black';
             let groupIntermediate = document.createElement('optgroup');
             groupIntermediate.label = "Intermediate";
+            groupIntermediate.style.color = 'black';
+            let groupHard = document.createElement('optgroup');
+            groupHard.label = "Hard";
+            groupHard.style.color = 'black';
             
             levels.forEach((l, i) => {
                 let opt = document.createElement('option');
@@ -666,12 +834,15 @@
                 opt.style.color = 'black';
                 if (i < 10) {
                     groupBeginner.appendChild(opt);
-                } else {
+                } else if (i < 20) {
                     groupIntermediate.appendChild(opt);
+                } else {
+                    groupHard.appendChild(opt);
                 }
             });
             selector.appendChild(groupBeginner);
             selector.appendChild(groupIntermediate);
+            selector.appendChild(groupHard);
         }
 
         function changeLevel(idx) {
@@ -1200,11 +1371,6 @@
                 }
             }
 
-            // Draw Stars
-            for (let s of activeStars) {
-                ctx.fillText('⭐', s.x * tileSize + tileSize/2, s.y * tileSize + tileSize/2);
-            }
-
             // Draw Obstacles
             ctx.fillStyle = '#475569';
             if (mapData.obstacles) {
@@ -1230,6 +1396,11 @@
                 ctx.moveTo((obs.x+1) * tileSize - 2, obs.y * tileSize + 2);
                 ctx.lineTo(obs.x * tileSize + 2, (obs.y+1) * tileSize - 2);
                 ctx.stroke();
+            }
+
+            // Draw Stars
+            for (let s of activeStars) {
+                ctx.fillText('⭐', s.x * tileSize + tileSize/2, s.y * tileSize + tileSize/2);
             }
 
             // Draw Robot
