@@ -263,6 +263,43 @@
         .status-overlay.success { color: #4ade80; }
         .status-overlay.error { color: #f87171; }
 
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                overflow: visible;
+            }
+            header {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+                padding: 1rem;
+            }
+            .layout-container {
+                flex-direction: column;
+                overflow: visible;
+                height: auto;
+            }
+            .editor-panel {
+                max-width: 100%;
+                flex: none;
+            }
+            .simulation-panel {
+                flex: none;
+                padding: 1rem;
+            }
+            .canvas-container {
+                width: 100%;
+                max-width: 500px;
+            }
+            canvas {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+            .blocks-palette {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
