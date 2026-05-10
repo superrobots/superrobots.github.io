@@ -6,6 +6,23 @@
     <title>Cyber Dungeon - Python Coding Game for Beginners</title>
     <meta name="description" content="Cyber Dungeon is an interactive coding game where players write real Python scripts to navigate mazes, defeat enemies, and learn algorithms. Perfect for STEM education.">
     <meta name="keywords" content="Python coding game, learn Python, text-based coding, algorithms, STEM education, kids programming, computer science, SuperRobots, FLL robotics">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Cyber Dungeon - Python Coding Game",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "WebBrowser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Write real Python scripts to navigate mazes, defeat enemies, and learn algorithms."
+    }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
@@ -453,6 +470,7 @@
     <!-- Game Map -->
     <div id="campaign-map">
         <h1 style="position: absolute; top: 20px; left: 40px; font-size:3rem; margin: 0; text-shadow: 0 0 20px rgba(0,0,0,0.8);">Game Map</h1>
+        <a href="index.html" style="position: absolute; top: 30px; right: 40px; background: rgba(239, 68, 68, 0.8); color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; font-size: 1.1rem; border: 1px solid #fca5a5; transition: background 0.2s; box-shadow: 0 4px 12px rgba(0,0,0,0.5); z-index: 102;" onmouseover="this.style.background='#ef4444'" onmouseout="this.style.background='rgba(239, 68, 68, 0.8)'">🏠 Exit to Home</a>
         <div id="map-nodes"></div>
         
         <div id="level-info-panel" style="display: none;">

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperRobots Tutorials & Articles</title>
+    <meta name="description" content="Read tutorials, articles, and guides about coding for kids, transitioning from block coding to Python, and FLL robotics.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://superrobots.org/tutorials.html">
+    <meta property="og:title" content="SuperRobots Tutorials & Articles">
+    <meta property="og:description" content="Read tutorials, articles, and guides about coding for kids, transitioning from block coding to Python, and FLL robotics.">
+    <meta property="og:image" content="https://superrobots.org/images/social-preview.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://superrobots.org/tutorials.html">
+    <meta property="twitter:title" content="SuperRobots Tutorials & Articles">
+    <meta property="twitter:description" content="Read tutorials, articles, and guides about coding for kids, transitioning from block coding to Python, and FLL robotics.">
+    <meta property="twitter:image" content="https://superrobots.org/images/social-preview.png">
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WNCD1PG37"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-5WNCD1PG37');
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
+
+        :root {
+            --bg-dark: #0f172a;
+            --bg-light: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        .logo-text {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        main {
+            flex: 1;
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0 0 1rem 0;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .article-date {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            color: var(--text-main);
+        }
+
+        .article-excerpt {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--accent-blue);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more:hover {
+            color: #7dd3fc;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+
+    <!-- Structured Data for Blog/Tutorials -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "SuperRobots Tutorials & Articles",
+      "description": "Educational articles, coding tutorials, and guides for aspiring young programmers.",
+      "url": "https://superrobots.org/tutorials.html",
+      "publisher": {
+        "@type": "Organization",
+        "name": "SuperRobots",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://superrobots.org/images/favicon.png"
+        }
+      }
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <h1 class="logo-text">SuperRobots</h1>
+        </a>
+        <div class="nav-links">
+            <a href="game.html" class="nav-link">🧩 Blocks Game</a>
+            <a href="dungeon.html" class="nav-link">⚔️ Cyber Dungeon</a>
+            <a href="team.html" class="nav-link">👥 Meet the Team</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <h2 class="page-title">Tutorials & Articles</h2>
+            <p class="page-subtitle">Learn about coding concepts, transition from blocks to Python, and explore the world of FLL robotics.</p>
+        </div>
+
+        <div class="articles-grid">
+            <!-- Sample Article Card -->
+            <a href="article-block-to-python.html" class="article-card">
+                <span class="article-date">May 10, 2026</span>
+                <h3 class="article-title">How Block Coding Prepares Kids for Python</h3>
+                <p class="article-excerpt">Discover how the logical foundations built by snapping blocks together perfectly translate into real-world text-based programming in Python.</p>
+                <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+
+            <!-- Sample Article Card -->
+            <a href="article-mastering-loops.html" class="article-card">
+                <span class="article-date">May 10, 2026</span>
+                <h3 class="article-title">Mastering Loops: The Key to Efficiency</h3>
+                <p class="article-excerpt">A deep dive into why loops are essential in programming. Learn how to identify repetitive tasks and automate them using while and for loops.</p>
+                <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+
+            <!-- Sample Article Card -->
+            <a href="article-fll-algorithms.html" class="article-card">
+                <span class="article-date">May 10, 2026</span>
+                <h3 class="article-title">Top 5 Algorithms Every FLL Team Should Know</h3>
+                <p class="article-excerpt">Improve your robot's reliability and precision on the FIRST LEGO League mat by understanding these five fundamental pathfinding and alignment algorithms.</p>
+                <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </a>
+        </div>
+    </main>
+</body>
+</html>

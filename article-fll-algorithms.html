@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 5 Algorithms Every FLL Team Should Know | SuperRobots</title>
+    <meta name="description" content="Improve your robot's reliability and precision on the FIRST LEGO League mat by understanding these five fundamental pathfinding and alignment algorithms.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://superrobots.org/article-fll-algorithms.html">
+    <meta property="og:title" content="Top 5 Algorithms Every FLL Team Should Know">
+    <meta property="og:description" content="Improve your robot's reliability and precision on the FIRST LEGO League mat by understanding these five fundamental pathfinding and alignment algorithms.">
+    <meta property="og:image" content="https://superrobots.org/images/seo/problem_solving.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://superrobots.org/article-fll-algorithms.html">
+    <meta property="twitter:title" content="Top 5 Algorithms Every FLL Team Should Know">
+    <meta property="twitter:description" content="Improve your robot's reliability and precision on the FIRST LEGO League mat by understanding these five fundamental pathfinding and alignment algorithms.">
+    <meta property="twitter:image" content="https://superrobots.org/images/seo/problem_solving.png">
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WNCD1PG37"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5WNCD1PG37');
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
+
+        :root {
+            --bg-dark: #0f172a;
+            --bg-light: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        .logo-text {
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+        }
+
+        main {
+            flex: 1;
+            padding: 4rem 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .back-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+        
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .article-header {
+            margin-bottom: 3rem;
+        }
+
+        .article-date {
+            color: var(--accent-purple);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .article-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 0 0 1.5rem 0;
+            line-height: 1.2;
+            color: #ffffff;
+        }
+
+        .article-hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .article-content {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #cbd5e1;
+        }
+
+        .article-content h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content strong {
+            color: #f8fafc;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: monospace;
+            border: 1px solid #334155;
+            color: #a78bfa;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        @media (max-width: 768px) {
+            .article-title {
+                font-size: 2.2rem;
+            }
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            main {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+
+    <!-- Structured Data for Article -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Top 5 Algorithms Every FLL Team Should Know",
+      "image": "https://superrobots.org/images/seo/problem_solving.png",
+      "datePublished": "2026-05-10T08:00:00+08:00",
+      "author": {
+        "@type": "Organization",
+        "name": "SuperRobots"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SuperRobots",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://superrobots.org/images/favicon.png"
+        }
+      },
+      "description": "Improve your robot's reliability and precision on the FIRST LEGO League mat by understanding these five fundamental pathfinding and alignment algorithms."
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <h1 class="logo-text">SuperRobots</h1>
+        </a>
+        <div class="nav-links">
+            <a href="tutorials.html" class="nav-link">📚 Tutorials</a>
+            <a href="game.html" class="nav-link">🧩 Blocks Game</a>
+            <a href="dungeon.html" class="nav-link">⚔️ Cyber Dungeon</a>
+        </div>
+    </header>
+
+    <main>
+        <a href="tutorials.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Tutorials
+        </a>
+
+        <article>
+            <header class="article-header">
+                <span class="article-date">May 10, 2026</span>
+                <h1 class="article-title">Top 5 Algorithms Every FLL Team Should Know</h1>
+            </header>
+
+            <img src="images/seo/problem_solving.png" alt="Iterative Debugging and Resilience" class="article-hero-image">
+
+            <div class="article-content">
+                <p>Competing in FIRST LEGO League (FLL) requires more than just building a sturdy robot. To score high points consistently, your robot needs to navigate the mat reliably every single time. "Dead reckoning" (just telling the motors to spin for 3 seconds) works in practice, but on tournament day, battery levels, dust, and slight alignment errors will throw your robot off course.</p>
+                
+                <p>To achieve perfect reliability, you need to use <strong>sensors</strong> and <strong>algorithms</strong>. Here are the top five programming algorithms every competitive FLL team should master.</p>
+
+                <h2>1. Proportional Line Follower</h2>
+                <p>The standard "zig-zag" line follower is slow and jerky. A proportional line follower calculates the <em>error</em> (how far the light sensor is from the edge of the line) and adjusts the steering <em>proportionally</em>. If the robot is far off the line, it turns sharply. If it's only slightly off, it turns smoothly.</p>
+                <p><strong>Why you need it:</strong> It allows your robot to travel across the mat at high speeds without losing the line, saving precious seconds.</p>
+
+                <h2>2. Gyro Straight (PID Control)</h2>
+                <p>When driving across the open mat, uneven weight distribution or slightly different motor frictions will cause your robot to curve. By using a Gyro sensor, you can write an algorithm that continuously checks the robot's angle. If the robot starts drifting to the left, the algorithm subtly increases power to the left motor to straighten it out.</p>
+                <p><strong>Why you need it:</strong> It guarantees pinpoint accuracy when driving long distances, ensuring you arrive at the mission model perfectly aligned.</p>
+
+                <h2>3. Square on Line (Alignment Algorithm)</h2>
+                <p>Instead of relying on the starting wall for alignment, use two color sensors to square up against any black line on the mat. The algorithm tells the robot to drive forward until Sensor A sees black, stop that motor, and wait for Sensor B to see black. Once both see black, the robot is perfectly perpendicular to the line.</p>
+                <p><strong>Why you need it:</strong> It resets your robot's orientation mid-run, canceling out any accumulated errors from previous movements.</p>
+
+                <h2>4. Move Until Color/Distance</h2>
+                <p>Never use time or wheel rotations to stop if there is a physical landmark you can use. Write an algorithm that says "Move forward UNTIL the ultrasonic sensor reads 5cm" or "Move forward UNTIL the color sensor sees red."</p>
+                <p><strong>Why you need it:</strong> It makes your missions immune to wheel slippage. If the wheels spin on a dusty spot, the robot will just keep driving until it actually reaches the target.</p>
+
+                <h2>5. Stall Detection</h2>
+                <p>Sometimes your robot gets stuck on a LEGO piece or a mission model doesn't release properly. If you use standard "move for rotations" blocks, the robot will sit there spinning its wheels until the 2.5 minutes run out. A stall detection algorithm monitors the motor's encoder. If power is being applied but the encoder isn't changing (the wheel isn't turning), the algorithm safely aborts the current mission and moves to the next one.</p>
+                <p><strong>Why you need it:</strong> It prevents a single snag from ruining your entire match, allowing you to salvage points from remaining missions.</p>
+
+                <h2>Learn the Logic First</h2>
+                <p>These algorithms require a solid understanding of loops, variables, and conditional logic. Before implementing them on your Spike Prime or EV3, we highly recommend practicing these core concepts in our <strong>SuperRobots Games</strong> to build your team's computational thinking skills!</p>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
