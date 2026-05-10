@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Dungeon - Python Coding Game for Beginners</title>
+    <meta name="description" content="Cyber Dungeon is an interactive coding game where players write real Python scripts to navigate mazes, defeat enemies, and learn algorithms. Perfect for STEM education.">
+    <meta name="keywords" content="Python coding game, learn Python, text-based coding, algorithms, STEM education, kids programming, computer science, SuperRobots, FLL robotics">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #111827 0%, #030712 100%);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        header {
+            background: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #ef4444, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-link {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+            margin-right: 15px;
+        }
+
+        .back-link:hover {
+            color: #f8fafc;
+        }
+
+        .layout-container {
+            display: flex;
+            flex: 1 0 auto;
+            min-height: calc(100vh - 80px);
+            overflow: hidden;
+            padding: 1rem;
+            gap: 1rem;
+        }
+
+        .editor-panel {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            max-width: 500px;
+        }
+
+        .editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        #editor {
+            flex: 1;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .controls {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .run-btn {
+            flex: 1;
+            background: linear-gradient(90deg, #16a34a, #22c55e);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        .simulation-panel {
+            flex: 2;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .canvas-container {
+            background: #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 4px solid #334155;
+            position: relative;
+        }
+
+        canvas {
+            display: block;
+        }
+
+        /* Game Map Overlay */
+        #campaign-map {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.9)), url('assets/cyber_map_bg.png') center/cover;
+            z-index: 100;
+            display: block;
+        }
+
+        #map-nodes {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        .map-node {
+            position: absolute;
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 3px solid #4b5563;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            backdrop-filter: blur(4px);
+            transform: translate(-50%, -50%);
+        }
+
+        .map-node:hover {
+            transform: translate(-50%, -50%) scale(1.2);
+            z-index: 10;
+        }
+
+        .map-node.unlocked {
+            background: rgba(37, 99, 235, 0.8);
+            border-color: #60a5fa;
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.8);
+        }
+
+        .map-node.completed {
+            background: rgba(22, 163, 74, 0.8);
+            border-color: #4ade80;
+            box-shadow: 0 0 15px rgba(22, 163, 74, 0.5);
+        }
+
+        #level-info-panel {
+            position: absolute;
+            right: 40px; top: 50%; transform: translateY(-50%);
+            width: 350px;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            color: #f8fafc;
+            z-index: 101;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        #info-icon { font-size: 4rem; text-align: center; margin-bottom: -10px; }
+        #info-title { margin: 0; font-size: 1.5rem; color: #38bdf8; text-align: center;}
+        #info-text { font-size: 1rem; line-height: 1.5; color: #cbd5e1; text-align: center; margin: 0;}
+        #info-play-btn {
+            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            color: white; border: none; padding: 1rem; border-radius: 8px;
+            font-weight: bold; font-size: 1.1rem; cursor: pointer; text-transform: uppercase;
+            margin-top: 1rem; transition: filter 0.2s;
+        }
+        #info-play-btn:hover { filter: brightness(1.2); }
+        #info-play-btn:disabled { background: #475569; cursor: not-allowed; color: #94a3b8; filter: none; }
+
+        /* Health HUD */
+        #health-hud {
+            position: absolute;
+            top: 10px; left: 10px;
+            display: flex;
+            gap: 10px;
+            flex-direction: column;
+        }
+
+        .health-bar-container {
+            background: rgba(0,0,0,0.5);
+            padding: 5px;
+            border-radius: 4px;
+            color: white;
+            font-size: 12px;
+            width: 150px;
+        }
+
+        .health-bar-bg {
+            height: 10px;
+            background: #475569;
+            border-radius: 5px;
+            margin-top: 4px;
+            overflow: hidden;
+        }
+
+        .health-bar-fill {
+            height: 100%;
+            background: #ef4444;
+            width: 100%;
+            transition: width 0.3s;
+        }
+
+        .health-bar-fill.hero-hp { background: #22c55e; }
+
+        /* Top Status Bar */
+        #top-status-bar {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(15, 23, 42, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            box-sizing: border-box;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+        .hero-status {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        .hero-avatar {
+            font-size: 3rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(37, 99, 235, 0.2));
+            border: 2px solid #38bdf8;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+        }
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .stat-row {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .stat-label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; width: 35px;}
+        .equipment-slots {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 5px;
+        }
+        .eq-slot {
+            width: 35px; height: 35px;
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed rgba(255,255,255,0.2);
+            border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.2s;
+            cursor: help;
+        }
+        .eq-slot:hover { background: rgba(255,255,255,0.1); }
+        .enemy-roster {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 350px;
+            justify-content: flex-end;
+        }
+        .enemy-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid #ef4444;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+        .enemy-hp-bar {
+            width: 100%; height: 4px; background: #475569; margin-top: 4px; border-radius: 2px; overflow: hidden;
+        }
+        .enemy-hp-fill { height: 100%; background: #ef4444; transition: width 0.3s; }
+
+        /* Loading Overlay */
+        #loading-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.9);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #38bdf8;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .spinner {
+            border: 8px solid rgba(255,255,255,0.1);
+            border-top: 8px solid #38bdf8;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Tips Panel */
+        #tips-panel {
+            display: none;
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #fcd34d;
+            margin-bottom: 1rem;
+        }
+        #tips-panel ul { margin: 0; padding-left: 20px; }
+
+        /* SEO Footer Section */
+        .seo-footer {
+            background: rgba(17, 24, 39, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+        
+        .seo-footer h2 {
+            font-size: 2rem;
+            color: #ef4444;
+            margin-top: 0;
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .seo-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .seo-footer-block h3 {
+            color: #f8fafc;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .seo-image {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .seo-footer-block p {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-overlay">
+        <div class="spinner"></div>
+        <div>Loading Python Engine...</div>
+    </div>
+    <header>
+        <h1>Cyber Dungeon</h1>
+        <div>
+            <button onclick="showCampaignMap()" style="background:#2563eb; color:white; border:none; padding:8px 16px; border-radius:4px; font-weight:bold; cursor:pointer; margin-right: 15px;">🗺️ Game Map</button>
+            <a href="index.html" class="back-link">🏠 Home</a>
+        </div>
+    </header>
+
+    <div class="layout-container">
+        <!-- Text Editor -->
+        <div class="editor-panel">
+            <div class="editor-header">
+                <h2 id="level-title" style="margin:0;">Level 1</h2>
+                <button onclick="toggleTips()" style="background:#f59e0b; color:black; border:none; padding:4px 8px; border-radius:4px; font-weight:bold; cursor:pointer;">💡 Tips</button>
+            </div>
+            <div id="level-intro-text" style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid #ef4444; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.9rem; color: #fca5a5; margin-bottom: 1rem;">
+                Intro text
+            </div>
+            <div id="tips-panel">
+                <ul id="tips-list"></ul>
+            </div>
+            <div id="editor"></div>
+            <div class="controls">
+                <button class="run-btn" id="runBtn" onclick="executePlayerCode()">▶ Run Code</button>
+            </div>
+        </div>
+
+        <!-- Simulation -->
+        <div class="simulation-panel">
+            <div id="top-status-bar">
+                <!-- populated by JS -->
+            </div>
+            <div class="canvas-container" id="canvas-wrapper" style="margin-top: 1rem; border-radius: 8px;">
+                <canvas id="simCanvas" width="600" height="600"></canvas>
+                <div id="health-hud" style="display: none;"></div>
+                <div id="status" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); background:rgba(0,0,0,0.8); padding:20px; border-radius:10px; display:none; font-size:24px; font-weight:bold; text-align:center;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Map -->
+    <div id="campaign-map">
+        <h1 style="position: absolute; top: 20px; left: 40px; font-size:3rem; margin: 0; text-shadow: 0 0 20px rgba(0,0,0,0.8);">Game Map</h1>
+        <div id="map-nodes"></div>
+        
+        <div id="level-info-panel" style="display: none;">
+            <div id="info-icon"></div>
+            <h2 id="info-title"></h2>
+            <p id="info-text"></p>
+            <button id="info-play-btn"></button>
+        </div>
+    </div>
+
+    <!-- Educational SEO Footer -->
+    <footer class="seo-footer">
+        <h2>Learn Real Python Coding</h2>
+        <div class="seo-footer-grid">
+            <div class="seo-footer-block">
+                <img src="images/seo/cyber_dungeon.png" alt="Text-Based Programming" class="seo-image">
+                <h3>Text-Based Programming</h3>
+                <p>Cyber Dungeon bridges the gap between visual blocks and real-world software engineering. By writing authentic Python syntax, players learn about function calls, parameters, variable states, and syntax rules in an engaging environment.</p>
+            </div>
+            <div class="seo-footer-block">
+                <img src="images/seo/block_logic.png" alt="Algorithmic Problem Solving" class="seo-image">
+                <h3>Algorithmic Problem Solving</h3>
+                <p>Each level is an algorithmic challenge. Players must use `while` loops, conditional `if` statements, and coordinate tracking to build robust scripts that can navigate the dungeon, avoid traps, and defeat enemies systematically. This develops critical analytical skills.</p>
+            </div>
+            <div class="seo-footer-block">
+                <img src="images/seo/ai_robotics.png" alt="AI and Automation Fundamentals" class="seo-image">
+                <h3>AI & Automation Fundamentals</h3>
+                <p>By automating the Super Robot's behavior, learners grasp the fundamental concepts of Artificial Intelligence. Writing scripts to hunt down the nearest enemy or pathfind through complex grids introduces players to the very building blocks used by AI and robotics engineers today.</p>
+            </div>
+            <div class="seo-footer-block">
+                <img src="images/seo/problem_solving.png" alt="Code Optimization and Debugging" class="seo-image">
+                <h3>Code Optimization & Debugging</h3>
+                <p>Writing code is only the first step. When scripts fail against complex mazes or tough enemies, players must meticulously trace their execution and identify logic errors. This iterative process of debugging and optimizing code teaches real-world software engineering practices and builds intellectual resilience.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <script src="levels.js"></script>
+    <script src="engine.js"></script>
+    <script>
+        const editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.session.setMode("ace/mode/python");
+        editor.setOptions({ fontSize: "14px", showPrintMargin: false });
+
+        const canvas = document.getElementById('simCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let pyodideReady = false;
+        let pyodideInstance = null;
+        
+        async function initPyodide() {
+            try {
+                pyodideInstance = await loadPyodide();
+                pyodideReady = true;
+                document.getElementById('loading-overlay').style.display = 'none';
+                showCampaignMap();
+            } catch (err) {
+                console.error("Pyodide failed to load", err);
+                document.getElementById('loading-overlay').innerHTML = "Failed to load Python Engine. Please refresh.";
+            }
+        }
+
+        let currentLevelIndex = 0;
+        let gameEngine = null;
+        let tileSize = 0;
+        
+        // Progress tracking
+        let savedLevels = localStorage.getItem('cyberDungeonCompletedLevels');
+        let completedLevels = new Set(savedLevels ? JSON.parse(savedLevels) : []);
+        
+        // Developer unlock for all levels
+        [0, 1, 2, 3, 4, 5, 6, 7, 8].forEach(level => completedLevels.add(level));
+
+        function saveProgress() {
+            localStorage.setItem('cyberDungeonCompletedLevels', JSON.stringify(Array.from(completedLevels)));
+        }
+
+        function showCampaignMap() {
+            const mapDiv = document.getElementById('campaign-map');
+            const nodesContainer = document.getElementById('map-nodes');
+            const infoPanel = document.getElementById('level-info-panel');
+            
+            nodesContainer.innerHTML = '';
+            infoPanel.style.display = 'none'; // Hide initially
+            
+            const positions = [
+                { top: '80%', left: '15%' }, // 1
+                { top: '65%', left: '25%' }, // 2
+                { top: '55%', left: '40%' }, // 3
+                { top: '65%', left: '55%' }, // 4
+                { top: '80%', left: '65%' }, // 5
+                { top: '70%', left: '80%' }, // 6
+                { top: '50%', left: '75%' }, // 7
+                { top: '35%', left: '60%' }, // 8
+                { top: '20%', left: '45%' }, // 9
+                { top: '15%', left: '25%' }  // 10
+            ];
+            
+            DungeonLevels.forEach((level, index) => {
+                const node = document.createElement('div');
+                node.className = 'map-node';
+                node.innerText = level.icon;
+                
+                if (positions[index]) {
+                    node.style.top = positions[index].top;
+                    node.style.left = positions[index].left;
+                }
+                
+                let isUnlocked = index === 0 || completedLevels.has(index - 1);
+                
+                if (completedLevels.has(index)) {
+                    node.classList.add('completed');
+                } else if (isUnlocked) {
+                    node.classList.add('unlocked');
+                } else {
+                    node.innerText = '🔒';
+                }
+                
+                node.onmouseenter = () => {
+                    infoPanel.style.display = 'flex';
+                    document.getElementById('info-icon').innerText = isUnlocked ? level.icon : '🔒';
+                    document.getElementById('info-title').innerText = isUnlocked ? level.title : 'Locked Level';
+                    document.getElementById('info-text').innerText = isUnlocked ? level.introText : 'Complete the previous level to unlock.';
+                    
+                    const btn = document.getElementById('info-play-btn');
+                    if (isUnlocked) {
+                        btn.disabled = false;
+                        btn.innerText = '▶ Play Level';
+                        btn.onclick = () => {
+                            loadLevel(index);
+                            mapDiv.style.display = 'none';
+                        };
+                    } else {
+                        btn.disabled = true;
+                        btn.innerText = 'Locked';
+                        btn.onclick = null;
+                    }
+                };
+                
+                nodesContainer.appendChild(node);
+            });
+            
+            mapDiv.style.display = 'block';
+        }
+
+        function toggleTips() {
+            const panel = document.getElementById('tips-panel');
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function loadLevel(index) {
+            currentLevelIndex = index;
+            const levelData = DungeonLevels[index];
+            
+            document.getElementById('level-title').innerText = levelData.title;
+            document.getElementById('level-intro-text').innerText = levelData.introText;
+            
+            const tipsList = document.getElementById('tips-list');
+            tipsList.innerHTML = '';
+            if (levelData.tips) {
+                levelData.tips.forEach(tip => {
+                    let li = document.createElement('li');
+                    li.innerHTML = tip; // Allowing inline HTML/markdown if we used it, but standard text works
+                    tipsList.appendChild(li);
+                });
+            }
+            document.getElementById('tips-panel').style.display = 'none';
+            
+            editor.setValue(levelData.defaultCode, 1);
+            
+            resetGame();
+        }
+
+        function resetGame() {
+            document.getElementById('status').style.display = 'none';
+            document.getElementById('runBtn').disabled = false;
+            
+            const levelData = JSON.parse(JSON.stringify(DungeonLevels[currentLevelIndex]));
+            
+            tileSize = canvas.width / levelData.gridSize;
+            
+            gameEngine = new GameEngine(levelData);
+            
+            updateHUD();
+            drawFrame();
+        }
+
+        function updateHUD() {
+            const statusBar = document.getElementById('top-status-bar');
+            if (!gameEngine) return;
+            
+            const hero = gameEngine.hero;
+            const heroHpPercent = Math.max(0, (hero.hp / hero.maxHp) * 100);
+            
+            let enemiesHtml = '';
+            gameEngine.enemies.forEach(enemy => {
+                if (!enemy.isAlive) return;
+                const hpPercent = Math.max(0, (enemy.hp / enemy.maxHp) * 100);
+                let icon = '👾';
+                if (enemy.type === 'BossBot') icon = '👹';
+                if (enemy.type === 'Virus') icon = '🦠';
+                if (enemy.type === 'RogueBot') icon = '🤖';
+                
+                if (enemy.type === 'BossBot') {
+                    enemiesHtml += `
+                        <div class="enemy-icon" style="border-color: #8b5cf6; background: rgba(139, 92, 246, 0.1); padding: 5px 15px;" title="${enemy.type} (HP: ${enemy.hp}/${enemy.maxHp} | DMG: ${enemy.damage})">
+                            <div style="display:flex; align-items:center; gap:8px;">
+                                <span>${icon}</span>
+                                <span style="font-size:0.75rem; font-weight:bold; color:#f8fafc; text-align:left;">
+                                    BOSS<br>
+                                    <span style="color:#ef4444">HP:${enemy.hp} DMG:${enemy.damage}</span>
+                                </span>
+                            </div>
+                            <div class="enemy-hp-bar">
+                                <div class="enemy-hp-fill" style="width: ${hpPercent}%"></div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    enemiesHtml += `
+                        <div class="enemy-icon" title="${enemy.type} (HP: ${enemy.hp}/${enemy.maxHp} | DMG: ${enemy.damage})">
+                            ${icon}
+                            <div class="enemy-hp-bar">
+                                <div class="enemy-hp-fill" style="width: ${hpPercent}%"></div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            statusBar.innerHTML = `
+                <div class="hero-status">
+                    <div class="hero-avatar" title="Super Robot">🤖</div>
+                    <div class="hero-stats">
+                        <div style="font-weight: 800; font-size: 1.2rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px;">Super Robot</div>
+                        <div class="stat-row">
+                            <span class="stat-label">HP</span>
+                            <div style="width: 150px; background: #475569; height: 10px; border-radius: 5px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);">
+                                <div style="width: ${heroHpPercent}%; background: linear-gradient(90deg, #16a34a, #22c55e); height: 100%; transition: width 0.3s;"></div>
+                            </div>
+                            <span style="font-size: 0.9rem; font-weight: bold;">${hero.hp}/${hero.maxHp}</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">DMG</span> <span style="color: #fbbf24; font-weight: bold;">${hero.damage}</span>
+                        </div>
+                        <div class="equipment-slots">
+                            <div class="eq-slot" title="Weapon: Laser Sword (5 DMG)">🗡️</div>
+                            <div class="eq-slot" title="Armor: Titanium Plating">🛡️</div>
+                            <div class="eq-slot" title="Module: Logic Processor">⚙️</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="enemy-roster">
+                    <div style="width: 100%; text-align: right; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">Active Threats</div>
+                    ${enemiesHtml || '<span style="color: #4ade80; font-weight: bold; font-size: 1.1rem; padding: 10px;">Sector Clear! 🏁</span>'}
+                </div>
+            `;
+        }
+
+        function drawFrame() {
+            if (!gameEngine) return;
+            
+            // Background
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Grid
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= gameEngine.gridSize; i++) {
+                ctx.beginPath();
+                ctx.moveTo(i * tileSize, 0);
+                ctx.lineTo(i * tileSize, canvas.height);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, i * tileSize);
+                ctx.lineTo(canvas.width, i * tileSize);
+                ctx.stroke();
+            }
+            
+            // Obstacles
+            ctx.fillStyle = '#334155';
+            gameEngine.obstacles.forEach(obs => {
+                ctx.fillRect(obs.x * tileSize + 2, obs.y * tileSize + 2, tileSize - 4, tileSize - 4);
+            });
+            
+            // Goal
+            const goal = gameEngine.level.goal;
+            if (goal) {
+                ctx.fillStyle = '#16a34a';
+                ctx.globalAlpha = 0.5;
+                ctx.fillRect(goal.x * tileSize + 5, goal.y * tileSize + 5, tileSize - 10, tileSize - 10);
+                ctx.globalAlpha = 1.0;
+                ctx.font = `${tileSize * 0.5}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('🏁', goal.x * tileSize + tileSize/2, goal.y * tileSize + tileSize/2);
+            }
+            
+            // Entities
+            gameEngine.getEntities().forEach(entity => {
+                ctx.save();
+                ctx.translate(entity.x * tileSize + tileSize/2, entity.y * tileSize + tileSize/2);
+                
+                if (entity.id === 'super_robot') {
+                    ctx.rotate(entity.dir * Math.PI / 2);
+                    ctx.fillStyle = '#38bdf8'; // Blue robot
+                    ctx.beginPath();
+                    ctx.roundRect(-tileSize/3, -tileSize/3, tileSize/1.5, tileSize/1.5, 8);
+                    ctx.fill();
+                    // Eye
+                    ctx.fillStyle = '#fff';
+                    ctx.beginPath();
+                    ctx.arc(0, -tileSize/4, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.fillStyle = '#0ea5e9';
+                    ctx.beginPath();
+                    ctx.arc(0, -tileSize/4, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    if (entity.type === 'BossBot') {
+                        ctx.fillStyle = '#8b5cf6'; // Dark purple for Boss
+                        ctx.beginPath();
+                        ctx.roundRect(-tileSize/2.5, -tileSize/2.5, tileSize/1.25, tileSize/1.25, 8);
+                        ctx.fill();
+                        ctx.fillStyle = '#fff';
+                        ctx.font = `${tileSize * 0.5}px Arial`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'middle';
+                        ctx.fillText('👹', 0, 0);
+                    } else {
+                        // Enemy (Red box with face)
+                        ctx.fillStyle = entity.type === 'Virus' ? '#9333ea' : '#ef4444'; 
+                        ctx.beginPath();
+                        ctx.roundRect(-tileSize/3, -tileSize/3, tileSize/1.5, tileSize/1.5, 4);
+                        ctx.fill();
+                        ctx.fillStyle = '#fff';
+                        ctx.fillRect(-8, -10, 5, 5);
+                        ctx.fillRect(3, -10, 5, 5);
+                    }
+                }
+                
+                ctx.restore();
+            });
+        }
+
+        async function executePlayerCode() {
+            if (!pyodideReady) return;
+            const userCode = editor.getValue();
+            document.getElementById('runBtn').disabled = true;
+            resetGame(); // reset state before running
+            
+            // Create a safe environment exposing only hero API
+            const checkEnd = () => { if (gameEngine.isGameOver) throw new Error("GAME_OVER"); };
+
+            let heroAPI = {
+                moveRight: () => { gameEngine.moveRight(); checkEnd(); },
+                moveLeft: () => { gameEngine.moveLeft(); checkEnd(); },
+                moveUp: () => { gameEngine.moveUp(); checkEnd(); },
+                moveDown: () => { gameEngine.moveDown(); checkEnd(); },
+                attack: (enemy) => { gameEngine.attack(enemy); checkEnd(); },
+                findNearestEnemy: () => gameEngine.findNearestEnemy(),
+                distanceTo: (enemy) => {
+                    if (!enemy) return Infinity;
+                    let target = gameEngine.getEntities().find(e => e.id === enemy.id);
+                    if (!target) return Infinity;
+                    return gameEngine.distance(gameEngine.hero, target);
+                },
+                x: gameEngine.hero.x,
+                y: gameEngine.hero.y
+            };
+
+            // Inject the heroAPI into Python's global namespace
+            pyodideInstance.globals.set("super_robot", heroAPI);
+            
+            // We use Pyodide's setInterruptBuffer for loop protection if we configure it,
+            // but for simplicity, we can inject a simple step counter into the Python code.
+            // Alternatively, a cleaner way to avoid Pyodide freezing is to inject a timeout check
+            // or just rely on Pyodide executing fast enough up to action limit. Since gameEngine throws
+            // at maxActions, if Python triggers actions it will stop. But if it's `while True: pass`, it freezes.
+            let safeCode = `
+import time
+start_time = time.time()
+def _check_timeout():
+    if time.time() - start_time > 2:
+        raise Exception("Execution timeout (infinite loop?)")
+`;
+            
+            // Basic regex to inject _check_timeout() into while loops
+            let modifiedCode = userCode.replace(/while (.+):/g, "while $1:\n    _check_timeout()");
+
+            try {
+                pyodideInstance.runPython(safeCode + modifiedCode);
+            } catch (e) {
+                if (e.message && e.message.includes("GAME_OVER")) {
+                    // The game ended gracefully during a loop. Proceed to playback.
+                } else {
+                    console.error(e);
+                    showStatus("Code Error: " + e.message.split('\n').pop(), "error");
+                    document.getElementById('runBtn').disabled = false;
+                    return;
+                }
+            }
+            
+            // Now play back the action queue
+            await playbackActions();
+        }
+
+        async function playbackActions() {
+            const queue = gameEngine.actionQueue;
+            const statusEl = document.getElementById('status');
+            
+            // To playback, we need a clone of the initial state of entities, or we can just 
+            // reset their positions to start and then replay.
+            // Actually, we can just reset them:
+            const levelData = DungeonLevels[currentLevelIndex];
+            gameEngine.hero.x = levelData.start.x;
+            gameEngine.hero.y = levelData.start.y;
+            gameEngine.hero.hp = gameEngine.hero.maxHp;
+            gameEngine.hero.dir = levelData.direction;
+            gameEngine.hero.isAlive = true;
+            
+            gameEngine.enemies = levelData.enemies.map(e => new Entity(e.id, e.x, e.y, e.hp, e.maxHp, e.damage, e.type));
+            
+            for (let i = 0; i < queue.length; i++) {
+                const action = queue[i];
+                
+                if (action.type === 'move') {
+                    let entity = gameEngine.getEntities().find(e => e.id === action.entity);
+                    if (entity) {
+                        entity.x = action.x;
+                        entity.y = action.y;
+                        if (action.dir !== undefined) entity.dir = action.dir;
+                    }
+                } else if (action.type === 'attack') {
+                    let target = gameEngine.getEntities().find(e => e.id === action.target);
+                    if (target) {
+                        target.hp = action.targetHp;
+                        if (target.hp <= 0) target.isAlive = false;
+                    }
+                } else if (action.type === 'death') {
+                    let entity = gameEngine.getEntities().find(e => e.id === action.entity);
+                    if (entity) entity.isAlive = false;
+                }
+                
+                updateHUD();
+                drawFrame();
+                
+                // Highlight attacking
+                if (action.type === 'attack') {
+                    let source = gameEngine.getEntities().find(e => e.id === action.entity);
+                    let target = gameEngine.getEntities().find(e => e.id === action.target);
+                    if (source && target) {
+                        ctx.save();
+                        if (source.id === 'super_robot') {
+                            ctx.strokeStyle = '#38bdf8';
+                            ctx.shadowColor = '#38bdf8';
+                        } else {
+                            ctx.strokeStyle = '#ef4444';
+                            ctx.shadowColor = '#ef4444';
+                        }
+                        ctx.shadowBlur = 15;
+                        ctx.lineWidth = 4;
+                        ctx.beginPath();
+                        ctx.moveTo(source.x * tileSize + tileSize/2, source.y * tileSize + tileSize/2);
+                        ctx.lineTo(target.x * tileSize + tileSize/2, target.y * tileSize + tileSize/2);
+                        ctx.stroke();
+                        ctx.restore();
+                    }
+                }
+                
+                await new Promise(r => setTimeout(r, 400));
+            }
+            
+            updateHUD();
+            drawFrame();
+            
+            if (gameEngine.isVictory) {
+                showStatus("Level Cleared!", "success");
+                completedLevels.add(currentLevelIndex);
+                saveProgress();
+                setTimeout(() => showCampaignMap(), 2000);
+            } else if (gameEngine.isGameOver) {
+                showStatus("Defeat! Try again.", "error");
+            } else {
+                showStatus("Goal not reached.", "error");
+            }
+            document.getElementById('runBtn').disabled = false;
+        }
+
+        function showStatus(msg, type) {
+            const el = document.getElementById('status');
+            el.innerText = msg;
+            el.style.color = type === 'success' ? '#4ade80' : '#ef4444';
+            el.style.display = 'block';
+        }
+
+        // Init
+        initPyodide();
+        
+    </script>
+</body>
+</html>
