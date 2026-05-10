@@ -526,8 +526,8 @@
         let savedLevels = localStorage.getItem('cyberDungeonCompletedLevels');
         let completedLevels = new Set(savedLevels ? JSON.parse(savedLevels) : []);
         
-        // Developer unlock for all levels
-        [0, 1, 2, 3, 4, 5, 6, 7, 8].forEach(level => completedLevels.add(level));
+        // Developer unlock for all levels removed for sequential gameplay
+
 
         function saveProgress() {
             localStorage.setItem('cyberDungeonCompletedLevels', JSON.stringify(Array.from(completedLevels)));
