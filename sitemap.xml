@@ -41,6 +41,21 @@
         <priority>0.6</priority>
     </url>
     <url>
+        <loc>https://superrobots.org/article-understanding-variables.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://superrobots.org/article-debugging-like-a-pro.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://superrobots.org/article-intro-to-conditionals.html</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://superrobots.org/team.html</loc>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
