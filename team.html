@@ -33,275 +33,228 @@
 
         gtag('config', 'G-5WNCD1PG37');
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f8fb;
-            margin: 0;
-            padding: 0;
-            color: #222;
+        :root {
+            --bg-dark: #0f172a;
+            --bg-light: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-purple: #818cf8;
+            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
+            margin: 0; padding: 0;
+            color: var(--text-main);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .bg-orb { position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.3; z-index: 0; pointer-events: none; }
+        .orb-1 { top: -120px; left: -120px; width: 450px; height: 450px; background: var(--accent-blue); }
+        .orb-2 { bottom: -160px; right: -80px; width: 500px; height: 500px; background: var(--accent-purple); }
 
         header {
-            background: #263159;
-            color: #fff;
-            padding: 2rem 0;
-            text-align: center;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(14px);
+            padding: 1.2rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky; top: 0; z-index: 100;
+        }
+        header h1 {
+            margin: 0; font-family: 'Outfit', sans-serif; font-size: 1.8rem; font-weight: 900;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+        .nav-link {
+            color: var(--text-muted); text-decoration: none; font-weight: 600;
+            transition: color 0.3s;
+        }
+        .nav-link:hover { color: var(--text-main); }
+
+        .tab-nav {
+            display: flex; gap: 0.5rem; width: 100%; max-width: 900px;
+            margin: 0 auto; list-style: none; padding: 0.5rem; justify-content: center;
+        }
+        .tab-nav li { text-align: center; }
+        .tab-link {
+            display: inline-block; padding: 0.7rem 1.4rem;
+            color: var(--text-muted); background: transparent;
+            border: 1px solid transparent; border-radius: 30px;
+            font-weight: 600; font-size: 0.95rem; text-decoration: none;
+            transition: all 0.3s ease; font-family: 'Inter', sans-serif;
+        }
+        .tab-link.active {
+            background: var(--glass-bg); color: var(--text-main);
+            border-color: var(--glass-border);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.1);
+        }
+        .tab-link:not(.active):hover {
+            color: var(--text-main); background: rgba(255,255,255,0.05);
         }
 
         main {
-            max-width: 800px;
-            margin: 2rem auto;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(38, 49, 89, 0.08);
-            padding: 2rem;
+            max-width: 900px; margin: 2rem auto; padding: 0 2rem;
+            position: relative; z-index: 10;
         }
-
-        h1 {
+        section h2 {
+            font-family: 'Outfit', sans-serif; font-size: 2rem; font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             margin-top: 0;
-            font-size: 2.5rem;
+        }
+        section h3 {
+            font-family: 'Outfit', sans-serif; color: var(--accent-blue);
+            font-size: 1.3rem; margin-top: 2rem;
+        }
+        section h4 { color: var(--text-muted); font-size: 1rem; margin-top: 1.5rem; }
+        section p { color: #cbd5e1; line-height: 1.7; }
+        section ul { color: #cbd5e1; line-height: 1.8; }
+        section a { color: var(--accent-blue); transition: color 0.2s; }
+        section a:hover { color: var(--accent-purple); }
+
+        .glass-card {
+            background: var(--glass-bg); backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+            padding: 2rem; margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        .season-card { position: relative; overflow: hidden; }
+        .season-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple));
+            border-radius: 4px;
+        }
+        .season-card { padding-left: 2.5rem; }
+
+        /* Slideshow */
+        .slideshow-container {
+            max-width: 700px; margin: 1rem auto; border-radius: 16px;
+            overflow: hidden; position: relative;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4); background: #111827;
+            border: 1px solid var(--glass-border);
+        }
+        .slideshow-container img { width: 100%; aspect-ratio: 4/3; object-fit: contain; }
+        .slide-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.8); color: #fff; border: 1px solid var(--glass-border);
+            border-radius: 50%; width: 44px; height: 44px; cursor: pointer;
+            font-size: 1.3rem; z-index: 2; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px);
+        }
+        .slide-btn:hover { background: rgba(56, 189, 248, 0.3); border-color: var(--accent-blue); }
+        .slide-btn.prev { left: 12px; }
+        .slide-btn.next { right: 12px; }
+        .slide-counter {
+            position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.6); padding: 5px 14px; border-radius: 14px;
+            color: var(--text-muted); font-size: 0.85rem; backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .team-section {
-            margin-top: 2rem;
+        /* Video */
+        .video-section video {
+            max-width: 600px; display: block; margin: 0 auto 1.5rem auto;
+            border-radius: 16px; background: #000;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
         }
 
-        .team-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            list-style: none;
-            padding: 0;
-        }
-
-        .team-member {
-            background: #e6eaf3;
-            border-radius: 6px;
-            padding: 1rem;
-            flex: 1 1 180px;
-            min-width: 150px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        /* Awards */
+        .award-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: linear-gradient(135deg, rgba(56,189,248,0.15), rgba(129,140,248,0.15));
+            border: 1px solid rgba(56,189,248,0.3); border-radius: 12px;
+            padding: 0.6rem 1.2rem; margin: 0.3rem; font-weight: 600; color: var(--accent-blue);
         }
 
         footer {
-            text-align: center;
-            color: #888;
-            padding: 1rem 0;
-            margin-top: 2rem;
-            font-size: 0.95rem;
+            text-align: center; color: var(--text-muted);
+            padding: 2rem; font-size: 0.9rem;
+            border-top: 1px solid var(--glass-border);
+            position: relative; z-index: 10;
         }
 
-        .tab-nav {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            list-style: none;
-            padding: 0;
-            border-bottom: 3px solid #d1d7e6;
-            position: relative;
-            background: transparent;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .tab-nav li {
-            flex: 1 1 0;
-            text-align: center;
-            position: relative;
-        }
-
-        .tab-link {
-            display: inline-block;
-            padding: 0.9rem 0 0.7rem 0;
-            width: 100%;
-            color: #fff;
-            background: #263159;
-            border: 2px solid #d1d7e6;
-            border-bottom: none;
-            border-radius: 16px 16px 0 0;
-            font-weight: bold;
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: background 0.2s, color 0.2s;
-            position: relative;
-            z-index: 1;
-        }
-
-        .tab-link.active,
-        .tab-link:focus {
-            background: #fff;
-            color: #263159;
-            border-bottom: 3px solid #fff;
-            z-index: 2;
-        }
-
-        .tab-link:not(.active):hover {
-            background: #435681;
-            color: #fff;
-        }
-
-        /* Awards grid */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .award-item {
-            background: #f7f9fc;
-            border-radius: 8px;
-            padding: 0.5rem;
-            text-align: center;
-            box-shadow: 0 1px 6px rgba(38, 49, 89, 0.06);
-        }
-
-        .award-item img {
-            width: 100%;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 6px;
-            display: block;
-        }
-
-        .award-caption {
-            margin-top: 0.5rem;
-            font-size: 0.95rem;
-            color: #333;
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 768px) {
-            main {
-                margin: 1rem;
-                padding: 1rem;
-            }
-
-            .tab-nav {
-                flex-wrap: wrap;
-            }
-
-            .tab-nav li {
-                flex: 1 1 33%;
-            }
-
-            .tab-link {
-                font-size: 0.9rem;
-                padding: 0.6rem 0;
-                border-radius: 8px 8px 0 0;
-            }
-
-            header>a {
-                position: static !important;
-                display: inline-block;
-                margin-bottom: 1rem;
-            }
-
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .team-member {
-                flex: 1 1 100%;
-            }
+            main { padding: 0 1rem; margin: 1rem auto; }
+            header { flex-direction: column; gap: 0.8rem; }
+            header h1 { font-size: 1.4rem; }
+            .tab-nav { flex-wrap: wrap; gap: 0.3rem; }
+            .tab-link { font-size: 0.82rem; padding: 0.5rem 0.9rem; }
+            section h2 { font-size: 1.5rem; }
+            .glass-card { padding: 1.2rem; }
+            .season-card { padding-left: 1.8rem; }
         }
     </style>
 </head>
 
 <body>
-    <header style="position: relative;">
-        <a href="index.html"
-            style="position: absolute; left: 1.5rem; top: 2.2rem; color: #d1d7e6; text-decoration: none; font-weight: bold; transition: color 0.2s;"
-            onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#d1d7e6'">← Home</a>
-        <h1>SuperRobots Team</h1>
-        <p>Innovating the future, one robot at a time.</p>
-        <nav style="margin-top:0;">
-            <ul class="tab-nav">
-                <li><a href="#home" class="tab-link active">Home</a></li>
-                <li><a href="#projects" class="tab-link">Projects</a></li>
-                <li><a href="#gallery" class="tab-link">Gallery</a></li>
-                <li><a href="#awards" class="tab-link">Awards</a></li>
-                <li><a href="#contact" class="tab-link">Contact</a></li>
-            </ul>
-        </nav>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <header>
+        <h1>SuperRobots</h1>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">🏠 Home</a>
+            <a href="tutorials.html" class="nav-link">📚 Tutorials</a>
+        </div>
     </header>
+
+    <nav style="margin-top:1rem; position:relative; z-index:10;">
+        <ul class="tab-nav">
+            <li><a href="#home" class="tab-link active">About</a></li>
+            <li><a href="#projects" class="tab-link">Seasons</a></li>
+            <li><a href="#gallery" class="tab-link">Gallery</a></li>
+            <li><a href="#awards" class="tab-link">Awards</a></li>
+            <li><a href="#contact" class="tab-link">Contact</a></li>
+        </ul>
+    </nav>
+
     <main>
-        <section id="home">
-            <h2>
-                <img src="images/favicon.png" alt="SuperRobots Icon"
-                    style="width:2.2rem;height:2.2rem;vertical-align:middle;margin-right:0.5rem;border-radius:6px;">
-                Welcome!
-            </h2>
+        <section id="home" class="glass-card" style="animation-delay:0.1s;">
+            <h2>About SuperRobots</h2>
             <p>
-                We are the SuperRobots team, passionate about building intelligent and helpful robots through immersive robotics education and STEM learning. Our mission is to create technology that improves lives, explores AI innovation, and inspires the next generation of software engineers and roboticists.
-            </p>
-            <p>
-                SuperRobots is a proud
+                We are <strong>SuperRobots</strong> — a competitive
                 <a href="https://www.firstlegoleague.org/" target="_blank" rel="noopener">FIRST LEGO League (FLL) Challenge</a>
-                competitive team (Team ID #70620), dedicated to tackling real-world problems through advanced computational thinking.
+                team (Team&nbsp;#70620) dedicated to engineering intelligent robots, conducting applied research, and advancing STEM education through hands-on innovation.
             </p>
             <p>
-                Our team is made up of 5th graders from Soleado Elementary School, except Jeremy, who is from Silverspur
-                Elementary School. Rigel is our youngest member and is in 3rd grade. We share a passion for robotics and
-                learning, and each of us brings unique talents and interests to the team!
+                Our team combines expertise in mechanical design, autonomous programming, data-driven research, and strategic problem-solving to compete at regional and state-level FLL tournaments. We build technology that tackles real-world challenges — and we share what we learn through open-source projects and educational content.
             </p>
-            <section class="team-section">
-                <h2>Meet the Team</h2>
-                <ul class="team-list">
-                    <li class="team-member">
-                        <img src="images/stella.jpg" alt="Stella" width="140" height="140"
-                            style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Stella</strong><br>
-                        Future Project Manager<br>
-                        5th Grader, Soleado Elementary<br>
-                        <em>Loves dancing</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/sarah.jpg" alt="Sarah" width="140" height="140"
-                            style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Sarah</strong><br>
-                        Future AI Specialist<br>
-                        5th Grader, Soleado Elementary<br>
-                        <em>Plays tennis</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/chuyan.jpg" alt="Chuyan" width="140" height="140"
-                            style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Chuyan</strong><br>
-                        Future Robotics Designer<br>
-                        5th Grader, Soleado Elementary<br>
-                        <em>Plays violin</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/jeremy.jpg" alt="Jeremy" width="140" height="140"
-                            style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Jeremy</strong><br>
-                        Future Software Developer<br>
-                        5th Grader, Silverspur Elementary<br>
-                        <em>Plays chess and soccer</em>
-                    </li>
-                    <li class="team-member">
-                        <img src="images/rigel.jpg" alt="Rigel" width="140" height="140"
-                            style="border-radius:10px; margin-bottom:0.5rem;">
-                        <strong>Rigel</strong><br>
-                        Future Tech Support Engineer<br>
-                        3rd Grader, Soleado Elementary<br>
-                        <em>Plays soccer</em>
-                    </li>
-                </ul>
-            </section>
+            <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1.5rem;">
+                <span class="award-badge">🤖 FLL Team #70620</span>
+                <span class="award-badge">🏆 Award-Winning</span>
+                <span class="award-badge">💻 Open Source</span>
+            </div>
         </section>
         <section id="projects" style="display:none;">
-            <h2>Projects</h2>
+            <div class="glass-card" style="animation-delay:0.1s;">
+            <h2>Competition Seasons</h2>
             <p>
-                Visit our code and open source work on our
-                <a href="https://github.com/superrobots" target="_blank" rel="noopener">GitHub organization</a>.
+                Explore our competitive history and open-source work on
+                <a href="https://github.com/superrobots" target="_blank" rel="noopener">GitHub</a>.
             </p>
-            <section style="margin-bottom:2rem;">
-                <h3>2023 SuperPowered Season</h3>
+            </div>
+            <div class="glass-card season-card" style="animation-delay:0.2s;">
+                <h3>2023 — SuperPowered</h3>
                 <p>
                     <strong>FIRST LEGO League SuperPowered</strong> challenged teams to explore how energy is generated,
                     stored, distributed, and consumed. Teams designed, built, and programmed LEGO robots to complete
@@ -317,9 +270,9 @@
                     <a href="https://www.firstlegoleague.org/season/2023-2024-superpowered" target="_blank"
                         rel="noopener">Learn more about SuperPowered</a>
                 </p>
-            </section>
-            <section style="margin-bottom:2rem;">
-                <h3>2024 Masterpiece Season</h3>
+            </div>
+            <div class="glass-card season-card" style="animation-delay:0.3s;">
+                <h3>2024 — Masterpiece</h3>
                 <p>
                     <strong>FIRST LEGO League Masterpiece</strong> invites teams to imagine and innovate in the world of
                     creative arts and entertainment. Teams use STEM and robotics to solve challenges related to sharing
@@ -335,9 +288,9 @@
                     <a href="https://www.firstlegoleague.org/season/2024-2025-masterpiece" target="_blank"
                         rel="noopener">Learn more about Masterpiece</a>
                 </p>
-            </section>
-            <section>
-                <h3>2025 Unearthed Season</h3>
+            </div>
+            <div class="glass-card season-card" style="animation-delay:0.4s;">
+                <h3>2025 — Unearthed (Current)</h3>
                 <p>
                     <strong>FIRST LEGO League Unearthed</strong> is the 2025-2026 season challenge, where teams will dig
                     into the fascinating world beneath our feet! Teams will explore how we interact with the ground,
@@ -354,17 +307,17 @@
                     <a href="https://www.firstlegoleague.org/season/2025-2026-unearthed" target="_blank"
                         rel="noopener">Learn more about Unearthed</a>
                 </p>
-            </section>
+            </div>
         </section>
         <section id="gallery" style="display:none;">
-            <h2>Gallery</h2>
-            <p>Photos and videos from our events and competitions.</p>
-            <!-- 2025 Unearthed Photos -->
-            <section style="margin-top:2rem;">
+            <div class="glass-card" style="animation-delay:0.1s;">
+                <h2>Gallery</h2>
+                <p>Documentation from our engineering sessions and tournament performances.</p>
+            </div>
+            <div class="glass-card" style="animation-delay:0.2s;">
                 <h3>2025 Unearthed Season</h3>
-                <h4>Practice Sessions</h4>
-                <div class="slideshow-container" data-slideshow="practice"
-                    style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
+                <h4>Engineering Sessions</h4>
+                <div class="slideshow-container" data-slideshow="practice">
                     <img class="practice-slide" src="images/2025_unearthed/practise/IMG_4566.jpg" alt="Practice session"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
                     <img class="practice-slide" src="images/2025_unearthed/practise/IMG_4567.jpg" alt="Working on robot"
@@ -399,17 +352,12 @@
                     <img class="practice-slide" src="images/2025_unearthed/practise/IMG_7824.jpg"
                         alt="Robot modifications"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('practice', -1)"
-                        style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('practice', 1)"
-                        style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div
-                        style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;">
-                        <span class="practice-counter">1 / 15</span></div>
+                    <button class="slide-btn prev" onclick="changeSlide('practice', -1)">&#10094;</button>
+                    <button class="slide-btn next" onclick="changeSlide('practice', 1)">&#10095;</button>
+                    <div class="slide-counter"><span class="practice-counter">1 / 15</span></div>
                 </div>
-                <h4>Competition Game</h4>
-                <div class="slideshow-container" data-slideshow="game"
-                    style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
+                <h4>Tournament Matches</h4>
+                <div class="slideshow-container" data-slideshow="game">
                     <img class="game-slide" src="images/2025_unearthed/game/2420237f6d57ae058eeab30297bc6420.jpg"
                         alt="Competition game" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
                     <img class="game-slide" src="images/2025_unearthed/game/55f0992918cba426fe499f263af45bdf.jpg"
@@ -420,17 +368,12 @@
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
                     <img class="game-slide" src="images/2025_unearthed/game/IMG_7889.jpg" alt="Competition moment"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('game', -1)"
-                        style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('game', 1)"
-                        style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div
-                        style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;">
-                        <span class="game-counter">1 / 5</span></div>
+                    <button class="slide-btn prev" onclick="changeSlide('game', -1)">&#10094;</button>
+                    <button class="slide-btn next" onclick="changeSlide('game', 1)">&#10095;</button>
+                    <div class="slide-counter"><span class="game-counter">1 / 5</span></div>
                 </div>
-                <h4>Research Project</h4>
-                <div class="slideshow-container" data-slideshow="research"
-                    style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
+                <h4>Research Presentation</h4>
+                <div class="slideshow-container" data-slideshow="research">
                     <img class="research-slide" src="images/2025_unearthed/research/IMG_7930.jpg"
                         alt="Research presentation"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
@@ -450,47 +393,37 @@
                         src="images/2025_unearthed/research/Weixin Image_20251129151115_566_35.jpg"
                         alt="Team research work"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('research', -1)"
-                        style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('research', 1)"
-                        style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div
-                        style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;">
-                        <span class="research-counter">1 / 7</span></div>
+                    <button class="slide-btn prev" onclick="changeSlide('research', -1)">&#10094;</button>
+                    <button class="slide-btn next" onclick="changeSlide('research', 1)">&#10095;</button>
+                    <div class="slide-counter"><span class="research-counter">1 / 7</span></div>
                 </div>
-            </section>
-            <!-- Team Videos -->
-            <section class="video-section" style="margin-top:2rem;">
-                <h3>Team Videos</h3>
-
-                <h4>2025 Unearthed Qualifier (Score: 420) - Part 1</h4>
-                <video width="100%"
-                    style="max-width:500px; display:block; margin:0 auto 1.5rem auto; border-radius:10px; background:#000;"
-                    controls>
+            </div>
+            <div class="glass-card video-section" style="animation-delay:0.3s;">
+                <h3>Competition Videos</h3>
+                <h4>2025 Unearthed Qualifier (Score: 420) — Part 1</h4>
+                <video width="100%" controls>
                     <source src="videos/2025_unearthed_qualifier_420_part1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
                 </video>
-                <h4>2025 Unearthed Qualifier (Score: 420) - Part 2</h4>
-                <video width="100%"
-                    style="max-width:500px; display:block; margin:0 auto 1.5rem auto; border-radius:10px; background:#000;"
-                    controls>
+                <h4>2025 Unearthed Qualifier (Score: 420) — Part 2</h4>
+                <video width="100%" controls>
                     <source src="videos/2025_unearthed_qualifier_420_part2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
                 </video>
-            </section>
+            </div>
         </section>
         <section id="awards" style="display:none;">
-            <h2>Awards</h2>
-            <p>
-                At the Warner Middle School Qualifier (2025) we won two major awards:
-                <strong>FLL Robot Performance</strong> and <strong>FLL Robot Design</strong>.
-            </p>
+            <div class="glass-card" style="animation-delay:0.1s;">
+                <h2>Awards & Recognition</h2>
+                <p>At the 2025 Warner Middle School Qualifier, SuperRobots earned two distinguished awards:</p>
+                <div style="display:flex; gap:0.8rem; flex-wrap:wrap; margin-top:1rem;">
+                    <span class="award-badge">🏅 FLL Robot Performance</span>
+                    <span class="award-badge">🛠️ FLL Robot Design</span>
+                </div>
+            </div>
 
-            <section id="robot-performance" class="award-section">
-                <h3>FLL Robot Performance</h3>
-                <p>Photos from our performance and the ceremony.</p>
-                <div class="slideshow-container" data-slideshow="performance"
-                    style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
+            <div class="glass-card" style="animation-delay:0.2s;">
+                <h3>Robot Performance Award</h3>
+                <p>Achieving the highest robot game score at the qualifier tournament.</p>
+                <div class="slideshow-container" data-slideshow="performance">
                     <img class="performance-slide" src="images/2025_unearthed/awards/IMG_2787.jpg"
                         alt="Receiving Robot Performance award"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
@@ -513,21 +446,16 @@
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
                     <img class="performance-slide" src="images/2025_unearthed/awards/IMG_7907.jpg"
                         alt="Award celebration" style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('performance', -1)"
-                        style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('performance', 1)"
-                        style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div
-                        style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;">
-                        <span class="performance-counter">1 / 8</span></div>
+                    <button class="slide-btn prev" onclick="changeSlide('performance', -1)">&#10094;</button>
+                    <button class="slide-btn next" onclick="changeSlide('performance', 1)">&#10095;</button>
+                    <div class="slide-counter"><span class="performance-counter">1 / 8</span></div>
                 </div>
-            </section>
+            </div>
 
-            <section id="robot-design" class="award-section" style="margin-top:1.5rem;">
-                <h3>FLL Robot Design</h3>
-                <p>Photos focused on our robot and design work.</p>
-                <div class="slideshow-container" data-slideshow="robotdesign"
-                    style="max-width:600px; margin:1rem auto; border-radius:16px; overflow:hidden; position:relative; box-shadow:0 4px 16px rgba(38,49,89,0.12); background:#222;">
+            <div class="glass-card" style="animation-delay:0.3s;">
+                <h3>Robot Design Award</h3>
+                <p>Recognition for exceptional mechanical engineering and sensor integration.</p>
+                <div class="slideshow-container" data-slideshow="robotdesign">
                     <img class="robotdesign-slide" src="images/robot/IMG_2657.jpg" alt="Robot design: mechanism details"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:block;">
                     <img class="robotdesign-slide" src="images/robot/IMG_2710.jpg"
@@ -541,29 +469,28 @@
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
                     <img class="robotdesign-slide" src="images/robot/IMG_7855.jpg" alt="Robot design: complete assembly"
                         style="width:100%; aspect-ratio:4/3; object-fit:contain; display:none;">
-                    <button onclick="changeSlide('robotdesign', -1)"
-                        style="position:absolute;left:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10094;</button>
-                    <button onclick="changeSlide('robotdesign', 1)"
-                        style="position:absolute;right:10px;top:50%;transform:translateY(-50%);background:rgba(38,49,89,0.8);color:#fff;border:none;border-radius:50%;width:40px;height:40px;cursor:pointer;font-size:1.5rem;z-index:2;">&#10095;</button>
-                    <div
-                        style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.5);padding:4px 12px;border-radius:12px;color:#fff;font-size:0.9rem;">
-                        <span class="robotdesign-counter">1 / 6</span></div>
+                    <button class="slide-btn prev" onclick="changeSlide('robotdesign', -1)">&#10094;</button>
+                    <button class="slide-btn next" onclick="changeSlide('robotdesign', 1)">&#10095;</button>
+                    <div class="slide-counter"><span class="robotdesign-counter">1 / 6</span></div>
                 </div>
-            </section>
+            </div>
         </section>
         <section id="contact" style="display:none;">
-            <h2>Contact</h2>
-            <p>
-                For questions or to connect with our team, please email us at:<br>
-                <a href="mailto:zhutoulala@gmail.com">zhutoulala@gmail.com</a>
-            </p>
-            <p>
-                <strong>Team ID:</strong> #70620
-            </p>
+            <div class="glass-card" style="animation-delay:0.1s;">
+                <h2>Get In Touch</h2>
+                <p>
+                    Interested in collaborating, sponsoring, or learning more about our work?<br>
+                    Reach us at <a href="mailto:zhutoulala@gmail.com">zhutoulala@gmail.com</a>
+                </p>
+                <div style="margin-top:1rem;">
+                    <span class="award-badge">📧 zhutoulala@gmail.com</span>
+                    <span class="award-badge">🆔 Team #70620</span>
+                </div>
+            </div>
         </section>
     </main>
     <footer>
-        &copy; 2025 SuperRobots Team. All rights reserved.
+        &copy; 2025 SuperRobots. All rights reserved.
     </footer>
     <script>
         let slideIndex = 0;
