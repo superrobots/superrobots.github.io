@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is an Algorithm? Robot Thinking Explained | SuperRobots</title>
+    <meta name="description" content="What is an algorithm, explained for kids. Learn how computers and robots follow step-by-step instructions to solve problems — with fun, real-world examples.">
+    <meta name="keywords" content="what is an algorithm for kids, algorithm explained simply, how do algorithms work, coding for kids, robot algorithms, STEM learning">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://superrobots.org/article-what-is-an-algorithm.html">
+    <meta property="og:title" content="What Is an Algorithm? Robot Thinking Explained">
+    <meta property="og:description" content="What is an algorithm, explained for kids. Learn how computers and robots follow step-by-step instructions to solve problems.">
+    <meta property="og:image" content="https://superrobots.org/images/seo/ai_robotics.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://superrobots.org/article-what-is-an-algorithm.html">
+    <meta property="twitter:title" content="What Is an Algorithm? Robot Thinking Explained">
+    <meta property="twitter:description" content="What is an algorithm, explained for kids. Learn how computers and robots follow step-by-step instructions to solve problems.">
+    <meta property="twitter:image" content="https://superrobots.org/images/seo/ai_robotics.png">
+    <link rel="canonical" href="https://superrobots.org/article-what-is-an-algorithm.html">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WNCD1PG37"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-5WNCD1PG37');
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "What Is an Algorithm? Robot Thinking Explained",
+      "url": "https://superrobots.org/article-what-is-an-algorithm.html",
+      "image": "https://superrobots.org/images/seo/ai_robotics.png",
+      "datePublished": "2026-05-15T08:00:00-07:00",
+      "author": { "@type": "Organization", "name": "SuperRobots" },
+      "publisher": { "@type": "Organization", "name": "SuperRobots", "logo": { "@type": "ImageObject", "url": "https://superrobots.org/images/favicon.png" } },
+      "description": "What is an algorithm, explained for kids. Learn how computers and robots follow step-by-step instructions to solve problems — with fun, real-world examples."
+    }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
+        :root { --bg-dark:#0f172a; --bg-light:#1e293b; --text-main:#f8fafc; --text-muted:#94a3b8; --accent-blue:#38bdf8; --accent-purple:#818cf8; --glass-bg:rgba(30,41,59,0.6); --glass-border:rgba(255,255,255,0.1); }
+        body { margin:0; padding:0; font-family:'Inter',sans-serif; background:linear-gradient(135deg,var(--bg-dark) 0%,var(--bg-light) 100%); color:var(--text-main); min-height:100vh; display:flex; flex-direction:column; overflow-x:hidden; }
+        header { background:rgba(15,23,42,0.8); backdrop-filter:blur(12px); padding:1.2rem 2rem; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--glass-border); position:relative; z-index:10; }
+        header h1 { margin:0; font-family:'Outfit',sans-serif; font-size:1.8rem; font-weight:900; }
+        header a { text-decoration:none; }
+        .logo-text { background:linear-gradient(to right,var(--accent-blue),var(--accent-purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:-0.5px; }
+        .nav-links { display:flex; gap:1.5rem; align-items:center; }
+        .nav-link { color:var(--text-muted); text-decoration:none; font-weight:600; transition:color 0.3s ease; }
+        .nav-link:hover { color:var(--text-main); }
+        main { flex:1; padding:4rem 2rem; max-width:800px; margin:0 auto; width:100%; box-sizing:border-box; position:relative; z-index:10; }
+        .back-link { color:var(--accent-blue); text-decoration:none; display:inline-flex; align-items:center; gap:0.5rem; font-weight:600; margin-bottom:2rem; }
+        .back-link:hover { text-decoration:underline; }
+        .article-header { margin-bottom:3rem; }
+        .article-date { color:var(--accent-purple); font-size:1rem; font-weight:600; margin-bottom:1rem; display:block; }
+        .article-title { font-family:'Outfit',sans-serif; font-size:3rem; font-weight:900; margin:0 0 1.5rem 0; line-height:1.2; color:#ffffff; }
+        .article-hero-image { width:100%; height:auto; border-radius:16px; margin-bottom:2.5rem; border:1px solid var(--glass-border); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+        .article-content { font-size:1.15rem; line-height:1.8; color:#cbd5e1; }
+        .article-content h2 { font-family:'Outfit',sans-serif; font-size:2rem; color:#ffffff; margin-top:3rem; margin-bottom:1.5rem; }
+        .article-content h3 { font-family:'Outfit',sans-serif; font-size:1.5rem; color:var(--accent-blue); margin-top:2rem; margin-bottom:1rem; }
+        .article-content p { margin-bottom:1.5rem; }
+        .article-content ul, .article-content ol { margin-bottom:1.5rem; padding-left:1.5rem; }
+        .article-content li { margin-bottom:0.5rem; }
+        .article-content strong { color:#f8fafc; }
+        .code-block { background:#1e293b; padding:1rem 1.5rem; border-radius:8px; font-family:monospace; border:1px solid #334155; color:#a78bfa; margin-bottom:1.5rem; overflow-x:auto; }
+        .example-box { background:rgba(129,140,248,0.08); border:1px solid rgba(129,140,248,0.3); border-radius:12px; padding:1.5rem 2rem; margin:2rem 0; }
+        .example-box h3 { color:var(--accent-purple); font-family:'Outfit',sans-serif; margin:0 0 0.8rem 0; font-size:1.2rem; }
+        .example-box p, .example-box ol { margin:0; color:#cbd5e1; }
+        .example-box ol { padding-left:1.5rem; margin-top:0.5rem; }
+        @media (max-width:768px) { .article-title { font-size:2.2rem; } header { flex-direction:column; gap:1rem; } main { padding:2rem 1.5rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><h1 class="logo-text">SuperRobots</h1></a>
+        <div class="nav-links">
+            <a href="tutorials.html" class="nav-link">📚 Tutorials</a>
+            <a href="game.html" class="nav-link">🧩 Blocks Game</a>
+            <a href="dungeon.html" class="nav-link">⚔️ Cyber Dungeon</a>
+        </div>
+    </header>
+    <main>
+        <a href="tutorials.html" class="back-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            Back to Tutorials
+        </a>
+        <article>
+            <header class="article-header">
+                <span class="article-date">May 15, 2026</span>
+                <h1 class="article-title">What Is an Algorithm? Robot Thinking Explained</h1>
+            </header>
+            <img src="images/seo/ai_robotics.png" alt="Robot following a step-by-step algorithm" class="article-hero-image">
+            <div class="article-content">
+                <p>You've probably heard the word "algorithm" thrown around a lot — from social media feeds to Google searches to self-driving cars. But what exactly <em>is</em> an algorithm? And why do programmers talk about them so much? The answer is simpler than you might think, and you already use algorithms every single day.</p>
+
+                <h2>The Simple Definition</h2>
+                <p>An <strong>algorithm</strong> is a set of step-by-step instructions for solving a problem or completing a task. That's it. The steps must be clear, ordered, and have a definite end. If you can follow the instructions and get a consistent result every time, you have an algorithm.</p>
+
+                <div class="example-box">
+                    <h3>🥪 Real-World Example: Making a Sandwich</h3>
+                    <ol>
+                        <li>Get two slices of bread</li>
+                        <li>Spread peanut butter on one slice</li>
+                        <li>Spread jelly on the other slice</li>
+                        <li>Press the two slices together</li>
+                        <li>Cut diagonally</li>
+                        <li>Serve and eat</li>
+                    </ol>
+                    <p>That's an algorithm! It has a clear start, ordered steps, and a definite end result.</p>
+                </div>
+
+                <h2>Why Do Computers Need Algorithms?</h2>
+                <p>Computers are incredibly fast and precise, but they are also completely literal. They do <em>exactly</em> what they are told — nothing more, nothing less. A computer cannot guess your intent. If you tell it to turn left and there's a wall there, it will crash into the wall. It won't think "oh, maybe I should turn right instead."</p>
+                <p>This is why algorithms are so important. They define every possible situation and what to do about it. A well-written algorithm leaves nothing to chance.</p>
+
+                <h2>The Four Properties of a Good Algorithm</h2>
+                <ul>
+                    <li><strong>Input:</strong> It starts with some data to work with (e.g., the robot's current position)</li>
+                    <li><strong>Output:</strong> It produces a result (e.g., the robot reaches the exit)</li>
+                    <li><strong>Definiteness:</strong> Every step is clear and unambiguous — no guessing</li>
+                    <li><strong>Finiteness:</strong> It eventually stops — it doesn't run forever</li>
+                </ul>
+
+                <h2>Algorithm vs. Code: What's the Difference?</h2>
+                <p>An algorithm is the <strong>idea</strong> — the plan. Code is how you <strong>express</strong> that idea in a specific programming language. The same algorithm can be written in Python, JavaScript, Java, or any other language. The language changes; the logic stays the same.</p>
+                <p>Think of it like a recipe. The recipe (algorithm) tells you the steps. Whether you write it in English or Spanish doesn't change how the cake turns out.</p>
+
+                <h2>A Robot Algorithm in Action</h2>
+                <p>Let's say you want a robot to navigate a maze and reach the exit. A simple algorithm called the <strong>"right-hand rule"</strong> works like this:</p>
+
+                <div class="example-box">
+                    <h3>🤖 Right-Hand Rule Maze Algorithm</h3>
+                    <ol>
+                        <li>Place your right hand on the wall</li>
+                        <li>Keep moving forward</li>
+                        <li>If you can turn right, turn right</li>
+                        <li>If you can't go forward, turn left</li>
+                        <li>Repeat until you find the exit</li>
+                    </ol>
+                    <p>This simple 5-step algorithm will solve almost any standard maze — and it translates directly into code.</p>
+                </div>
+
+                <p>Here's how that same logic looks in Python:</p>
+                <div class="code-block">
+while not robot.isAtExit():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if robot.canTurnRight():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;robot.turnRight()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;robot.moveForward()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;elif robot.canMoveForward():<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;robot.moveForward()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;else:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;robot.turnLeft()
+                </div>
+
+                <h2>Algorithms Are Everywhere</h2>
+                <p>Once you know what an algorithm is, you start seeing them everywhere:</p>
+                <ul>
+                    <li><strong>Google Search</strong> uses algorithms to rank billions of web pages in milliseconds</li>
+                    <li><strong>Spotify</strong> uses algorithms to recommend songs based on your listening history</li>
+                    <li><strong>GPS navigation</strong> uses a famous algorithm called Dijkstra's to find the shortest route</li>
+                    <li><strong>Netflix</strong> uses algorithms to decide which shows to put on your homepage</li>
+                    <li><strong>Your email</strong> uses spam-detection algorithms to filter junk mail</li>
+                </ul>
+
+                <h2>Efficiency Matters: Not All Algorithms Are Equal</h2>
+                <p>There are often many different algorithms that solve the same problem — but some are much faster or use less memory than others. Imagine sorting 1,000,000 names alphabetically. A "bubble sort" algorithm might take minutes. A "merge sort" algorithm can do it in seconds. Choosing the right algorithm is one of the core skills of computer science.</p>
+                <p>In the Cyber Dungeon, you'll find that there's almost always more than one way to write code that solves a level. Pushing yourself to find the <em>shortest</em> solution — the one that uses the fewest lines — is how you develop algorithmic thinking.</p>
+
+                <h2>Practice Algorithmic Thinking Today</h2>
+                <p>The best way to build algorithmic thinking is through puzzle-solving. Jump into the <strong>SuperRobots Block Game</strong> and think through each level before you start placing blocks. Ask yourself: "What are the steps? What order do they go in? What if the robot hits a wall?" That deliberate, step-by-step planning is exactly what computer scientists do every day. 🤖</p>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
