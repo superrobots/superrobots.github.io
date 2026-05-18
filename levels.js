@@ -46,7 +46,7 @@ const DungeonLevels = [
             "Update the `if` statement to check distance: `if enemy and super_robot.distanceTo(enemy) == 1:`",
             "This will make the robot move right if the enemy is far away, and attack when close."
         ],
-        defaultCode: "while True:\n    enemy = super_robot.findNearestEnemy()\n    if enemy:\n        # FIX THIS: Only attack if distance is 1\n        super_robot.attack(enemy)\n    else:\n        super_robot.moveRight()\n"
+        defaultCode: "for i in range(20):\n    enemy = super_robot.findNearestEnemy()\n    if enemy:\n        # FIX THIS: Only attack if distance is 1\n        super_robot.attack(enemy)\n    # Add an else statement here to moveRight\n"
     },
     {
         id: 3,
@@ -69,7 +69,7 @@ const DungeonLevels = [
             "The boss has a lot of health! A simple attack loop is all you need.",
             "Make sure your loop keeps running until the boss is defeated."
         ],
-        defaultCode: "while True:\n    enemy = super_robot.findNearestEnemy()\n    if enemy and super_robot.distanceTo(enemy) == 1:\n        super_robot.attack(enemy)\n    elif enemy:\n        super_robot.moveRight()\n    else:\n        super_robot.moveRight()\n"
+        defaultCode: "for i in range(30):\n    enemy = super_robot.findNearestEnemy()\n    # Add code to check distance, attack the boss, or move right!\n    \n"
     },
     {
         id: 4,
