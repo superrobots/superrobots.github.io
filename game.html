@@ -440,9 +440,14 @@
     <header>
         <h1>Super Robots Game</h1>
         <div style="display:flex; gap:15px; align-items:center;">
-            <a href="index.html" class="back-link">🏠 Home</a>
-            <a href="dungeon.html" style="background:#ef4444; color:white; padding:8px 16px; border-radius:4px; text-decoration:none; font-weight:bold; border: 1px solid #fca5a5;">⚔️ Cyber Dungeon</a>
-            <a href="team.html" class="back-link">👥 Team</a>
+            <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 20px;">
+                <button onclick="AudioEngine.toggleMusic()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem; padding: 0;">🎵</button>
+                <span style="font-size: 0.8rem;">Vol:</span>
+                <input type="range" min="0" max="1" step="0.1" value="0.5" onchange="AudioEngine.setVolume(this.value)" style="width: 60px;">
+            </div>
+            <a href="index.html" class="back-link">Home</a>
+            <a href="dungeon.html" style="background:#ef4444; color:white; padding:8px 16px; border-radius:4px; text-decoration:none; font-weight:bold; border: 1px solid #fca5a5;">Cyber Dungeon</a>
+            <a href="team.html" class="back-link">Team</a>
         </div>
     </header>
 
@@ -516,6 +521,7 @@
         </div>
     </footer>
 
+    <script src="audio.js"></script>
     <script>
         const canvas = document.getElementById('simCanvas');
         const ctx = canvas.getContext('2d');
@@ -550,7 +556,7 @@
         // Game State
         const levels = [
             {
-                introText: "Let's get started! Use Move Forward and Turn commands to navigate to the Flag 🏁.",
+                introText: "Let's get started! Computers need exact instructions. Use Move Forward and Turn commands to build a step-by-step path to the Flag 🏁.",
                 gridSize: 5,
                 availableBlocks: ['moveForward', 'turnLeft', 'turnRight'],
                 start: {x: 0, y: 4}, direction: 0,
@@ -558,7 +564,7 @@
                 obstacles: [{x: 2, y: 2}, {x: 2, y: 3}, {x: 3, y: 2}]
             },
             {
-                introText: "Loops! You can now use the Repeat block to run commands multiple times without rewriting them.",
+                introText: "Loops save time, reduce mistakes, and make code cleaner! Instead of brute-forcing by writing 'Move' 5 times, use a Repeat block to loop it.",
                 gridSize: 6,
                 availableBlocks: ['moveForward', 'moveBackward', 'turnLeft', 'turnRight', 'repeat', 'endRepeat'],
                 start: {x: 0, y: 0}, direction: 1, 
@@ -1518,9 +1524,14 @@
             return robot.x === mapData.goal.x && robot.y === mapData.goal.y && activeStars.length === 0;
         }
 
-        function showStatus(msg, type) {
-            statusEl.textContent = msg;
-            statusEl.className = 'status-overlay visible ' + type;
+        function showStatus(message, type) {
+            statusEl.innerText = message;
+            statusEl.className = 'status-overlay ' + type + ' visible';
+            if (type === 'success') {
+                AudioEngine.playSound('win');
+            } else {
+                AudioEngine.playSound('error');
+            }
         }
 
         function hideStatus() {
