@@ -25,7 +25,7 @@ const DungeonLevels = [
         id: 2,
         title: "Level 2: The Ambush",
         icon: "🧩",
-        introText: "Enemies block your path! Fix the code to only attack when you are close, and keep moving right.",
+        introText: "Enemies block your path! It's time to learn about 'if' statements. An 'if' statement lets your code make decisions: 'IF the enemy is close, THEN attack'. Fix the code to only attack when distance is 1, otherwise keep moving right.",
         gridSize: 9,
         start: {x: 1, y: 4}, direction: 1,
         goal: {x: 7, y: 4},
