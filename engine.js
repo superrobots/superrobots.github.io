@@ -36,7 +36,7 @@ class GameEngine {
         this.isVictory = false;
         
         this.actionQueue = [];
-        this.maxActions = 1000;
+        this.maxActions = 5000;
     }
     
     getEntities() {
