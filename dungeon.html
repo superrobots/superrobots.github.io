@@ -875,14 +875,15 @@
                 moveDown: () => { gameEngine.moveDown(); checkEnd(); },
                 attack: (enemy) => { gameEngine.attack(enemy); checkEnd(); },
                 findNearestEnemy: () => gameEngine.findNearestEnemy(),
+                getEnemies: () => gameEngine.enemies.filter(e => e.isAlive),
                 distanceTo: (enemy) => {
                     if (!enemy) return Infinity;
                     let target = gameEngine.getEntities().find(e => e.id === enemy.id);
                     if (!target) return Infinity;
                     return gameEngine.distance(gameEngine.hero, target);
                 },
-                x: gameEngine.hero.x,
-                y: gameEngine.hero.y
+                get x() { return gameEngine.hero.x; },
+                get y() { return gameEngine.hero.y; }
             };
 
             // Inject the heroAPI into Python's global namespace
