@@ -379,49 +379,75 @@
             }
         }
 
-        /* SEO Footer Section */
-        .seo-footer {
-            background: rgba(15, 23, 42, 0.95);
+        /* Newsletter Section */
+        .newsletter-section {
+            width: 100%;
+            margin-top: 4rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding: 3rem 2rem;
-            margin-top: 2rem;
-        }
-        
-        .seo-footer h2 {
-            font-size: 2rem;
-            color: #38bdf8;
-            margin-top: 0;
             text-align: center;
+            box-sizing: border-box;
+        }
+
+        .newsletter-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: #f8fafc;
+            margin: 0 0 1rem 0;
             font-weight: 800;
         }
 
-        .seo-footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .seo-footer-block h3 {
-            color: #f8fafc;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .seo-image {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .seo-footer-block p {
+        .newsletter-desc {
             color: #94a3b8;
-            line-height: 1.6;
-            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .newsletter-input {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 350px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-input:focus {
+            border-color: #38bdf8;
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -434,6 +460,21 @@
             <div style="display:flex; gap:1rem; justify-content:center;">
                 <button onclick="submitPrompt()" style="background:#22c55e; color:white; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">OK</button>
                 <button onclick="cancelPrompt()" style="background:#ef4444; color:white; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <!-- Certificate Modal -->
+    <div id="cert-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
+        <div style="background:#1e293b; padding:2rem; border-radius:12px; border: 2px solid #38bdf8; color:white; text-align:center; box-shadow: 0 10px 40px rgba(56,189,248,0.3); max-width: 600px; width: 90%;">
+            <h2 style="margin-top:0; color:#38bdf8;">🎉 You Beat All Levels! 🎉</h2>
+            <p>Enter your name for your certificate of completion:</p>
+            <input type="text" id="cert-name" placeholder="Your Name" style="padding:0.8rem; font-size:1.1rem; width:80%; text-align:center; border-radius:6px; border:1px solid #94a3b8; background:#0f172a; color:white; margin-bottom:1rem;">
+            <div style="margin-bottom: 1rem;">
+                <canvas id="cert-canvas" width="800" height="600" style="width:100%; border-radius:8px; display:none;"></canvas>
+            </div>
+            <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" id="cert-actions">
+                <button onclick="generateCertificate('SuperRobots Block Coding')" style="background:#22c55e; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Generate</button>
+                <button onclick="document.getElementById('cert-modal').style.display='none'" style="background:#ef4444; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Close</button>
             </div>
         </div>
     </div>
@@ -494,32 +535,44 @@
 
     </div>
 
-    <!-- Educational SEO Footer -->
-    <footer class="seo-footer">
-        <h2>Develop Core STEM Skills Through Play</h2>
-        <div class="seo-footer-grid">
-            <div class="seo-footer-block">
-                <img src="images/seo/block_logic.png" alt="Visual Programming Concepts" class="seo-image">
-                <h3>Visual Programming Concepts</h3>
-                <p>The SuperRobots Game uses an intuitive block-based coding interface to introduce core computer science principles. By snapping together 'circuit modules,' players visualize the flow of execution and understand how individual commands combine to form a larger algorithm, without the frustration of syntax errors.</p>
-            </div>
-            <div class="seo-footer-block">
-                <img src="images/seo/ai_robotics.png" alt="Computational Thinking" class="seo-image">
-                <h3>Computational Thinking</h3>
-                <p>Navigating our puzzle grids requires strong spatial reasoning and computational thinking. Players learn to decompose complex problems, identifying the specific sequences, loops, and conditions needed to reach the goal flag. This logical approach is a critical foundation for advanced robotics and software engineering.</p>
-            </div>
-            <div class="seo-footer-block">
-                <img src="images/seo/cyber_dungeon.png" alt="Mastering Loops and Conditionals" class="seo-image">
-                <h3>Mastering Loops and Conditionals</h3>
-                <p>As the levels progress, players encounter advanced programming mechanics like loops (`Repeat`, `While Path Clear`) and conditional statements (`If Obstacle Ahead`). Mastering these control structures allows learners to write efficient, dynamic algorithms—essential tools for creating intelligent AI and automated systems.</p>
-            </div>
-            <div class="seo-footer-block">
-                <img src="images/seo/problem_solving.png" alt="Iterative Debugging and Resilience" class="seo-image">
-                <h3>Iterative Debugging</h3>
-                <p>Learning to code is learning how to fail safely and try again. Our challenges encourage iterative testing, where players assemble blocks, observe the simulation, and debug their logic if the robot fails to reach the flag. This process builds resilience, persistence, and deep critical thinking skills.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <h2 class="newsletter-title">Join the SuperRobots Community</h2>
+        <p class="newsletter-desc">Get notified about new games, tutorials, and early access to features.</p>
+        <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+            <script>
+                document.querySelectorAll('.newsletter-form').forEach(form => {
+                    // Only attach once
+                    if (form.dataset.attached) return;
+                    form.dataset.attached = true;
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const btn = form.querySelector('.newsletter-btn');
+                        const email = form.querySelector('.newsletter-input').value;
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Subscribing...';
+                        btn.disabled = true;
+
+                        try {
+                            await fetch('https://script.google.com/macros/s/AKfycbwA3dDW7vIC6MIGxneJtxcUkSPMj0XtXOLiR5dDqmBLxdaZg23_BdaCAM369ERcpoToZg/exec', {
+                                method: 'POST',
+                                mode: 'no-cors',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: new URLSearchParams({ 'email': email })
+                            });
+                            form.innerHTML = '<p style="color: #4ade80; font-weight: bold; margin: 0; padding: 1rem; font-size: 1.2rem;">Thanks for subscribing! Welcome to the SuperRobots community.</p>';
+                        } catch (error) {
+                            btn.textContent = originalText;
+                            btn.disabled = false;
+                            alert('Oops! Something went wrong. Please check your connection and try again.');
+                        }
+                    });
+                });
+            </script>
+    </section>
 
     <script src="audio.js"></script>
     <script>
@@ -1415,6 +1468,9 @@
                         loadLevel();
                     } else {
                         showStatus("You beat all levels!", "success");
+                        setTimeout(() => {
+                            document.getElementById('cert-modal').style.display = 'flex';
+                        }, 1000);
                     }
                 }, 2000);
             } else if (isRunning && !goalReached && commands.length > 0) {
@@ -1641,6 +1697,66 @@
             ctx.fillRect(tileSize/2.5 - 8, -tileSize/4, 8, tileSize/2);
 
             ctx.restore();
+        }
+
+        // Certificate logic
+        function generateCertificate(courseName) {
+            const name = document.getElementById('cert-name').value || "Super Coder";
+            const c = document.getElementById('cert-canvas');
+            const ctx = c.getContext('2d');
+            
+            c.style.display = 'block';
+            document.getElementById('cert-name').style.display = 'none';
+            
+            // Draw background
+            ctx.fillStyle = '#0f172a';
+            ctx.fillRect(0, 0, c.width, c.height);
+            
+            // Draw border
+            ctx.strokeStyle = '#38bdf8';
+            ctx.lineWidth = 15;
+            ctx.strokeRect(20, 20, c.width - 40, c.height - 40);
+            ctx.strokeStyle = '#818cf8';
+            ctx.lineWidth = 5;
+            ctx.strokeRect(30, 30, c.width - 60, c.height - 60);
+
+            // Text
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#38bdf8';
+            ctx.font = 'bold 50px Arial';
+            ctx.fillText("CERTIFICATE OF COMPLETION", c.width/2, 120);
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '24px Arial';
+            ctx.fillText("This certifies that", c.width/2, 200);
+
+            ctx.fillStyle = '#f8fafc';
+            ctx.font = 'bold 60px Arial';
+            ctx.fillText(name, c.width/2, 280);
+
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '24px Arial';
+            ctx.fillText("has successfully completed all challenges in", c.width/2, 360);
+
+            ctx.fillStyle = '#818cf8';
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText(courseName, c.width/2, 430);
+
+            ctx.fillStyle = '#4ade80';
+            ctx.font = '20px Arial';
+            ctx.fillText("SuperRobots.org", c.width/2, 520);
+
+            // Setup download/share buttons
+            const actions = document.getElementById('cert-actions');
+            actions.innerHTML = `
+                <a download="${name.replace(/ /g,'_')}_Certificate.png" href="${c.toDataURL()}" style="background:#22c55e; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem; text-decoration:none;">Download PNG</a>
+                <button onclick="shareCertificate()" style="background:#38bdf8; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Share</button>
+                <button onclick="document.getElementById('cert-modal').style.display='none'" style="background:#ef4444; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Close</button>
+            `;
+        }
+
+        function shareCertificate() {
+            alert("To share, download the PNG and post it to Twitter or Facebook! Tag @SuperRobots so we can celebrate with you!");
         }
 
         // Init
