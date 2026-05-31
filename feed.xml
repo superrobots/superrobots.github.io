@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>SuperRobots Tutorials</title>
+  <link>https://superrobots.org/</link>
+  <description>Engaging programming games and Python tutorials.</description>
+  <atom:link href="https://superrobots.org/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>How Block Coding Prepares Kids for Python</title>
+    <link>https://superrobots.org/article-block-to-python.html</link>
+    <description>Discover how the logical foundations built by snapping blocks together perfectly translate into real-world text-based programming in Python.</description>
+    <pubDate>Sun, 10 May 2026 08:00:00 +0800</pubDate>
+    <guid>https://superrobots.org/article-block-to-python.html</guid>
+  </item>
+  <item>
+    <title>Debugging Like a Pro: Finding &amp; Fixing Bugs</title>
+    <link>https://superrobots.org/article-debugging-like-a-pro.html</link>
+    <description>Learn essential debugging strategies for young coders. Discover how to read error messages, use print statements, and systematically squash bugs in your Python code.</description>
+    <pubDate>Mon, 11 May 2026 08:00:00 +0800</pubDate>
+    <guid>https://superrobots.org/article-debugging-like-a-pro.html</guid>
+  </item>
+  <item>
+    <title>Top 5 Algorithms Every FLL Team Should Know</title>
+    <link>https://superrobots.org/article-fll-algorithms.html</link>
+    <description>Improve your robot's reliability and precision on the FIRST LEGO League mat by understanding these five fundamental pathfinding and alignment algorithms.</description>
+    <pubDate>Sun, 10 May 2026 08:00:00 +0800</pubDate>
+    <guid>https://superrobots.org/article-fll-algorithms.html</guid>
+  </item>
+  <item>
+    <title>Introduction to Conditionals: Teaching Your Robot to Decide</title>
+    <link>https://superrobots.org/article-intro-to-conditionals.html</link>
+    <description>Learn how if-else statements let your robot make decisions. A beginner-friendly guide to conditionals, boolean logic, and branching in Python.</description>
+    <pubDate>Mon, 11 May 2026 08:00:00 +0800</pubDate>
+    <guid>https://superrobots.org/article-intro-to-conditionals.html</guid>
+  </item>
+  <item>
+    <title>Mastering Loops: The Key to Efficiency</title>
+    <link>https://superrobots.org/article-mastering-loops.html</link>
+    <description>A deep dive into why loops are essential in programming. Learn how to identify repetitive tasks and automate them using while and for loops.</description>
+    <pubDate>Sun, 10 May 2026 08:00:00 +0800</pubDate>
+    <guid>https://superrobots.org/article-mastering-loops.html</guid>
+  </item>
+  <item>
+    <title>10 Beginner Python Projects for Kids</title>
+    <link>https://superrobots.org/article-python-projects-for-kids.html</link>
+    <description>10 fun and achievable Python projects perfect for kids and beginners. Build real programs from a number guessing game to a simple text adventure — no experience needed.</description>
+    <pubDate>Fri, 15 May 2026 08:00:00 -0700</pubDate>
+    <guid>https://superrobots.org/article-python-projects-for-kids.html</guid>
+  </item>
+  <item>
+    <title>Python vs. Scratch: Which Should Kids Learn First?</title>
+    <link>https://superrobots.org/article-python-vs-scratch.html</link>
+    <description>Comparing Python and Scratch for young learners. Discover which coding language is best for your child's age, goals, and learning style — and how to transition between them.</description>
+    <pubDate>Fri, 15 May 2026 08:00:00 -0700</pubDate>
+    <guid>https://superrobots.org/article-python-vs-scratch.html</guid>
+  </item>
+  <item>
+    <title>Understanding Variables: Your Robot's Memory</title>
+    <link>https://superrobots.org/article-understanding-variables.html</link>
+    <description>Learn what variables are and how they work as your robot's memory. A beginner-friendly guide to storing and using data in Python.</description>
+    <pubDate>Mon, 11 May 2026 08:00:00 +0800</pubDate>
+    <guid>https://superrobots.org/article-understanding-variables.html</guid>
+  </item>
+  <item>
+    <title>What Is an Algorithm? Robot Thinking Explained</title>
+    <link>https://superrobots.org/article-what-is-an-algorithm.html</link>
+    <description>What is an algorithm, explained for kids. Learn how computers and robots follow step-by-step instructions to solve problems — with fun, real-world examples.</description>
+    <pubDate>Fri, 15 May 2026 08:00:00 -0700</pubDate>
+    <guid>https://superrobots.org/article-what-is-an-algorithm.html</guid>
+  </item>
+</channel>
+</rss>

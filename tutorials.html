@@ -207,6 +207,76 @@
                 gap: 1rem;
             }
         }
+
+        .newsletter-section {
+            width: 100%;
+            margin-top: 4rem;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .newsletter-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            color: var(--text-main);
+            margin: 0 0 1rem 0;
+        }
+
+        .newsletter-desc {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .newsletter-input {
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 350px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .newsletter-btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+        }
+
+        @media (max-width: 600px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
     </style>
 
     <!-- Structured Data for Blog/Tutorials -->
@@ -236,7 +306,12 @@
         <div class="nav-links">
             <a href="game.html" class="nav-link">Blocks Game</a>
             <a href="dungeon.html" class="nav-link">Cyber Dungeon</a>
+            <a href="simulator.html" class="nav-link" style="color: var(--accent-blue);">3D Simulator</a>
             <a href="team.html" class="nav-link">Meet the Team</a>
+        
+            <a href="https://medium.com/@zhutoulala" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Medium" style="display: flex; align-items: center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.936-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.14v-.404l2.521-3.058c.27-.279.39-6.68.39-10.643Z"/></svg>
+            </a>
         </div>
     </header>
 
@@ -319,6 +394,44 @@
                 <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </a>
         </div>
+
+        <section class="newsletter-section">
+            <h2 class="newsletter-title">Join the SuperRobots Community</h2>
+            <p class="newsletter-desc">Get notified about new games, tutorials, and early access to features.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+            <script>
+                document.querySelectorAll('.newsletter-form').forEach(form => {
+                    // Only attach once
+                    if (form.dataset.attached) return;
+                    form.dataset.attached = true;
+                    form.addEventListener('submit', async (e) => {
+                        e.preventDefault();
+                        const btn = form.querySelector('.newsletter-btn');
+                        const email = form.querySelector('.newsletter-input').value;
+                        const originalText = btn.textContent;
+                        btn.textContent = 'Subscribing...';
+                        btn.disabled = true;
+
+                        try {
+                            await fetch('https://script.google.com/macros/s/AKfycbwA3dDW7vIC6MIGxneJtxcUkSPMj0XtXOLiR5dDqmBLxdaZg23_BdaCAM369ERcpoToZg/exec', {
+                                method: 'POST',
+                                mode: 'no-cors',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: new URLSearchParams({ 'email': email })
+                            });
+                            form.innerHTML = '<p style="color: #4ade80; font-weight: bold; margin: 0; padding: 1rem; font-size: 1.2rem;">Thanks for subscribing! Welcome to the SuperRobots community.</p>';
+                        } catch (error) {
+                            btn.textContent = originalText;
+                            btn.disabled = false;
+                            alert('Oops! Something went wrong. Please check your connection and try again.');
+                        }
+                    });
+                });
+            </script>
+        </section>
     </main>
 </body>
 </html>
