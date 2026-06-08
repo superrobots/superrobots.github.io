@@ -935,6 +935,14 @@
                     if (!target) return Infinity;
                     return gameEngine.distance(gameEngine.hero, target);
                 },
+                isWall: (dirName) => {
+                    let dx = 0, dy = 0;
+                    if (dirName === 'right') dx = 1;
+                    if (dirName === 'left') dx = -1;
+                    if (dirName === 'down') dy = 1;
+                    if (dirName === 'up') dy = -1;
+                    return !gameEngine.isCellFree(gameEngine.hero.x + dx, gameEngine.hero.y + dy);
+                },
                 get x() { return gameEngine.hero.x; },
                 get y() { return gameEngine.hero.y; }
             };
@@ -955,8 +963,8 @@ def _check_timeout():
         raise Exception("Execution timeout (infinite loop?)")
 `;
             
-            // Basic regex to inject _check_timeout() into while loops
-            let modifiedCode = userCode.replace(/while (.+):/g, "while $1:\n    _check_timeout()");
+            // Basic regex to inject _check_timeout() into while loops, preserving indentation
+            let modifiedCode = userCode.replace(/^([ \t]*)while (.+):/gm, "$1while $2:\n$1    _check_timeout()");
 
             try {
                 pyodideInstance.runPython(safeCode + modifiedCode);

@@ -204,32 +204,65 @@ const DungeonLevels = [
     },
     {
         id: 8,
-        title: "Level 8: The Priority Target",
-        icon: "🎯",
-        introText: "There is a massive swarm of decoy Viruses, but the real threat is the BossBot guarding the exit! `findNearestEnemy()` will just get you stuck fighting decoys. Use `super_robot.getEnemies()` to get a list of all enemies, write a loop to find the BossBot, and hunt it down directly!",
-        gridSize: 13,
+        title: "Level 8: The Ice Cave",
+        icon: "🧊",
+        introText: "The floor is covered in slippery ice! You cannot move just one step. Once you move in a direction, you slide until you hit a wall. Use the new `super_robot.isWall(direction)` command to write a `slide(direction)` function!",
+        gridSize: 9,
         start: {x: 1, y: 1}, direction: 1,
-        goal: {x: 11, y: 11},
+        goal: {x: 4, y: 4},
+        enemies: [],
         obstacles: [
-            ...Array.from({length: 13}, (_, i) => ({x: i, y: 0})),
-            ...Array.from({length: 13}, (_, i) => ({x: i, y: 12})),
-            ...Array.from({length: 11}, (_, i) => ({x: 0, y: i+1})),
-            ...Array.from({length: 11}, (_, i) => ({x: 12, y: i+1}))
-        ],
-        enemies: [
-            { id: "v1", type: "Virus", x: 3, y: 3, hp: 5, maxHp: 5, damage: 1 },
-            { id: "v2", type: "Virus", x: 4, y: 3, hp: 5, maxHp: 5, damage: 1 },
-            { id: "v3", type: "Virus", x: 3, y: 4, hp: 5, maxHp: 5, damage: 1 },
-            { id: "v4", type: "Virus", x: 8, y: 8, hp: 5, maxHp: 5, damage: 1 },
-            { id: "v5", type: "Virus", x: 7, y: 8, hp: 5, maxHp: 5, damage: 1 },
-            { id: "v6", type: "Virus", x: 8, y: 7, hp: 5, maxHp: 5, damage: 1 },
-            { id: "boss1", type: "BossBot", x: 11, y: 11, hp: 45, maxHp: 45, damage: 3 }
+            ...Array.from({length: 9}, (_, i) => ({x: i, y: 0})),
+            ...Array.from({length: 9}, (_, i) => ({x: i, y: 8})),
+            ...Array.from({length: 7}, (_, i) => ({x: 0, y: i+1})),
+            ...Array.from({length: 7}, (_, i) => ({x: 8, y: i+1})),
+            {x: 7, y: 1},
+            {x: 6, y: 7},
+            {x: 1, y: 6},
+            {x: 2, y: 2},
+            {x: 5, y: 3},
+            {x: 4, y: 5}
         ],
         tips: [
-            "`enemies = super_robot.getEnemies()` returns a Python list of all enemies on the board.",
-            "You can use `for e in enemies:` to check each one.",
-            "Find the enemy where `e.type == 'BossBot'` and hunt it down!"
+            "Write a function `slide(dir)` that uses `for i in range(50):` to loop.",
+            "Inside the loop, if `super_robot.isWall(dir)` is True, use `break` to stop sliding!",
+            "Otherwise, use the correct move command based on `dir`."
         ],
-        defaultCode: "enemies = super_robot.getEnemies()\ntarget = None\n\n# Iterate through the list to find the BossBot\nfor e in enemies:\n    if e.type == 'BossBot':\n        target = e\n\n# Now write your tracking logic to hunt down 'target' instead of the nearest enemy!\nfor i in range(500):\n    if target and target.hp > 0:\n        if super_robot.distanceTo(target) == 1:\n            super_robot.attack(target)\n        elif target.x > super_robot.x:\n            super_robot.moveRight()\n        # Add logic to move Left, Down, and Up!\n    else:\n        if super_robot.x < 11:\n            super_robot.moveRight()\n        elif super_robot.y < 11:\n            super_robot.moveDown()\n"
+        defaultCode: "def slide(dir):\n    # Slide until hitting a wall!\n    for i in range(50):\n        if super_robot.isWall(dir):\n            break\n        \n        if dir == 'right': super_robot.moveRight()\n        elif dir == 'down': super_robot.moveDown()\n        elif dir == 'left': super_robot.moveLeft()\n        elif dir == 'up': super_robot.moveUp()\n\n# Now use your slide function!\nslide('right')\nslide('down')\n"
+    },
+    {
+        id: 9,
+        title: "Level 9: The Auto-Solver",
+        icon: "🤖",
+        introText: "A dark winding maze! You don't know how long the corridors are. You must write an algorithm that automatically walks forward until it hits a wall, then turns! You'll need to keep track of your current direction.",
+        gridSize: 11,
+        start: {x: 1, y: 1}, direction: 2,
+        goal: {x: 9, y: 9},
+        enemies: [],
+        obstacles: (() => {
+            let obs = [];
+            let path = new Set();
+            for(let y=1; y<=8; y++) path.add('1,'+y);
+            for(let x=1; x<=7; x++) path.add(x+',8');
+            for(let y=2; y<=8; y++) path.add('7,'+y);
+            for(let x=3; x<=7; x++) path.add(x+',2');
+            for(let y=2; y<=6; y++) path.add('3,'+y);
+            for(let x=3; x<=5; x++) path.add(x+',6');
+            for(let y=4; y<=6; y++) path.add('5,'+y);
+            for(let x=5; x<=9; x++) path.add(x+',4');
+            for(let y=4; y<=9; y++) path.add('9,'+y);
+            for(let x=0; x<11; x++) {
+                for(let y=0; y<11; y++) {
+                    if (!path.has(x+','+y)) obs.push({x: x, y: y});
+                }
+            }
+            return obs;
+        })(),
+        tips: [
+            "Use a variable `current_dir` to track which way you are facing.",
+            "If `super_robot.isWall(current_dir)` is True, it's time to turn!",
+            "Check other directions (like 'right' or 'left' relative to the map) to find the new open path."
+        ],
+        defaultCode: "current_dir = 'down'\n\nfor i in range(500): # Safety loop\n    if super_robot.x == 9 and super_robot.y == 9:\n        break # We won!\n        \n    if not super_robot.isWall(current_dir):\n        # The path is clear, move forward!\n        if current_dir == 'down': super_robot.moveDown()\n        elif current_dir == 'up': super_robot.moveUp()\n        elif current_dir == 'right': super_robot.moveRight()\n        elif current_dir == 'left': super_robot.moveLeft()\n    else:\n        # We hit a wall! Let's find a new direction to turn to.\n        if current_dir in ['up', 'down']:\n            # Try turning right or left\n            pass # YOUR CODE HERE: Check 'right' and 'left' using isWall() and update current_dir\n            \n        else:\n            # Try turning down or up\n            pass # YOUR CODE HERE: Check 'down' and 'up' using isWall() and update current_dir\n"
     }
 ];
