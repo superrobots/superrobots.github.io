@@ -14,8 +14,24 @@
         "China Youth Daily reports that a robot performance program premiered in Guangzhou on September 30, with public shows scheduled for October 1–7 at the Guangdong Science Center. Humanoid robots perform group choreography alongside human entertainers, with robot-dog interaction and audience participation also on the program.",
         "The event brings robotics into a public cultural setting. Coordinated stage performances demonstrate a specific application; they do not establish that the robots can work autonomously across unrelated everyday tasks."
       ],
-      "source": {"name": "China Youth Daily / Sina", "type": "Chinese news report", "url": "https://finance.sina.com.cn/jjxw/2026-10-02/doc-initusmm4796722.shtml", "language": "Chinese", "published": "2026-10-02"},
-      "visual": "stage"
+      "source": {
+        "name": "China Youth Daily / Sina",
+        "type": "Chinese news report",
+        "url": "https://finance.sina.com.cn/jjxw/2026-10-02/doc-initusmm4796722.shtml",
+        "language": "Chinese",
+        "published": "2026-10-02"
+      },
+      "image": {
+        "src": "assets/news/guangzhou-robot-show.webp",
+        "alt": "Visitors interacting with humanoid robots at the Guangdong Science Center",
+        "caption": "Visitors meet the robots at the Guangdong Science Center.",
+        "credit": "China Youth Daily / Sina",
+        "creditUrl": "https://finance.sina.com.cn/jjxw/2026-10-02/doc-initusmm4796722.shtml",
+        "sourceUrl": "https://n.sinaimg.cn/sinakd20261002s/320/w640h480/20261002/d0ca-1e36a637df80ef99c28ac1951a960fd6.jpg",
+        "width": 640,
+        "height": 480,
+        "fit": "cover"
+      }
     },
     {
       "id": "agibot-music",
@@ -29,8 +45,24 @@
         "AgiBot says its A3 humanoid now integrates NetEase Cloud Music at the system level, connecting voice requests, music search, account authentication, and playback. The company plans to make voice song requests available from October 15, with account capabilities dependent on delivered software and authorization.",
         "AgiBot reports pilot testing at Chimelong Spaceship park. Generating gestures from music, an AI DJ, and interactive singing are described as future development directions. Public or commercial music playback requires separate licensing; the pilot does not provide blanket commercial authorization."
       ],
-      "source": {"name": "AgiBot", "type": "Company announcement", "url": "https://www.agibot.com.cn/article/315/detail/236.html", "language": "Chinese", "published": "2026-09-30"},
-      "visual": "music"
+      "source": {
+        "name": "AgiBot",
+        "type": "Company announcement",
+        "url": "https://www.agibot.com.cn/article/315/detail/236.html",
+        "language": "Chinese",
+        "published": "2026-09-30"
+      },
+      "image": {
+        "src": "assets/news/agibot-music.webp",
+        "alt": "AgiBot A3 and NetEase Cloud Music partnership announcement",
+        "caption": "AgiBot’s announcement of its A3 music-platform integration.",
+        "credit": "AgiBot",
+        "creditUrl": "https://www.agibot.com.cn/article/315/detail/236.html",
+        "sourceUrl": "https://www.agibot.com.cn/file/ueditor/php/upload/image/20260930/1790740133290397.png",
+        "width": 563,
+        "height": 1000,
+        "fit": "contain"
+      }
     },
     {
       "id": "agibot-chimelong",
@@ -45,8 +77,24 @@
         "The announcement also marks the delivery of AgiBot’s 20,000th robot, an A3 Ultra, to Chimelong. The partners launched a joint tourism-and-robotics research institute and announced a 5G-A robotics application with China Mobile.",
         "These are company-reported deployment figures. The announcement does not provide an independent assessment of reliability, operating cost, or how much human supervision each application requires."
       ],
-      "source": {"name": "AgiBot", "type": "Company announcement", "url": "https://www.agibot.com.cn/article/315/detail/231.html", "language": "Chinese", "published": "2026-09-28"},
-      "visual": "park"
+      "source": {
+        "name": "AgiBot",
+        "type": "Company announcement",
+        "url": "https://www.agibot.com.cn/article/315/detail/231.html",
+        "language": "Chinese",
+        "published": "2026-09-28"
+      },
+      "image": {
+        "src": "assets/news/agibot-chimelong.webp",
+        "alt": "Humanoid robots and performers at Chimelong Spaceship park",
+        "caption": "Robots and human performers at Chimelong Spaceship park.",
+        "credit": "AgiBot",
+        "creditUrl": "https://www.agibot.com.cn/article/315/detail/231.html",
+        "sourceUrl": "https://www.agibot.com.cn/file/ueditor/php/upload/image/20260928/1790568026558099.png",
+        "width": 1080,
+        "height": 720,
+        "fit": "cover"
+      }
     },
     {
       "id": "unitree-unifolm",
@@ -60,8 +108,24 @@
         "Unitree’s Chinese-language project README lists the September 28 release of UnifoLM-WLA-1.0-Base and fine-tuning code. It follows September releases of perception-model weights and code for training action experts.",
         "Unitree describes UnifoLM-WLA-1.0 as a six-billion-parameter humanoid foundation model trained using approximately 2,500 hours of real-robot data, with a single model covering 64 tabletop and whole-body manipulation tasks. These task and training figures are the company’s reported results, rather than independent benchmarks reproduced by SuperRobots."
       ],
-      "source": {"name": "Unitree · Chinese project README", "type": "Primary technical source", "url": "https://github.com/unitreerobotics/unifolm-wla/blob/main/README_zh.md", "language": "Chinese", "published": "2026-09-28"},
-      "visual": "ai"
+      "source": {
+        "name": "Unitree · Chinese project README",
+        "type": "Primary technical source",
+        "url": "https://github.com/unitreerobotics/unifolm-wla/blob/main/README_zh.md",
+        "language": "Chinese",
+        "published": "2026-09-28"
+      },
+      "image": {
+        "src": "assets/news/unitree-unifolm.webp",
+        "alt": "Unitree UnifoLM-WLA project cover showing humanoid manipulation demonstrations",
+        "caption": "Project cover for Unitree’s UnifoLM-WLA model.",
+        "credit": "Unitree · UnifoLM-WLA (Apache-2.0)",
+        "creditUrl": "https://github.com/unitreerobotics/unifolm-wla/blob/main/README_zh.md",
+        "sourceUrl": "https://raw.githubusercontent.com/unitreerobotics/unifolm-wla/main/assets/unifolm-wla-zh-cover.png",
+        "width": 1200,
+        "height": 675,
+        "fit": "contain"
+      }
     },
     {
       "id": "limx-tennis",
@@ -75,8 +139,24 @@
         "LimX Dynamics says the TENNIIX ULTRA MAX tennis-training robot appeared at the Billie Jean King Cup finals in Shenzhen and interacted on court with professional player Wang Qiang. The system combines Enhance’s TENNIIX PRO AI tennis technology with LimX’s TRON 2 wheeled-leg mobile platform.",
         "The company describes ball tracking, changes in position, and adaptive ball delivery during the demonstration. Its proposed applications include clubs and youth coaching. The announcement documents a demonstration, rather than a quantified comparison with human training partners or evidence of broad commercial adoption."
       ],
-      "source": {"name": "LimX Dynamics", "type": "Company announcement", "url": "https://www.limxdynamics.com/zh/news/BK000125", "language": "Chinese", "published": "2026-09-23"},
-      "visual": "tennis"
+      "source": {
+        "name": "LimX Dynamics",
+        "type": "Company announcement",
+        "url": "https://www.limxdynamics.com/zh/news/BK000125",
+        "language": "Chinese",
+        "published": "2026-09-23"
+      },
+      "image": {
+        "src": "assets/news/limx-tennis.webp",
+        "alt": "Wang Qiang and the TENNIIX tennis robot on opposite sides of the court",
+        "caption": "TENNIIX and Wang Qiang on court in Shenzhen.",
+        "credit": "LimX Dynamics",
+        "creditUrl": "https://www.limxdynamics.com/zh/news/BK000125",
+        "sourceUrl": "https://oss.limxdynamics.com/uploads/material/%E9%BB%98%E8%AE%A4/brand/pic/%E5%85%B7%E8%BA%AB%E7%BD%91%E7%90%83%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%8E%E7%8E%8B%E8%94%B7%E7%9B%B8%E6%8C%81.jpg",
+        "width": 1200,
+        "height": 800,
+        "fit": "cover"
+      }
     },
     {
       "id": "unitree-g1-plus",
@@ -90,9 +170,28 @@
         "Shangguan News, republished by Sina on September 22, reports that Unitree announced the G1+ on September 14. Unitree’s Chinese product page lists a two-degree-of-freedom neck, upgraded motors, stereo and wide-angle cameras, head touch sensing, external power support, and a six-microphone array.",
         "The manufacturer lists the standard model at RMB 95,000 including tax. It states that specifications vary with configuration and usage, and that some demonstrated functions are still under development. The upgrades describe hardware and interaction capabilities, rather than a guarantee of general-purpose autonomy."
       ],
-      "source": {"name": "Shangguan News / Sina", "type": "Chinese news report", "url": "https://finance.sina.com.cn/jjxw/2026-09-22/doc-inistewv6764719.shtml", "language": "Chinese", "published": "2026-09-22"},
-      "additionalSource": {"name": "Unitree · G1+ specifications", "url": "https://www.unitree.com/cn/G1plus/"},
-      "visual": "humanoid"
+      "source": {
+        "name": "Shangguan News / Sina",
+        "type": "Chinese news report",
+        "url": "https://finance.sina.com.cn/jjxw/2026-09-22/doc-inistewv6764719.shtml",
+        "language": "Chinese",
+        "published": "2026-09-22"
+      },
+      "additionalSource": {
+        "name": "Unitree · G1+ specifications",
+        "url": "https://www.unitree.com/cn/G1plus/"
+      },
+      "image": {
+        "src": "assets/news/unitree-g1-plus.webp",
+        "alt": "Unitree G1+ humanoid robot product image",
+        "caption": "The G1+ humanoid in Unitree’s official product imagery.",
+        "credit": "Unitree",
+        "creditUrl": "https://www.unitree.com/cn/G1plus/",
+        "sourceUrl": "https://www.unitree.com/images/1c07b00b22eb40448af5736919891c77_1454x1902.png",
+        "width": 764,
+        "height": 1000,
+        "fit": "contain"
+      }
     },
     {
       "id": "d-robotics-funding",
@@ -106,8 +205,24 @@
         "Shenzhen News reports that D-Robotics announced a US$400 million Series C round on September 17, led by Mirae Asset with participation from Meituan and other investors. The company plans to expand its Sunrise chip portfolio and build software covering data collection, model training, simulation, and inference deployment.",
         "The report says cumulative Sunrise chip shipments exceeded eight million. That figure concerns chips across the company’s product portfolio; it is not a count of humanoid robots. The funding supports the infrastructure used by robot developers, rather than a newly announced robot model."
       ],
-      "source": {"name": "Shenzhen News", "type": "Chinese news report", "url": "https://www.sznews.com/news/content/2026-09/17/content_32173727.htm", "language": "Chinese", "published": "2026-09-17"},
-      "visual": "chip"
+      "source": {
+        "name": "Shenzhen News",
+        "type": "Chinese news report",
+        "url": "https://www.sznews.com/news/content/2026-09/17/content_32173727.htm",
+        "language": "Chinese",
+        "published": "2026-09-17"
+      },
+      "image": {
+        "src": "assets/news/d-robotics-funding.webp",
+        "alt": "D-Robotics Sunrise S600 chip graphic featuring robots from its developer ecosystem",
+        "caption": "D-Robotics’ Sunrise S600 chip and robot developer ecosystem.",
+        "credit": "D-Robotics / Shenzhen News",
+        "creditUrl": "https://www.sznews.com/news/content/2026-09/17/content_32173727.htm",
+        "sourceUrl": "https://news.sznews.com/pic/2026-09/17/32173727_78b196f9-6db7-4f18-b8bb-5c5f14a27f88.png",
+        "width": 1200,
+        "height": 446,
+        "fit": "contain"
+      }
     }
   ]
 }

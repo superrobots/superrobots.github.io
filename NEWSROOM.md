@@ -11,7 +11,12 @@ application, package installation, or a runtime backend.
 2. Edit `content/robotics-news.json`: set the edition date, select a featured
    story, and write concise English summaries with source links and source dates.
 3. Keep company claims attributed. Distinguish announcements, demonstrations,
-   released features, and future plans. Do not copy full articles or source images.
+   released features, and future plans. Do not copy full articles.
+   Each story must have a relevant local image in `assets/news/`, descriptive
+   English alt text, a caption, and linked credit in its `image` metadata.
+   Keep the original image URL and any applicable license notices. Optimize
+   images as WebP; use `fit: "contain"` for posters or diagrams to avoid cropping
+   text. The build rejects stories with missing images or incomplete metadata.
 4. Run `node scripts/build-news.cjs` to regenerate the homepage, individual
    English briefs in `news/`, `news-feed.xml`, and the sitemap. Commit the source
    content and generated pages together.
