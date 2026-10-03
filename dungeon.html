@@ -40,7 +40,7 @@
             padding: 0;
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8faf7 0%, #eef3f6 100%);
-            color: #172b3a;
+            color: #202824;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -68,7 +68,7 @@
         }
 
         .back-link {
-            color: #526474;
+            color: #626b64;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s;
@@ -76,7 +76,7 @@
         }
 
         .back-link:hover {
-            color: #172b3a;
+            color: #202824;
         }
 
         .layout-container {
@@ -217,14 +217,14 @@
             flex-direction: column;
             gap: 1rem;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            color: #172b3a;
+            color: #202824;
             z-index: 101;
             transition: opacity 0.3s, transform 0.3s;
         }
         
         #info-icon { font-size: 4rem; text-align: center; margin-bottom: -10px; }
-        #info-title { margin: 0; font-size: 1.5rem; color: #245cce; text-align: center;}
-        #info-text { font-size: 1rem; line-height: 1.5; color: #526474; text-align: center; margin: 0;}
+        #info-title { margin: 0; font-size: 1.5rem; color: #b3422d; text-align: center;}
+        #info-text { font-size: 1rem; line-height: 1.5; color: #626b64; text-align: center; margin: 0;}
         #info-play-btn {
             background: linear-gradient(90deg, #2563eb, #3b82f6);
             color: white; border: none; padding: 1rem; border-radius: 8px;
@@ -232,7 +232,7 @@
             margin-top: 1rem; transition: filter 0.2s;
         }
         #info-play-btn:hover { filter: brightness(1.2); }
-        #info-play-btn:disabled { background: #475569; cursor: not-allowed; color: #526474; filter: none; }
+        #info-play-btn:disabled { background: #475569; cursor: not-allowed; color: #626b64; filter: none; }
 
         /* Health HUD */
         #health-hud {
@@ -290,7 +290,7 @@
         .hero-avatar {
             font-size: 3rem;
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(37, 99, 235, 0.2));
-            border: 2px solid #245cce;
+            border: 2px solid #b3422d;
             border-radius: 12px;
             padding: 10px;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
@@ -305,7 +305,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        .stat-label { color: #526474; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; width: 35px;}
+        .stat-label { color: #626b64; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; width: 35px;}
         .equipment-slots {
             display: flex;
             gap: 0.5rem;
@@ -355,14 +355,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #245cce;
+            color: #b3422d;
             font-size: 2rem;
             font-weight: bold;
         }
         
         .spinner {
             border: 8px solid rgba(255,255,255,0.1);
-            border-top: 8px solid #245cce;
+            border-top: 8px solid #b3422d;
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -399,7 +399,7 @@
         <div style="background:#1e293b; padding:2rem; border-radius:12px; border: 2px solid #ef4444; color:white; text-align:center; box-shadow: 0 10px 40px rgba(239,68,68,0.3); max-width: 600px; width: 90%;">
             <h2 style="margin-top:0; color:#ef4444;">🎉 You Conquered the Dungeon! 🎉</h2>
             <p>Enter your name for your certificate of completion:</p>
-            <input type="text" id="cert-name" placeholder="Your Name" style="padding:0.8rem; font-size:1.1rem; width:80%; text-align:center; border-radius:6px; border:1px solid #94a3b8; background:#0f172a; color:white; margin-bottom:1rem;">
+            <input type="text" id="cert-name" placeholder="Your Name" style="padding:0.8rem; font-size:1.1rem; width:80%; text-align:center; border-radius:6px; border:1px solid #626b64; background:#0f172a; color:white; margin-bottom:1rem;">
             <div style="margin-bottom: 1rem;">
                 <canvas id="cert-canvas" width="800" height="600" style="width:100%; border-radius:8px; display:none;"></canvas>
             </div>
@@ -409,20 +409,8 @@
             </div>
         </div>
     </div>
-    <header>
-        <h1>Cyber Dungeon</h1>
-        <div style="display:flex; gap:15px; align-items:center;">
-            <button onclick="showCampaignMap()" style="background:#2563eb; color:white; border:none; padding:8px 16px; border-radius:4px; font-weight:bold; cursor:pointer;">🗺️ Game Map</button>
-            <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 20px;">
-                <button onclick="AudioEngine.toggleMusic()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem; padding: 0;">🎵</button>
-                <span style="font-size: 0.8rem;">Vol:</span>
-                <input type="range" min="0" max="1" step="0.1" value="0.5" onchange="AudioEngine.setVolume(this.value)" style="width: 60px;">
-            </div>
-            <a href="index.html" class="back-link">Home</a>
-            <a href="game.html" style="background:#22c55e; color:white; padding:8px 16px; border-radius:4px; text-decoration:none; font-weight:bold; border: 1px solid #4ade80;">Block Game</a>
-            <a href="team.html" class="back-link">Team</a>
-        </div>
-    </header>
+    <header class="masthead site-header"><div class="masthead-inner"><a class="brand" href="index.html" aria-label="SuperRobots home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 7V3M3 12H5M19 12H21M9 15H15"/><circle cx="9" cy="11" r=".8" fill="currentColor"/><circle cx="15" cy="11" r=".8" fill="currentColor"/></svg></span>SuperRobots</a><nav aria-label="Main navigation"><a href="index.html">News</a><a href="learn.html" aria-current="page">Learn &amp; play</a><a href="tutorials.html">Tutorials</a><span class="nav-divider" aria-hidden="true"></span><a href="team.html">Our team ↗</a></nav></div></header>
+<div class="workspace-toolbar"><h1>Cyber Dungeon</h1><div class="workspace-actions"><button type="button" onclick="showCampaignMap()">Game map</button><div class="audio-controls"><button type="button" aria-label="Toggle background music" onclick="AudioEngine.toggleMusic()">Music</button><label for="music-volume">Volume</label><input id="music-volume" aria-label="Music volume" type="range" min="0" max="1" step="0.1" value="0.5" onchange="AudioEngine.setVolume(this.value)"></div><a href="game.html">Block Game →</a><a href="simulator.html">3D Simulator ↗</a></div></div><!-- workspace-toolbar -->
 
     <div class="layout-container">
         <!-- Text Editor -->
@@ -696,7 +684,7 @@
                 <div class="hero-status">
                     <div class="hero-avatar" title="Super Robot">🤖</div>
                     <div class="hero-stats">
-                        <div style="font-weight: 800; font-size: 1.2rem; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px;">Super Robot</div>
+                        <div style="font-weight: 800; font-size: 1.2rem; color: #b3422d; text-transform: uppercase; letter-spacing: 1px;">Super Robot</div>
                         <div class="stat-row">
                             <span class="stat-label">HP</span>
                             <div style="width: 150px; background: #475569; height: 10px; border-radius: 5px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);">
@@ -715,7 +703,7 @@
                     </div>
                 </div>
                 <div class="enemy-roster">
-                    <div style="width: 100%; text-align: right; font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">Active Threats</div>
+                    <div style="width: 100%; text-align: right; font-size: 0.8rem; color: #626b64; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">Active Threats</div>
                     ${enemiesHtml || '<span style="color: #4ade80; font-weight: bold; font-size: 1.1rem; padding: 10px;">Sector Clear! 🏁</span>'}
                 </div>
             `;

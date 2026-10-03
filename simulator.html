@@ -37,10 +37,10 @@
         :root {
             --bg-dark: #f8faf7;
             --bg-light: #eef3f6;
-            --text-main: #172b3a;
-            --text-muted: #526474;
-            --accent-blue: #245cce;
-            --accent-purple: #7042bd;
+            --text-main: #202824;
+            --text-muted: #626b64;
+            --accent-blue: #b3422d;
+            --accent-purple: #b3422d;
             --accent-green: #10b981;
             --glass-bg: #ffffff;
             --glass-border: rgba(255, 255, 255, 0.1);
@@ -149,7 +149,7 @@
             font-weight: 900;
             margin: 0 0 1rem 0;
             line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #526474 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #626b64 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -216,7 +216,7 @@
         }
 
         .feature-item p {
-            color: #526474;
+            color: #626b64;
             margin: 0;
             line-height: 1.5;
         }
@@ -271,16 +271,7 @@
     <div class="bg-orb orb-1"></div>
     <div class="bg-orb orb-2"></div>
 
-    <header>
-        <a href="index.html">
-            <h1 class="logo-text">SuperRobots</h1>
-        </a>
-        <div class="nav-links">
-            <a href="tutorials.html" class="nav-link">Tutorials</a>
-            <a href="game.html" class="nav-link">Blocks Game</a>
-            <a href="dungeon.html" class="nav-link">Cyber Dungeon</a>
-        </div>
-    </header>
+    <header class="masthead site-header"><div class="masthead-inner"><a class="brand" href="index.html" aria-label="SuperRobots home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 7V3M3 12H5M19 12H21M9 15H15"/><circle cx="9" cy="11" r=".8" fill="currentColor"/><circle cx="15" cy="11" r=".8" fill="currentColor"/></svg></span>SuperRobots</a><nav aria-label="Main navigation"><a href="index.html">News</a><a href="learn.html" aria-current="page">Learn &amp; play</a><a href="tutorials.html">Tutorials</a><span class="nav-divider" aria-hidden="true"></span><a href="team.html">Our team ↗</a></nav></div></header>
 
     <main>
         <div class="hero-section">
@@ -290,8 +281,8 @@
 
         <div class="simulator-content">
             <div class="sim-card">
-                <h2 style="font-family: 'Outfit', sans-serif; font-size: 2.5rem; margin-top: 0; text-align: center;">Master Real Robotics</h2>
-                <p style="text-align: center; color: #cbd5e1; font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Our lightweight, C++ and Raylib-powered simulator is designed to give you a true-to-life coding experience without the hardware hassle. Perfect for FLL teams and aspiring engineers.</p>
+                <h2 style="font-family: var(--font-editorial); font-weight: 400; font-size: 2.5rem; margin-top: 0; text-align: center;">Master Real Robotics</h2>
+                <p style="text-align: center; color: var(--muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Our lightweight, C++ and Raylib-powered simulator is designed to give you a true-to-life coding experience without the hardware hassle. Perfect for FLL teams and aspiring engineers.</p>
                 
                 <div class="features-grid">
                     <div class="feature-item">

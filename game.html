@@ -55,7 +55,7 @@
             padding: 0;
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #f8faf7 0%, #eef3f6 100%);
-            color: #172b3a;
+            color: #202824;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -77,20 +77,20 @@
             margin: 0;
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(to right, #245cce, #7042bd);
+            background: linear-gradient(to right, #b3422d, #b3422d);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .back-link {
-            color: #526474;
+            color: #626b64;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s;
         }
 
         .back-link:hover {
-            color: #172b3a;
+            color: #202824;
         }
 
         .layout-container {
@@ -137,7 +137,7 @@
         .block-btn {
             background: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #172b3a;
+            color: #202824;
             padding: 0.8rem;
             border-radius: 4px;
             font-weight: 600;
@@ -225,7 +225,7 @@
 
         .code-item.drag-over {
             filter: brightness(1.3);
-            border-top: 3px solid #172b3a;
+            border-top: 3px solid #202824;
             padding-top: calc(0.6rem - 3px);
             transform: translateY(2px);
             transition: all 0.2s;
@@ -280,7 +280,7 @@
             flex: 1;
             background: #ffffff;
             border: 1px solid rgba(255,255,255,0.2);
-            color: #526474;
+            color: #626b64;
             padding: 1rem;
             border-radius: 4px;
             font-weight: bold;
@@ -310,7 +310,7 @@
         }
 
         .canvas-container {
-            background: #526474;
+            background: #626b64;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             overflow: hidden;
@@ -386,9 +386,9 @@
 <body>
     <!-- Custom Prompt Modal -->
     <div id="custom-prompt" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999; justify-content:center; align-items:center;">
-        <div style="background:#1e293b; padding:2rem; border-radius:12px; border: 1px solid #38bdf8; color:white; text-align:center; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        <div style="background:#1e293b; padding:2rem; border-radius:12px; border: 1px solid #b3422d; color:white; text-align:center; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
             <h3 style="margin-top:0;">How many times to repeat?</h3>
-            <input type="number" id="repeat-input" value="3" min="1" max="99" style="padding:0.5rem; font-size:1.2rem; width:100px; text-align:center; border-radius:6px; border:1px solid #94a3b8; background:#0f172a; color:white; margin-bottom:1rem;">
+            <input type="number" id="repeat-input" value="3" min="1" max="99" style="padding:0.5rem; font-size:1.2rem; width:100px; text-align:center; border-radius:6px; border:1px solid #626b64; background:#0f172a; color:white; margin-bottom:1rem;">
             <div style="display:flex; gap:1rem; justify-content:center;">
                 <button onclick="submitPrompt()" style="background:#22c55e; color:white; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">OK</button>
                 <button onclick="cancelPrompt()" style="background:#ef4444; color:white; border:none; padding:0.6rem 1.2rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Cancel</button>
@@ -397,10 +397,10 @@
     </div>
     <!-- Certificate Modal -->
     <div id="cert-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:1000; justify-content:center; align-items:center;">
-        <div style="background:#1e293b; padding:2rem; border-radius:12px; border: 2px solid #38bdf8; color:white; text-align:center; box-shadow: 0 10px 40px rgba(56,189,248,0.3); max-width: 600px; width: 90%;">
-            <h2 style="margin-top:0; color:#38bdf8;">🎉 You Beat All Levels! 🎉</h2>
+        <div style="background:#1e293b; padding:2rem; border-radius:12px; border: 2px solid #b3422d; color:white; text-align:center; box-shadow: 0 10px 40px rgba(56,189,248,0.3); max-width: 600px; width: 90%;">
+            <h2 style="margin-top:0; color:#b3422d;">🎉 You Beat All Levels! 🎉</h2>
             <p>Enter your name for your certificate of completion:</p>
-            <input type="text" id="cert-name" placeholder="Your Name" style="padding:0.8rem; font-size:1.1rem; width:80%; text-align:center; border-radius:6px; border:1px solid #94a3b8; background:#0f172a; color:white; margin-bottom:1rem;">
+            <input type="text" id="cert-name" placeholder="Your Name" style="padding:0.8rem; font-size:1.1rem; width:80%; text-align:center; border-radius:6px; border:1px solid #626b64; background:#0f172a; color:white; margin-bottom:1rem;">
             <div style="margin-bottom: 1rem;">
                 <canvas id="cert-canvas" width="800" height="600" style="width:100%; border-radius:8px; display:none;"></canvas>
             </div>
@@ -410,19 +410,8 @@
             </div>
         </div>
     </div>
-    <header>
-        <h1>Super Robots Game</h1>
-        <div style="display:flex; gap:15px; align-items:center;">
-            <div style="display: flex; align-items: center; gap: 8px; background: rgba(0,0,0,0.5); padding: 4px 10px; border-radius: 20px;">
-                <button onclick="AudioEngine.toggleMusic()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem; padding: 0;">🎵</button>
-                <span style="font-size: 0.8rem;">Vol:</span>
-                <input type="range" min="0" max="1" step="0.1" value="0.5" onchange="AudioEngine.setVolume(this.value)" style="width: 60px;">
-            </div>
-            <a href="index.html" class="back-link">Home</a>
-            <a href="dungeon.html" style="background:#ef4444; color:white; padding:8px 16px; border-radius:4px; text-decoration:none; font-weight:bold; border: 1px solid #fca5a5;">Cyber Dungeon</a>
-            <a href="team.html" class="back-link">Team</a>
-        </div>
-    </header>
+    <header class="masthead site-header"><div class="masthead-inner"><a class="brand" href="index.html" aria-label="SuperRobots home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 7V3M3 12H5M19 12H21M9 15H15"/><circle cx="9" cy="11" r=".8" fill="currentColor"/><circle cx="15" cy="11" r=".8" fill="currentColor"/></svg></span>SuperRobots</a><nav aria-label="Main navigation"><a href="index.html">News</a><a href="learn.html" aria-current="page">Learn &amp; play</a><a href="tutorials.html">Tutorials</a><span class="nav-divider" aria-hidden="true"></span><a href="team.html">Our team ↗</a></nav></div></header>
+<div class="workspace-toolbar"><h1>SuperRobots Block Game</h1><div class="workspace-actions"><div class="audio-controls"><button type="button" aria-label="Toggle background music" onclick="AudioEngine.toggleMusic()">Music</button><label for="music-volume">Volume</label><input id="music-volume" aria-label="Music volume" type="range" min="0" max="1" step="0.1" value="0.5" onchange="AudioEngine.setVolume(this.value)"></div><a href="dungeon.html">Cyber Dungeon →</a><a href="simulator.html">3D Simulator ↗</a></div></div><!-- workspace-toolbar -->
 
     <div class="layout-container">
         
@@ -438,7 +427,7 @@
                 </div>
             </div>
             
-            <div id="level-intro-text" style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid #38bdf8; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.85rem; color: #bae6fd; margin-bottom: 1rem; line-height: 1.4;">
+            <div id="level-intro-text" style="background: rgba(56, 189, 248, 0.1); border-left: 4px solid #b3422d; padding: 0.6rem 0.8rem; border-radius: 4px; font-size: 0.85rem; color: #bae6fd; margin-bottom: 1rem; line-height: 1.4;">
                 Welcome! Reach the goal flag 🏁 to win.
             </div>
 
@@ -446,7 +435,7 @@
                 <!-- Commands will be dynamically generated here -->
             </div>
 
-            <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #94a3b8;">Your Code Sequence:</h3>
+            <h3 style="margin: 0 0 10px 0; font-size: 1rem; color: #626b64;">Your Code Sequence:</h3>
             <div class="code-sequence-container" id="code-list">
                 <!-- Commands will be injected here -->
             </div>
@@ -1646,7 +1635,7 @@
             const actions = document.getElementById('cert-actions');
             actions.innerHTML = `
                 <a download="${name.replace(/ /g,'_')}_Certificate.png" href="${c.toDataURL()}" style="background:#22c55e; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem; text-decoration:none;">Download PNG</a>
-                <button onclick="shareCertificate()" style="background:#38bdf8; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Share</button>
+                <button onclick="shareCertificate()" style="background:#b3422d; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Share</button>
                 <button onclick="document.getElementById('cert-modal').style.display='none'" style="background:#ef4444; color:white; border:none; padding:0.8rem 1.5rem; border-radius:6px; font-weight:bold; cursor:pointer; font-size:1rem;">Close</button>
             `;
         }
