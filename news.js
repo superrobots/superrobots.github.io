@@ -5,7 +5,7 @@
     const count = document.getElementById('results-count');
     const empty = document.getElementById('empty-results');
     if (!tools || !search || !count || !empty) return;
-    const cards = [...document.querySelectorAll('.news-card')];
+    const cards = [...document.querySelectorAll('#latest .news-card[data-category][data-search]')];
     const buttons = [...tools.querySelectorAll('[data-category]')];
     let category = 'All';
     function filter() {

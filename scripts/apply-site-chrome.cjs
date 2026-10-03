@@ -4,7 +4,7 @@ const path = require('node:path');
 const header = require('./site-header.cjs');
 const root = path.resolve(__dirname,'..');
 for(const name of fs.readdirSync(root).filter(name=>name.endsWith('.html')&&name!=='index.html')) {
-    const active = name==='team.html'?'Our team':name==='tutorials.html'||name.startsWith('article-')?'Tutorials':'Learn & play';
+    const active = name==='team.html'?'Our team':name==='tutorials.html'||name.startsWith('article-')?'Tutorials':'Games';
     let html = fs.readFileSync(path.join(root,name),'utf8');
     html = html.replace(/<header(?:\s[^>]*)?>[\s\S]*?<\/header>/,header('',active));
     html = html.replace(/<div class="workspace-toolbar">[\s\S]*?<\/div><!-- workspace-toolbar -->\s*/, '');
