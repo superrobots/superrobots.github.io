@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Dungeon - Python Coding Game for Beginners</title>
+    <title>Cyber Dungeon - Interactive Python Coding Game for Beginners</title>
     <meta name="description" content="Cyber Dungeon is an interactive coding game where players write real Python scripts to navigate mazes, defeat enemies, and learn algorithms. Perfect for STEM education.">
     <meta name="keywords" content="Python coding game, learn Python, text-based coding, algorithms, STEM education, kids programming, computer science, SuperRobots, FLL robotics">
     
@@ -39,8 +39,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #111827 0%, #030712 100%);
-            color: #f8fafc;
+            background: linear-gradient(135deg, #f8faf7 0%, #eef3f6 100%);
+            color: #172b3a;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -49,7 +49,7 @@
         }
 
         header {
-            background: rgba(17, 24, 39, 0.8);
+            background: #ffffff;
             backdrop-filter: blur(10px);
             padding: 1rem 2rem;
             display: flex;
@@ -68,7 +68,7 @@
         }
 
         .back-link {
-            color: #94a3b8;
+            color: #526474;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s;
@@ -76,7 +76,7 @@
         }
 
         .back-link:hover {
-            color: #f8fafc;
+            color: #172b3a;
         }
 
         .layout-container {
@@ -145,7 +145,7 @@
         }
 
         .canvas-container {
-            background: #1e293b;
+            background: #eef3f6;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             overflow: hidden;
@@ -175,7 +175,7 @@
             position: absolute;
             width: 60px; height: 60px;
             border-radius: 50%;
-            background: rgba(15, 23, 42, 0.8);
+            background: #ffffff;
             border: 3px solid #4b5563;
             display: flex;
             align-items: center;
@@ -208,7 +208,7 @@
             position: absolute;
             right: 40px; top: 50%; transform: translateY(-50%);
             width: 350px;
-            background: rgba(15, 23, 42, 0.85);
+            background: #ffffff;
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
@@ -217,14 +217,14 @@
             flex-direction: column;
             gap: 1rem;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            color: #f8fafc;
+            color: #172b3a;
             z-index: 101;
             transition: opacity 0.3s, transform 0.3s;
         }
         
         #info-icon { font-size: 4rem; text-align: center; margin-bottom: -10px; }
-        #info-title { margin: 0; font-size: 1.5rem; color: #38bdf8; text-align: center;}
-        #info-text { font-size: 1rem; line-height: 1.5; color: #cbd5e1; text-align: center; margin: 0;}
+        #info-title { margin: 0; font-size: 1.5rem; color: #245cce; text-align: center;}
+        #info-text { font-size: 1rem; line-height: 1.5; color: #526474; text-align: center; margin: 0;}
         #info-play-btn {
             background: linear-gradient(90deg, #2563eb, #3b82f6);
             color: white; border: none; padding: 1rem; border-radius: 8px;
@@ -232,7 +232,7 @@
             margin-top: 1rem; transition: filter 0.2s;
         }
         #info-play-btn:hover { filter: brightness(1.2); }
-        #info-play-btn:disabled { background: #475569; cursor: not-allowed; color: #94a3b8; filter: none; }
+        #info-play-btn:disabled { background: #475569; cursor: not-allowed; color: #526474; filter: none; }
 
         /* Health HUD */
         #health-hud {
@@ -273,7 +273,7 @@
         #top-status-bar {
             width: 100%;
             padding: 1rem 2rem;
-            background: rgba(15, 23, 42, 0.8);
+            background: #ffffff;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             display: flex;
             justify-content: space-between;
@@ -290,7 +290,7 @@
         .hero-avatar {
             font-size: 3rem;
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(37, 99, 235, 0.2));
-            border: 2px solid #38bdf8;
+            border: 2px solid #245cce;
             border-radius: 12px;
             padding: 10px;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
@@ -305,7 +305,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        .stat-label { color: #94a3b8; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; width: 35px;}
+        .stat-label { color: #526474; font-size: 0.8rem; text-transform: uppercase; font-weight: bold; width: 35px;}
         .equipment-slots {
             display: flex;
             gap: 0.5rem;
@@ -355,14 +355,14 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #38bdf8;
+            color: #245cce;
             font-size: 2rem;
             font-weight: bold;
         }
         
         .spinner {
             border: 8px solid rgba(255,255,255,0.1);
-            border-top: 8px solid #38bdf8;
+            border-top: 8px solid #245cce;
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -385,77 +385,9 @@
         }
         #tips-panel ul { margin: 0; padding-left: 20px; }
 
-        /* Newsletter Section */
-        .newsletter-section {
-            width: 100%;
-            margin-top: 4rem;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 3rem 2rem;
-            text-align: center;
-            box-sizing: border-box;
-        }
 
-        .newsletter-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            color: #f8fafc;
-            margin: 0 0 1rem 0;
-            font-weight: 800;
-        }
-
-        .newsletter-desc {
-            color: #94a3b8;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .newsletter-input {
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 350px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .newsletter-input:focus {
-            border-color: #38bdf8;
-        }
-
-        .newsletter-btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
-        }
-
-        @media (max-width: 600px) {
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
     </style>
+    <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <div id="loading-overlay">
@@ -553,44 +485,8 @@
         </div>
     </div>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <h2 class="newsletter-title">Join the SuperRobots Community</h2>
-        <p class="newsletter-desc">Get notified about new games, tutorials, and early access to features.</p>
-        <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-            <script>
-                document.querySelectorAll('.newsletter-form').forEach(form => {
-                    // Only attach once
-                    if (form.dataset.attached) return;
-                    form.dataset.attached = true;
-                    form.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        const btn = form.querySelector('.newsletter-btn');
-                        const email = form.querySelector('.newsletter-input').value;
-                        const originalText = btn.textContent;
-                        btn.textContent = 'Subscribing...';
-                        btn.disabled = true;
-
-                        try {
-                            await fetch('https://script.google.com/macros/s/AKfycbwA3dDW7vIC6MIGxneJtxcUkSPMj0XtXOLiR5dDqmBLxdaZg23_BdaCAM369ERcpoToZg/exec', {
-                                method: 'POST',
-                                mode: 'no-cors',
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                body: new URLSearchParams({ 'email': email })
-                            });
-                            form.innerHTML = '<p style="color: #4ade80; font-weight: bold; margin: 0; padding: 1rem; font-size: 1.2rem;">Thanks for subscribing! Welcome to the SuperRobots community.</p>';
-                        } catch (error) {
-                            btn.textContent = originalText;
-                            btn.disabled = false;
-                            alert('Oops! Something went wrong. Please check your connection and try again.');
-                        }
-                    });
-                });
-            </script>
-    </section>
+    <div id="feedback-container"></div>
+    <script src="feedback.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
     <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
@@ -599,7 +495,7 @@
     <script src="engine.js"></script>
     <script>
         const editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
+        editor.setTheme("ace/theme/chrome");
         editor.session.setMode("ace/mode/python");
         editor.setOptions({ fontSize: "14px", showPrintMargin: false });
 

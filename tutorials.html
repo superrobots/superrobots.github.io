@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperRobots Tutorials & Articles</title>
+    <title>Coding Tutorials for Kids - Learn Python & Block Logic | SuperRobots</title>
     <meta name="description" content="Read tutorials, articles, and guides about coding for kids, transitioning from block coding to Python, and FLL robotics.">
     
     <!-- Open Graph / Facebook -->
@@ -36,13 +36,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
 
         :root {
-            --bg-dark: #0f172a;
-            --bg-light: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-blue: #38bdf8;
-            --accent-purple: #818cf8;
-            --glass-bg: rgba(30, 41, 59, 0.6);
+            --bg-dark: #f8faf7;
+            --bg-light: #eef3f6;
+            --text-main: #172b3a;
+            --text-muted: #526474;
+            --accent-blue: #245cce;
+            --accent-purple: #7042bd;
+            --glass-bg: #ffffff;
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -59,7 +59,7 @@
         }
 
         header {
-            background: rgba(15, 23, 42, 0.8);
+            background: #ffffff;
             backdrop-filter: blur(12px);
             padding: 1.2rem 2rem;
             display: flex;
@@ -126,7 +126,7 @@
             font-size: 3.5rem;
             font-weight: 900;
             margin: 0 0 1rem 0;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #526474 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -195,7 +195,7 @@
         }
 
         .read-more:hover {
-            color: #7dd3fc;
+            color: #1947a7;
         }
 
         @media (max-width: 768px) {
@@ -208,75 +208,6 @@
             }
         }
 
-        .newsletter-section {
-            width: 100%;
-            margin-top: 4rem;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .newsletter-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            color: var(--text-main);
-            margin: 0 0 1rem 0;
-        }
-
-        .newsletter-desc {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .newsletter-input {
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 350px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .newsletter-input:focus {
-            border-color: var(--accent-blue);
-        }
-
-        .newsletter-btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
-        }
-
-        @media (max-width: 600px) {
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
     </style>
 
     <!-- Structured Data for Blog/Tutorials -->
@@ -297,6 +228,7 @@
       }
     }
     </script>
+    <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <header>
@@ -395,43 +327,8 @@
             </a>
         </div>
 
-        <section class="newsletter-section">
-            <h2 class="newsletter-title">Join the SuperRobots Community</h2>
-            <p class="newsletter-desc">Get notified about new games, tutorials, and early access to features.</p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-            <script>
-                document.querySelectorAll('.newsletter-form').forEach(form => {
-                    // Only attach once
-                    if (form.dataset.attached) return;
-                    form.dataset.attached = true;
-                    form.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        const btn = form.querySelector('.newsletter-btn');
-                        const email = form.querySelector('.newsletter-input').value;
-                        const originalText = btn.textContent;
-                        btn.textContent = 'Subscribing...';
-                        btn.disabled = true;
-
-                        try {
-                            await fetch('https://script.google.com/macros/s/AKfycbwA3dDW7vIC6MIGxneJtxcUkSPMj0XtXOLiR5dDqmBLxdaZg23_BdaCAM369ERcpoToZg/exec', {
-                                method: 'POST',
-                                mode: 'no-cors',
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                body: new URLSearchParams({ 'email': email })
-                            });
-                            form.innerHTML = '<p style="color: #4ade80; font-weight: bold; margin: 0; padding: 1rem; font-size: 1.2rem;">Thanks for subscribing! Welcome to the SuperRobots community.</p>';
-                        } catch (error) {
-                            btn.textContent = originalText;
-                            btn.disabled = false;
-                            alert('Oops! Something went wrong. Please check your connection and try again.');
-                        }
-                    });
-                });
-            </script>
-        </section>
+        <div id="feedback-container"></div>
+        <script src="feedback.js"></script>
     </main>
 </body>
 </html>
