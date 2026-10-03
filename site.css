@@ -21,12 +21,13 @@ header.site-header { display: block; padding: 0; background: var(--paper); borde
 .site-header nav { display: flex; align-items: center; gap: 30px; font: 500 14px/1.6 var(--font-body); }
 .site-header nav a { color: var(--ink); text-decoration: none; }
 .site-header nav a:hover, .site-header nav [aria-current="page"] { color: var(--accent); }
+.site-header nav .nav-games { background: var(--sage); padding: 7px 13px; border-radius: 4px; font-weight: 700; }
 .site-header .nav-divider { height: 20px; width: 1px; background: var(--line); }
 .site-header a:focus-visible { outline: 3px solid var(--blue); outline-offset: 5px; }
 @media(max-width:900px) { .site-header .masthead-inner { width: calc(100% - 48px); } .site-header nav { gap: 18px; } }
 @media(max-width:650px) {
     .site-header .masthead-inner { width: calc(100% - 36px); flex-wrap: wrap; justify-content: center; gap: 14px; padding: 19px 0 15px; }
     .site-header .brand { font-size: 23px; }
-    .site-header nav { width: 100%; justify-content: center; gap: 19px; font-size: 12px; }
+    .site-header nav { width: 100%; justify-content: center; flex-wrap: wrap; gap: 10px 15px; font-size: 12px; }
     .site-header .nav-divider { display: none; }
 }

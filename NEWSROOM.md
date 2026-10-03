@@ -1,7 +1,9 @@
 # SuperRobots newsroom
 
-The homepage is a China-focused robotics news edition in English. The former
-coding homepage remains at `learn.html`. Games, tutorials, and team pages retain
+The homepage leads with robotics education, direct links to both coding games,
+and tutorials. China-focused robotics news in English supports that learning
+below the games, with an explanation of the editorial focus and a linked IFR
+perspective. The learning hub remains at `learn.html`. Games, tutorials, and team pages retain
 their existing URLs. This repository is a static site, without a React or Express
 application, package installation, or a runtime backend.
 
@@ -36,6 +38,14 @@ directories are excluded from publishing. The custom domain is in `CNAME`.
 
 The existing learning RSS feed is `feed.xml`; robotics news uses `news-feed.xml`.
 Serve the repository root with any static HTTP server for local preview.
+
+## Reference guides
+
+`scripts/build-guides.cjs` contains the reviewed reference articles and their
+related news IDs. It runs as part of `build-news.cjs`; generated pages live in
+`guides/`, with homepage cards, links from relevant briefs, and sitemap entries.
+When updating a guide, verify its primary sources and change its review date.
+Keep manufacturer specifications separate from editorial interpretation.
 
 ## Shared visual theme
 
