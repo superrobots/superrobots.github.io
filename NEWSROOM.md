@@ -17,6 +17,8 @@ application, package installation, or a runtime backend.
    Keep the original image URL and any applicable license notices. Optimize
    images as WebP; use `fit: "contain"` for posters or diagrams to avoid cropping
    text. The build rejects stories with missing images or incomplete metadata.
+   Source pictures appear on individual story pages; the homepage keeps its
+   original editorial illustration and text-only story lists.
 4. Run `node scripts/build-news.cjs` to regenerate the homepage, individual
    English briefs in `news/`, `news-feed.xml`, and the sitemap. Commit the source
    content and generated pages together.

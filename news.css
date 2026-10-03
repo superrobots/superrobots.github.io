@@ -27,13 +27,8 @@ body.news-site { margin: 0; display: block; background: var(--paper); color: var
 .intro p { color: var(--muted); max-width: 420px; margin: 0 0 6px; font-size: 16px; }
 .lead-layout { display: grid; grid-template-columns: 1.95fr 1fr; gap: 38px; padding-bottom: 44px; border-bottom: 1px solid var(--line); }
 .lead-visual { position: relative; display: block; background: var(--sage); overflow: hidden; border-radius: 4px; }
-.lead-visual img { display: block; width: 100%; height: auto; aspect-ratio: 900 / 520; object-fit: cover; }
-.lead-image-credit, .card-image-credit { font-size: 10px; line-height: 1.5; color: var(--muted); margin: 7px 0 13px; }
-.card-visual { display: block; overflow: hidden; border-radius: 4px; background: var(--sage); }
-.card-visual img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; }
+.lead-visual img { display: block; width: 100%; height: auto; aspect-ratio: 900 / 520; object-fit: contain; }
 .news-site img.image-contain { object-fit: contain; }
-.briefing-visual { display: block; background: var(--sage); border-radius: 3px; overflow: hidden; }
-.briefing-visual img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 .story-picture { margin: 28px 0 22px; }
 .story-picture > img { display: block; width: 100%; height: auto; max-height: 560px; object-fit: contain; border-radius: 4px; background: var(--sage); }
 .story-picture figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px 16px; color: var(--muted); font-size: 11px; line-height: 1.6; margin-top: 10px; }
@@ -50,7 +45,7 @@ body.news-site { margin: 0; display: block; background: var(--paper); color: var
 .briefing-heading { display: flex; align-items: center; justify-content: space-between; padding-bottom: 9px; border-bottom: 2px solid var(--ink); }
 .briefing-heading h2 { font-family: inherit; font-size: 13px; letter-spacing: 1.4px; text-transform: uppercase; margin: 0; font-weight: 600; }
 .briefing-heading span { font-size: 11px; color: var(--muted); }
-.briefing-item { padding: 23px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 94px 1fr; align-items: start; gap: 13px; }
+.briefing-item { padding: 23px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 24px 1fr; gap: 13px; }
 .briefing-number { color: #7a8479; font-family: Georgia, serif; font-size: 19px; }
 .briefing-item h3 { font-size: 17px; font-weight: 500; line-height: 1.4; margin: 7px 0 10px; letter-spacing: -.3px; }
 .briefing-note { margin: 20px 0 0; color: var(--muted); font-size: 12px; }
