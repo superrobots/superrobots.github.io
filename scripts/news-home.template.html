@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperRobots — Robotics News from China, in English</title>
+    <meta name="description" content="Discover China's robotics developments through concise English summaries of Chinese reporting and primary sources. Humanoids, embodied AI, and robots in the real world.">
+    <link rel="canonical" href="https://superrobots.org/">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="alternate" type="application/rss+xml" title="SuperRobots Robotics News" href="news-feed.xml">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://superrobots.org/">
+    <meta property="og:title" content="SuperRobots — China's robotics story, in English">
+    <meta property="og:description" content="Humanoids, embodied AI, and robots in everyday life. Selected Chinese stories, translated and summarized in English.">
+    <meta property="og:image" content="https://superrobots.org/images/robotics-news-preview.png">
+    <meta property="og:image:alt" content="An original illustration of a humanoid robot in an architectural setting">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="news.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WNCD1PG37"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5WNCD1PG37');</script>
+    <script type="application/ld+json">{{structuredData}}</script>
+    <script defer src="news.js"></script>
+</head>
+<body class="news-site">
+    <a class="skip-link" href="#main">Skip to content</a>
+    {{header}}
+    <main class="news-shell" id="main">
+        <div class="edition"><div class="edition-left"><span class="edition-dot" aria-hidden="true"></span>China focus / English edition</div><div class="edition-right">Curated <time datetime="{{editionDate}}">{{editionDisplay}}</time></div></div>
+        <section class="intro" aria-labelledby="intro-title">
+            <h1 id="intro-title">Robotics, in motion.<br><em>China, in focus.</em></h1>
+            <p>The machines. The makers. The breakthroughs.<br>Discover the stories shaping robotics, selected from Chinese sources and brought to you in English.</p>
+        </section>
+        <div class="lead-layout">
+            {{featuredStory}}
+            <aside class="briefing" aria-labelledby="briefing-title">
+                <div class="briefing-heading"><h2 id="briefing-title">The briefing</h2><span>Worth your attention</span></div>
+                {{briefingStories}}
+                <p class="briefing-note">A window into China’s robotics scene.<br>Original sources linked in every brief.</p>
+            </aside>
+        </div>
+        <section class="latest-section" id="latest" aria-labelledby="latest-title">
+            <div class="section-heading"><div><h2 id="latest-title">From the lab to real life.</h2><p>Recent releases, research, and real-world deployments.</p></div><a class="feed-link" href="news-feed.xml">RSS feed ↗</a></div>
+            <div class="news-tools" id="news-tools" hidden>
+                <div class="topic-filters" role="group" aria-label="Filter news by topic">
+                    <button class="topic-filter" type="button" data-category="All" aria-pressed="true">All stories</button>
+                    <button class="topic-filter" type="button" data-category="Humanoids" aria-pressed="false">Humanoids</button>
+                    <button class="topic-filter" type="button" data-category="Embodied AI" aria-pressed="false">Embodied AI</button>
+                    <button class="topic-filter" type="button" data-category="Real-world robots" aria-pressed="false">Real-world robots</button>
+                    <button class="topic-filter" type="button" data-category="Industry" aria-pressed="false">Industry</button>
+                </div>
+                <label class="search"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg><span class="sr-only">Search stories</span><input type="search" id="news-search" placeholder="Search stories" autocomplete="off"></label>
+            </div>
+            <div class="news-grid">{{newsCards}}</div>
+            <p class="empty-results" id="empty-results" hidden>No stories match your search. Try another topic or keyword.</p>
+            <p class="results-count" id="results-count" role="status" aria-live="polite">{{storyCount}} stories · Newest first</p>
+            <noscript><p class="results-count">All stories are shown. Enable JavaScript to search or filter by topic.</p></noscript>
+        </section>
+        <section class="field-notes" id="about" aria-labelledby="about-title">
+            <div><span class="section-eyebrow">Across the language barrier</span><h2 id="about-title">Chinese sources.<br>A clearer perspective.</h2></div>
+            <div><p>SuperRobots selects robotics stories from Chinese reporting, company announcements, and technical publications. We translate and summarize the key points in English, with dates and direct links so you can follow the story back to its source.</p><p>Company-reported capabilities are attributed to their makers. These are concise editorial briefs, not full article translations. This is a curated edition, last reviewed on <time datetime="{{editionDate}}">{{editionLong}}</time>.</p><div class="source-links"><a href="https://www.agibot.com.cn/news" target="_blank" rel="noopener noreferrer">AgiBot ↗</a><a href="https://www.unitree.com/cn/" target="_blank" rel="noopener noreferrer">Unitree ↗</a><a href="https://www.limxdynamics.com/zh/news" target="_blank" rel="noopener noreferrer">LimX Dynamics ↗</a><a href="https://www.sznews.com/" target="_blank" rel="noopener noreferrer">Shenzhen News ↗</a></div></div>
+        </section>
+        <section class="learning-strip" aria-labelledby="learning-title"><div><h2 id="learning-title">Curious about how robots think?</h2><p>Go from reading the news to building your own coding skills.</p></div><a class="learning-link" href="learn.html">Explore games & tutorials →</a></section>
+    </main>
+    {{footer}}
+</body>
+</html>

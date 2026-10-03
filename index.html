@@ -3,622 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperRobots - Free Coding Games & Python Tutorials for Kids</title>
-    <meta name="description" content="SuperRobots offers engaging programming games for all ages. Learn logic with block-based coding or master Python in our Cyber Dungeon. FLL robotics, STEM games, coding for kids, and Python tutorials.">
-    <meta name="keywords" content="coding for kids, STEM games, Python tutorials, FLL robotics, block-based coding, educational games, learn programming, robotics education, SuperRobots">
-    
-    <!-- Open Graph / Facebook / Discord -->
+    <title>SuperRobots — Robotics News from China, in English</title>
+    <meta name="description" content="Discover China's robotics developments through concise English summaries of Chinese reporting and primary sources. Humanoids, embodied AI, and robots in the real world.">
+    <link rel="canonical" href="https://superrobots.org/">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="alternate" type="application/rss+xml" title="SuperRobots Robotics News" href="news-feed.xml">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://superrobots.org/">
-    <meta property="og:title" content="SuperRobots - Learn Coding Through Games">
-    <meta property="og:description" content="Engaging programming games for all ages. Learn logic with block-based coding or master Python in our Cyber Dungeon. FLL robotics, STEM games, coding for kids, and Python tutorials.">
-    <meta property="og:image" content="https://superrobots.org/images/social-preview.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://superrobots.org/">
-    <meta property="twitter:title" content="SuperRobots - Learn Coding Through Games">
-    <meta property="twitter:description" content="Engaging programming games for all ages. Learn logic with block-based coding or master Python in our Cyber Dungeon. FLL robotics, STEM games, coding for kids, and Python tutorials.">
-    <meta property="twitter:image" content="https://superrobots.org/images/social-preview.png">
-    
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    
-    <!-- Google tag (gtag.js) -->
+    <meta property="og:title" content="SuperRobots — China's robotics story, in English">
+    <meta property="og:description" content="Humanoids, embodied AI, and robots in everyday life. Selected Chinese stories, translated and summarized in English.">
+    <meta property="og:image" content="https://superrobots.org/images/robotics-news-preview.png">
+    <meta property="og:image:alt" content="An original illustration of a humanoid robot in an architectural setting">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="news.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5WNCD1PG37"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-5WNCD1PG37');
-    </script>
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "EducationalOrganization",
-      "name": "SuperRobots",
-      "url": "https://superrobots.org/",
-      "logo": "https://superrobots.org/images/favicon.png",
-      "description": "Engaging programming games for all ages. Learn logic with block-based coding or master Python in our Cyber Dungeon.",
-      "sameAs": [
-        "https://github.com/superrobots"
-      ]
-    }
-    </script>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
-
-        :root {
-            --bg-dark: #f8faf7;
-            --bg-light: #eef3f6;
-            --text-main: #172b3a;
-            --text-muted: #526474;
-            --accent-blue: #245cce;
-            --accent-purple: #7042bd;
-            --accent-red: #ef4444;
-            --accent-green: #10b981;
-            --glass-bg: #ffffff;
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-light) 100%);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            overflow-x: hidden;
-        }
-
-        /* Abstract Background Elements */
-        .bg-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .orb-1 {
-            top: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            background: var(--accent-blue);
-        }
-
-        .orb-2 {
-            bottom: -150px;
-            right: -50px;
-            width: 500px;
-            height: 500px;
-            background: var(--accent-purple);
-        }
-
-        header {
-            background: #ffffff;
-            backdrop-filter: blur(12px);
-            padding: 1.2rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-border);
-            position: relative;
-            z-index: 10;
-        }
-
-        header h1 {
-            margin: 0;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--text-main);
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-section {
-            text-align: center;
-            margin-bottom: 4rem;
-            max-width: 800px;
-            animation: fadeInDown 0.8s ease-out forwards;
-        }
-
-        .hero-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4rem;
-            font-weight: 900;
-            margin: 0 0 1rem 0;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #526474 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .games-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .game-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        .game-card:nth-child(1) { animation-delay: 0.2s; }
-        .game-card:nth-child(2) { animation-delay: 0.4s; }
-
-        .game-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent 50%);
-            pointer-events: none;
-        }
-
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        .card-superrobots:hover {
-            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
-            border-color: rgba(56, 189, 248, 0.4);
-        }
-
-        .card-dungeon:hover {
-            box-shadow: 0 20px 40px rgba(239, 68, 68, 0.15);
-            border-color: rgba(239, 68, 68, 0.4);
-        }
-
-        .game-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: inline-block;
-        }
-
-        .game-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            margin: 0 0 1rem 0;
-            font-weight: 700;
-        }
-
-        .card-superrobots .game-title { color: var(--accent-blue); }
-        .card-dungeon .game-title { color: #fca5a5; }
-
-        .game-description {
-            color: #526474;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            flex-grow: 1;
-        }
-
-        .advisory-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 2rem 0;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .advisory-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            background: rgba(0,0,0,0.2);
-            padding: 0.6rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .advisory-icon {
-            font-size: 1.1rem;
-        }
-
-        .play-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-superrobots {
-            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
-            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
-        }
-
-        .btn-superrobots:hover {
-            background: linear-gradient(135deg, #245cce, #60a5fa);
-            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
-            transform: translateY(-2px);
-        }
-
-        .btn-dungeon {
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-        }
-
-        .btn-dungeon:hover {
-            background: linear-gradient(135deg, #ef4444, #b91c1c);
-            box-shadow: 0 6px 20px rgba(220, 38, 38, 0.5);
-            transform: translateY(-2px);
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .games-container {
-                grid-template-columns: 1fr;
-            }
-            header {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .seo-section { padding: 2rem; }
-            .seo-title { font-size: 2rem; }
-        }
-
-        .seo-section {
-            width: 100%;
-            max-width: 1000px;
-            margin-top: 4rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            box-sizing: border-box;
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            animation-delay: 0.6s;
-        }
-
-        .seo-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
-            margin: 0 0 2rem 0;
-            text-align: center;
-            background: linear-gradient(135deg, #ffffff 0%, #526474 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .seo-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .seo-block h3 {
-            font-family: 'Outfit', sans-serif;
-            color: var(--accent-blue);
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
-        }
-
-        .seo-image {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-        }
-
-        .seo-block p {
-            color: #526474;
-            line-height: 1.7;
-            font-size: 1.05rem;
-            margin: 0;
-        }
-
-        .articles-section {
-            width: 100%;
-            max-width: 1000px;
-            margin-top: 4rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0;
-            animation-delay: 0.4s;
-        }
-
-        .articles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .article-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .article-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        .article-date {
-            color: var(--accent-blue);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .article-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
-            margin: 0 0 1rem 0;
-            color: var(--text-main);
-        }
-
-        .article-excerpt {
-            color: var(--text-muted);
-            line-height: 1.6;
-            margin: 0 0 1.5rem 0;
-            flex-grow: 1;
-        }
-
-        .read-more {
-            color: var(--accent-blue);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .read-more:hover {
-            color: #1947a7;
-        }
-
-    </style>
-    <link rel="stylesheet" href="theme.css">
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-5WNCD1PG37');</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"SuperRobots — Robotics News from China, in English","url":"https://superrobots.org/","inLanguage":"en","dateModified":"2026-10-02","mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"url":"https://superrobots.org/news/guangzhou-robot-show.html","name":"Humanoid robots take the stage in Guangzhou"},{"@type":"ListItem","position":2,"url":"https://superrobots.org/news/agibot-music.html","name":"AgiBot’s A3 gets a native NetEase Cloud Music integration"},{"@type":"ListItem","position":3,"url":"https://superrobots.org/news/agibot-chimelong.html","name":"More than 300 robots join the everyday life of a theme park"},{"@type":"ListItem","position":4,"url":"https://superrobots.org/news/unitree-unifolm.html","name":"Unitree releases its humanoid base model and fine-tuning code"},{"@type":"ListItem","position":5,"url":"https://superrobots.org/news/limx-tennis.html","name":"A wheeled tennis robot meets Wang Qiang on court"},{"@type":"ListItem","position":6,"url":"https://superrobots.org/news/unitree-g1-plus.html","name":"Unitree’s G1+ adds stronger joints and richer sensing"},{"@type":"ListItem","position":7,"url":"https://superrobots.org/news/d-robotics-funding.html","name":"D-Robotics raises $400 million for robot chips and development tools"}]}}</script>
+    <script defer src="news.js"></script>
 </head>
-<body>
-    <div class="bg-orb orb-1"></div>
-    <div class="bg-orb orb-2"></div>
-
-    <header>
-        <h1>SuperRobots</h1>
-        <div class="nav-links">
-            <a href="tutorials.html" class="nav-link">Tutorials</a>
-            <a href="simulator.html" class="nav-link" style="color: var(--accent-blue);">3D Simulator</a>
-            <a href="team.html" class="nav-link">Meet the Team</a>
-        
-            <a href="https://medium.com/@zhutoulala" target="_blank" rel="noopener noreferrer" class="nav-link" aria-label="Medium" style="display: flex; align-items: center;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M2.846 6.887c.03-.295-.083-.586-.303-.784l-2.24-2.7v-.403h6.958l5.378 11.795 4.728-11.795h6.633v.403l-1.916 1.837c-.165.126-.247.333-.213.538v13.498c-.034.204.048.411.213.537l1.871 1.837v.403h-9.412v-.403l1.936-1.882c.19-.19.19-.246.19-.537v-10.91l-5.389 13.688h-.728l-6.275-13.688v9.174c-.052.385.076.774.347 1.052l2.521 3.058v.404h-7.14v-.404l2.521-3.058c.27-.279.39-6.68.39-10.643Z"/></svg>
-            </a>
-        </div>
-    </header>
-
-    <main>
-        <div class="hero-section">
-            <p class="hero-eyebrow">Small steps. Big robot adventures.</p>
-            <h2 class="hero-title">Build Your Skills.<br>Choose Your Mission.</h2>
-            <p class="hero-subtitle">From your first code blocks to real Python, learn by helping your robot solve playful challenges.</p>
-        </div>
-
-        <div class="games-container">
-            <!-- SuperRobots Game Card -->
-            <div class="game-card card-superrobots">
-                <span class="game-icon">🧩</span>
-                <h3 class="game-title">SuperRobots Game</h3>
-                <p class="game-description">
-                    Snap blocks together. Solve mazes. Discover sequences, loops, and logic as you guide your robot to the goal.
-                </p>
-                
-                <ul class="advisory-list">
-                    <li class="advisory-item">
-                        <span class="advisory-icon">👶</span>
-                        <span><strong>Recommended Age:</strong> 8+ Years</span>
-                    </li>
-                    <li class="advisory-item">
-                        <span class="advisory-icon">🖥️</span>
-                        <span><strong>Platform:</strong> Desktop & Tablet optimized</span>
-                    </li>
-                    <li class="advisory-item">
-                        <span class="advisory-icon">🖱️</span>
-                        <span><strong>Input:</strong> Mouse / Touch (Drag & Drop)</span>
-                    </li>
-                </ul>
-
-                <a href="game.html" class="play-btn btn-superrobots">
-                    Play SuperRobots
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
-
-            <!-- Cyber Dungeon Game Card -->
-            <div class="game-card card-dungeon">
-                <span class="game-icon">⚔️</span>
-                <h3 class="game-title">Cyber Dungeon</h3>
-                <p class="game-description">
-                    Write real Python. Unlock doors. Guide your robot through dungeons and turn every challenge into a new skill.
-                </p>
-                
-                <ul class="advisory-list">
-                    <li class="advisory-item">
-                        <span class="advisory-icon">🧑</span>
-                        <span><strong>Recommended Age:</strong> 12+ Years</span>
-                    </li>
-                    <li class="advisory-item">
-                        <span class="advisory-icon">💻</span>
-                        <span><strong>Platform:</strong> Desktop required</span>
-                    </li>
-                    <li class="advisory-item">
-                        <span class="advisory-icon">⌨️</span>
-                        <span><strong>Input:</strong> Physical Keyboard needed</span>
-                    </li>
-                </ul>
-
-                <a href="dungeon.html" class="play-btn btn-dungeon">
-                    Enter the Dungeon
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-            </div>
-        </div>
-
-        <section class="articles-section">
-            <h2 class="seo-title">Popular Articles & Tutorials</h2>
-            <div class="articles-grid">
-                <!-- Article Card -->
-                <a href="article-what-is-an-algorithm.html" class="article-card">
-                    <span class="article-date">May 15, 2026</span>
-                    <h3 class="article-title">What Is an Algorithm? Robot Thinking Explained</h3>
-                    <p class="article-excerpt">Algorithms explained simply for kids — with real-world examples, a robot maze walkthrough, and Python code to bring the concept to life.</p>
-                    <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </a>
-
-                <!-- Article Card -->
-                <a href="article-python-vs-scratch.html" class="article-card">
-                    <span class="article-date">May 15, 2026</span>
-                    <h3 class="article-title">Python vs. Scratch: Which Should Kids Learn First?</h3>
-                    <p class="article-excerpt">A clear, side-by-side comparison of Scratch and Python to help parents and teachers choose the right starting point for young learners.</p>
-                    <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </a>
-
-                <!-- Article Card -->
-                <a href="article-python-projects-for-kids.html" class="article-card">
-                    <span class="article-date">May 15, 2026</span>
-                    <h3 class="article-title">10 Beginner Python Projects for Kids</h3>
-                    <p class="article-excerpt">Ten fun, achievable Python projects ranked from easiest to moderate — with code snippets. The perfect next step after learning the basics.</p>
-                    <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
-                </a>
-            </div>
-            <a href="tutorials.html" style="margin-top: 2rem; color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1.1rem;">View All Tutorials →</a>
+<body class="news-site">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="masthead"><div class="news-shell masthead-inner"><a class="brand" href="index.html" aria-label="SuperRobots home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 7V3M3 12H5M19 12H21M9 15H15"/><circle cx="9" cy="11" r=".8" fill="currentColor"/><circle cx="15" cy="11" r=".8" fill="currentColor"/></svg></span>SuperRobots</a><nav aria-label="Main navigation"><a href="index.html" aria-current="page">News</a><a href="learn.html">Learn &amp; play</a><a href="tutorials.html">Tutorials</a><span class="nav-divider" aria-hidden="true"></span><a href="team.html">Our team ↗</a></nav></div></header>
+    <main class="news-shell" id="main">
+        <div class="edition"><div class="edition-left"><span class="edition-dot" aria-hidden="true"></span>China focus / English edition</div><div class="edition-right">Curated <time datetime="2026-10-02">2 OCT 2026</time></div></div>
+        <section class="intro" aria-labelledby="intro-title">
+            <h1 id="intro-title">Robotics, in motion.<br><em>China, in focus.</em></h1>
+            <p>The machines. The makers. The breakthroughs.<br>Discover the stories shaping robotics, selected from Chinese sources and brought to you in English.</p>
         </section>
-
-        <section class="seo-section">
-            <h2 class="seo-title">Why Learn with SuperRobots?</h2>
-            <div class="seo-content">
-                <div class="seo-block">
-                    <img src="images/seo/block_logic.png" alt="Visual Block-Based Coding Logic" class="seo-image">
-                    <h3>Block-Based Logic & Foundations</h3>
-                    <p>Our block-based coding game introduces young learners to the core concepts of computer science. By dragging and dropping visual commands, kids intuitively grasp sequencing, loops, and conditional statements. This visual programming approach builds strong computational thinking skills, making it one of the best STEM games for building foundational logic without the frustration of syntax errors.</p>
+        <div class="lead-layout">
+            <article class="lead-story"><a class="lead-visual" href="news/agibot-chimelong.html" aria-label="Read: More than 300 robots join the everyday life of a theme park"><img src="assets/robotics-editorial.svg" alt="Original illustration of a humanoid robot in an architectural setting" width="900" height="520" fetchpriority="high"><span class="image-label">Editorial illustration</span></a><div class="story-kicker"><span>Real-world robots</span><span class="place">/ Hengqin</span></div><h2 class="lead-title"><a href="news/agibot-chimelong.html">More than 300 robots join the everyday life of a theme park</a></h2><p>AgiBot and Chimelong put robots to work across performances, visitor guidance, education, retail, and hospitality in Hengqin.</p><div class="story-meta"><span>AgiBot</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-28">28 Sept 2026</time></div></article>
+            <aside class="briefing" aria-labelledby="briefing-title">
+                <div class="briefing-heading"><h2 id="briefing-title">The briefing</h2><span>Worth your attention</span></div>
+                <article class="briefing-item"><span class="briefing-number" aria-hidden="true">01</span><div><div class="story-kicker"><span>Real-world robots</span><span class="place">/ Guangzhou</span></div><h3><a href="news/guangzhou-robot-show.html">Humanoid robots take the stage in Guangzhou</a></h3><div class="story-meta"><span>China Youth Daily / Sina</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-10-02">2 Oct 2026</time></div></div></article>
+<article class="briefing-item"><span class="briefing-number" aria-hidden="true">02</span><div><div class="story-kicker"><span>Humanoids</span><span class="place">/ Shanghai</span></div><h3><a href="news/agibot-music.html">AgiBot’s A3 gets a native NetEase Cloud Music integration</a></h3><div class="story-meta"><span>AgiBot</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-30">30 Sept 2026</time></div></div></article>
+<article class="briefing-item"><span class="briefing-number" aria-hidden="true">03</span><div><div class="story-kicker"><span>Embodied AI</span><span class="place">/ Hangzhou</span></div><h3><a href="news/unitree-unifolm.html">Unitree releases its humanoid base model and fine-tuning code</a></h3><div class="story-meta"><span>Unitree · Chinese project README</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-28">28 Sept 2026</time></div></div></article>
+                <p class="briefing-note">A window into China’s robotics scene.<br>Original sources linked in every brief.</p>
+            </aside>
+        </div>
+        <section class="latest-section" id="latest" aria-labelledby="latest-title">
+            <div class="section-heading"><div><h2 id="latest-title">From the lab to real life.</h2><p>Recent releases, research, and real-world deployments.</p></div><a class="feed-link" href="news-feed.xml">RSS feed ↗</a></div>
+            <div class="news-tools" id="news-tools" hidden>
+                <div class="topic-filters" role="group" aria-label="Filter news by topic">
+                    <button class="topic-filter" type="button" data-category="All" aria-pressed="true">All stories</button>
+                    <button class="topic-filter" type="button" data-category="Humanoids" aria-pressed="false">Humanoids</button>
+                    <button class="topic-filter" type="button" data-category="Embodied AI" aria-pressed="false">Embodied AI</button>
+                    <button class="topic-filter" type="button" data-category="Real-world robots" aria-pressed="false">Real-world robots</button>
+                    <button class="topic-filter" type="button" data-category="Industry" aria-pressed="false">Industry</button>
                 </div>
-                <div class="seo-block">
-                    <img src="images/seo/cyber_dungeon.png" alt="Python Text-Based Coding Game" class="seo-image">
-                    <h3>Mastering Real Python Code</h3>
-                    <p>For those ready for a deeper challenge, our Cyber Dungeon serves as an interactive Python tutorial. Transitioning from blocks to text-based coding is a crucial step in a developer's journey. Players write real Python syntax to control their Super Robot, overcome obstacles, and defeat enemies. This hands-on experience teaches algorithmic problem solving, debugging, and code optimization in a thrilling, gamified environment.</p>
-                </div>
-                <div class="seo-block">
-                    <img src="images/seo/ai_robotics.png" alt="Artificial Intelligence and Robotics Future" class="seo-image">
-                    <h3>Preparing for AI & Advanced Robotics</h3>
-                    <p>Rooted in the spirit of FIRST LEGO League (FLL) robotics, SuperRobots aims to prepare students for the future of technology. The problem-solving frameworks developed through these coding challenges lay the groundwork for understanding artificial intelligence and advanced robotics. By tackling progressively difficult algorithms, players learn how to break down complex tasks—a fundamental skill for the next generation of innovators.</p>
-                </div>
-                <div class="seo-block">
-                    <img src="images/seo/problem_solving.png" alt="Iterative Debugging and Resilience" class="seo-image">
-                    <h3>Iterative Debugging & Resilience</h3>
-                    <p>Learning to code is learning how to fail safely and try again. Our challenges encourage iterative testing, where players write code, observe the results, and debug their logic if the robot crashes or hits an obstacle. This builds tremendous resilience, persistence, and critical thinking—skills that are invaluable both in the classroom and in future careers.</p>
-                </div>
+                <label class="search"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="6.5"/><path d="m15 15 6 6"/></svg><span class="sr-only">Search stories</span><input type="search" id="news-search" placeholder="Search stories" autocomplete="off"></label>
             </div>
+            <div class="news-grid"><article class="news-card" data-category="Real-world robots" data-search="humanoid robots take the stage in guangzhou a national day show puts coordinated humanoid performances and public interaction in the spotlight at the guangdong science center. china youth daily / sina guangzhou real-world robots"><div class="story-kicker"><span>Real-world robots</span><span class="place">/ Guangzhou</span></div><h3><a href="news/guangzhou-robot-show.html">Humanoid robots take the stage in Guangzhou</a></h3><p>A National Day show puts coordinated humanoid performances and public interaction in the spotlight at the Guangdong Science Center.</p><div class="story-meta"><span>China Youth Daily / Sina</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-10-02">2 Oct 2026</time></div><a class="card-link" href="news/guangzhou-robot-show.html" aria-label="Read English brief: Humanoid robots take the stage in Guangzhou"><span>Read English brief</span><span aria-hidden="true">↗</span></a></article>
+<article class="news-card" data-category="Humanoids" data-search="agibot’s a3 gets a native netease cloud music integration voice-controlled music is scheduled to reach the full-size humanoid on october 15. music-generated movement remains a development goal. agibot shanghai humanoids"><div class="story-kicker"><span>Humanoids</span><span class="place">/ Shanghai</span></div><h3><a href="news/agibot-music.html">AgiBot’s A3 gets a native NetEase Cloud Music integration</a></h3><p>Voice-controlled music is scheduled to reach the full-size humanoid on October 15. Music-generated movement remains a development goal.</p><div class="story-meta"><span>AgiBot</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-30">30 Sept 2026</time></div><a class="card-link" href="news/agibot-music.html" aria-label="Read English brief: AgiBot’s A3 gets a native NetEase Cloud Music integration"><span>Read English brief</span><span aria-hidden="true">↗</span></a></article>
+<article class="news-card" data-category="Real-world robots" data-search="more than 300 robots join the everyday life of a theme park agibot and chimelong put robots to work across performances, visitor guidance, education, retail, and hospitality in hengqin. agibot hengqin real-world robots"><div class="story-kicker"><span>Real-world robots</span><span class="place">/ Hengqin</span></div><h3><a href="news/agibot-chimelong.html">More than 300 robots join the everyday life of a theme park</a></h3><p>AgiBot and Chimelong put robots to work across performances, visitor guidance, education, retail, and hospitality in Hengqin.</p><div class="story-meta"><span>AgiBot</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-28">28 Sept 2026</time></div><a class="card-link" href="news/agibot-chimelong.html" aria-label="Read English brief: More than 300 robots join the everyday life of a theme park"><span>Read English brief</span><span aria-hidden="true">↗</span></a></article>
+<article class="news-card" data-category="Embodied AI" data-search="unitree releases its humanoid base model and fine-tuning code the chinese project readme records a september 28 release of unifolm-wla-1.0-base and tools for adapting the model. unitree · chinese project readme hangzhou embodied ai"><div class="story-kicker"><span>Embodied AI</span><span class="place">/ Hangzhou</span></div><h3><a href="news/unitree-unifolm.html">Unitree releases its humanoid base model and fine-tuning code</a></h3><p>The Chinese project README records a September 28 release of UnifoLM-WLA-1.0-Base and tools for adapting the model.</p><div class="story-meta"><span>Unitree · Chinese project README</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-28">28 Sept 2026</time></div><a class="card-link" href="news/unitree-unifolm.html" aria-label="Read English brief: Unitree releases its humanoid base model and fine-tuning code"><span>Read English brief</span><span aria-hidden="true">↗</span></a></article>
+<article class="news-card" data-category="Real-world robots" data-search="a wheeled tennis robot meets wang qiang on court limx dynamics and enhance pair a tron 2 mobile platform with a tennis-training system at the billie jean king cup finals. limx dynamics shenzhen real-world robots"><div class="story-kicker"><span>Real-world robots</span><span class="place">/ Shenzhen</span></div><h3><a href="news/limx-tennis.html">A wheeled tennis robot meets Wang Qiang on court</a></h3><p>LimX Dynamics and Enhance pair a TRON 2 mobile platform with a tennis-training system at the Billie Jean King Cup finals.</p><div class="story-meta"><span>LimX Dynamics</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-23">23 Sept 2026</time></div><a class="card-link" href="news/limx-tennis.html" aria-label="Read English brief: A wheeled tennis robot meets Wang Qiang on court"><span>Read English brief</span><span aria-hidden="true">↗</span></a></article>
+<article class="news-card" data-category="Humanoids" data-search="unitree’s g1+ adds stronger joints and richer sensing the upgraded humanoid brings a two-axis neck, stereo and wide-angle vision, touch sensing, and external power support. shangguan news / sina hangzhou humanoids"><div class="story-kicker"><span>Humanoids</span><span class="place">/ Hangzhou</span></div><h3><a href="news/unitree-g1-plus.html">Unitree’s G1+ adds stronger joints and richer sensing</a></h3><p>The upgraded humanoid brings a two-axis neck, stereo and wide-angle vision, touch sensing, and external power support.</p><div class="story-meta"><span>Shangguan News / Sina</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-22">22 Sept 2026</time></div><a class="card-link" href="news/unitree-g1-plus.html" aria-label="Read English brief: Unitree’s G1+ adds stronger joints and richer sensing"><span>Read English brief</span><span aria-hidden="true">↗</span></a></article>
+<article class="news-card" data-category="Industry" data-search="d-robotics raises $400 million for robot chips and development tools the series c round backs sunrise chips and a software platform spanning data collection, training, simulation, and deployment. shenzhen news shenzhen industry"><div class="story-kicker"><span>Industry</span><span class="place">/ Shenzhen</span></div><h3><a href="news/d-robotics-funding.html">D-Robotics raises $400 million for robot chips and development tools</a></h3><p>The Series C round backs Sunrise chips and a software platform spanning data collection, training, simulation, and deployment.</p><div class="story-meta"><span>Shenzhen News</span><span class="meta-separator" aria-hidden="true">·</span><time datetime="2026-09-17">17 Sept 2026</time></div><a class="card-link" href="news/d-robotics-funding.html" aria-label="Read English brief: D-Robotics raises $400 million for robot chips and development tools"><span>Read English brief</span><span aria-hidden="true">↗</span></a></article></div>
+            <p class="empty-results" id="empty-results" hidden>No stories match your search. Try another topic or keyword.</p>
+            <p class="results-count" id="results-count" role="status" aria-live="polite">7 stories · Newest first</p>
+            <noscript><p class="results-count">All stories are shown. Enable JavaScript to search or filter by topic.</p></noscript>
         </section>
-
-        <div id="feedback-container"></div>
-        <script src="feedback.js"></script>
+        <section class="field-notes" id="about" aria-labelledby="about-title">
+            <div><span class="section-eyebrow">Across the language barrier</span><h2 id="about-title">Chinese sources.<br>A clearer perspective.</h2></div>
+            <div><p>SuperRobots selects robotics stories from Chinese reporting, company announcements, and technical publications. We translate and summarize the key points in English, with dates and direct links so you can follow the story back to its source.</p><p>Company-reported capabilities are attributed to their makers. These are concise editorial briefs, not full article translations. This is a curated edition, last reviewed on <time datetime="2026-10-02">2 October 2026</time>.</p><div class="source-links"><a href="https://www.agibot.com.cn/news" target="_blank" rel="noopener noreferrer">AgiBot ↗</a><a href="https://www.unitree.com/cn/" target="_blank" rel="noopener noreferrer">Unitree ↗</a><a href="https://www.limxdynamics.com/zh/news" target="_blank" rel="noopener noreferrer">LimX Dynamics ↗</a><a href="https://www.sznews.com/" target="_blank" rel="noopener noreferrer">Shenzhen News ↗</a></div></div>
+        </section>
+        <section class="learning-strip" aria-labelledby="learning-title"><div><h2 id="learning-title">Curious about how robots think?</h2><p>Go from reading the news to building your own coding skills.</p></div><a class="learning-link" href="learn.html">Explore games & tutorials →</a></section>
     </main>
+    <footer><div class="news-shell footer-inner"><span>© 2026 SuperRobots · Stay curious. Build something.</span><nav aria-label="Footer navigation"><a href="index.html#about">About this edition</a><a href="news-feed.xml">Robotics RSS</a><a href="learn.html">Learning hub</a><a href="https://github.com/superrobots/superrobots.github.io" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav></div></footer>
 </body>
 </html>
