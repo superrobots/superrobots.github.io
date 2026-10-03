@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Caslon+Display&display=swap');
-:root { color-scheme: light; --paper: #f7f6f2; --surface: #fff; --ink: #202824; --muted: #626b64; --line: #dcded6; --accent: #b3422d; --sage: #e9eee4; --blue: #245cce; }
+@import url('site.css');
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 body.news-site { margin: 0; display: block; background: var(--paper); color: var(--ink); font: 16px/1.65 'DM Sans', system-ui, sans-serif; }

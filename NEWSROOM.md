@@ -29,3 +29,11 @@ directories are excluded from publishing. The custom domain is in `CNAME`.
 
 The existing learning RSS feed is `feed.xml`; robotics news uses `news-feed.xml`.
 Serve the repository root with any static HTTP server for local preview.
+
+## Shared visual theme
+
+`site.css` owns the site-wide colors, fonts, and masthead. `news.css` and
+`theme.css` style newsroom and learning layouts using those shared tokens.
+The navigation markup lives in `scripts/site-header.cjs`. After changing it,
+run `node scripts/apply-site-chrome.cjs` and `node scripts/build-news.cjs`
+and commit the generated HTML together.

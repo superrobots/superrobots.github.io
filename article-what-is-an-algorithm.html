@@ -40,7 +40,7 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
-        :root { --bg-dark:#f8faf7; --bg-light:#eef3f6; --text-main:#172b3a; --text-muted:#526474; --accent-blue:#245cce; --accent-purple:#7042bd; --glass-bg:rgba(30,41,59,0.6); --glass-border:rgba(255,255,255,0.1); }
+        :root { --bg-dark:#f8faf7; --bg-light:#eef3f6; --text-main:#202824; --text-muted:#626b64; --accent-blue:#b3422d; --accent-purple:#b3422d; --glass-bg:rgba(30,41,59,0.6); --glass-border:rgba(255,255,255,0.1); }
         body { margin:0; padding:0; font-family:'Inter',sans-serif; background:linear-gradient(135deg,var(--bg-dark) 0%,var(--bg-light) 100%); color:var(--text-main); min-height:100vh; display:flex; flex-direction:column; overflow-x:hidden; }
         header { background:rgba(15,23,42,0.8); backdrop-filter:blur(12px); padding:1.2rem 2rem; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--glass-border); position:relative; z-index:10; }
         header h1 { margin:0; font-family:'Outfit',sans-serif; font-size:1.8rem; font-weight:900; }
@@ -56,17 +56,17 @@
         .article-date { color:var(--accent-purple); font-size:1rem; font-weight:600; margin-bottom:1rem; display:block; }
         .article-title { font-family:'Outfit',sans-serif; font-size:3rem; font-weight:900; margin:0 0 1.5rem 0; line-height:1.2; color:#ffffff; }
         .article-hero-image { width:100%; height:auto; border-radius:16px; margin-bottom:2.5rem; border:1px solid var(--glass-border); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-        .article-content { font-size:1.15rem; line-height:1.8; color:#526474; }
+        .article-content { font-size:1.15rem; line-height:1.8; color:#626b64; }
         .article-content h2 { font-family:'Outfit',sans-serif; font-size:2rem; color:#ffffff; margin-top:3rem; margin-bottom:1.5rem; }
         .article-content h3 { font-family:'Outfit',sans-serif; font-size:1.5rem; color:var(--accent-blue); margin-top:2rem; margin-bottom:1rem; }
         .article-content p { margin-bottom:1.5rem; }
         .article-content ul, .article-content ol { margin-bottom:1.5rem; padding-left:1.5rem; }
         .article-content li { margin-bottom:0.5rem; }
-        .article-content strong { color:#172b3a; }
-        .code-block { background:#eef3f6; padding:1rem 1.5rem; border-radius:8px; font-family:monospace; border:1px solid #334155; color:#7042bd; margin-bottom:1.5rem; overflow-x:auto; }
+        .article-content strong { color:#202824; }
+        .code-block { background:#eef3f6; padding:1rem 1.5rem; border-radius:8px; font-family:monospace; border:1px solid #334155; color:#b3422d; margin-bottom:1.5rem; overflow-x:auto; }
         .example-box { background:rgba(129,140,248,0.08); border:1px solid rgba(129,140,248,0.3); border-radius:12px; padding:1.5rem 2rem; margin:2rem 0; }
         .example-box h3 { color:var(--accent-purple); font-family:'Outfit',sans-serif; margin:0 0 0.8rem 0; font-size:1.2rem; }
-        .example-box p, .example-box ol { margin:0; color:#526474; }
+        .example-box p, .example-box ol { margin:0; color:#626b64; }
         .example-box ol { padding-left:1.5rem; margin-top:0.5rem; }
         @media (max-width:768px) { .article-title { font-size:2.2rem; } header { flex-direction:column; gap:1rem; } main { padding:2rem 1.5rem; } }
     </style>
@@ -132,25 +132,13 @@
     <link rel="stylesheet" href="theme.css">
 </head>
 <body>
-    <header>
-        <a href="index.html"><h1 class="logo-text">SuperRobots</h1>
-                <div class="social-share" style="display: flex; gap: 10px; margin-top: 1rem;">
-                    <a href="https://twitter.com/intent/tweet?url=https://superrobots.org/article-what-is-an-algorithm.html&text=What%20Is%20an%20Algorithm%3F%20Robot%20Thinking%20Explained" target="_blank" style="background: #1da1f2; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">Share on Twitter</a>
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://superrobots.org/article-what-is-an-algorithm.html" target="_blank" style="background: #1877f2; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">Share on Facebook</a>
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://superrobots.org/article-what-is-an-algorithm.html&title=What%20Is%20an%20Algorithm%3F%20Robot%20Thinking%20Explained" target="_blank" style="background: #0a66c2; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 0.9rem;">Share on LinkedIn</a>
-                </div></a>
-        <div class="nav-links">
-            <a href="tutorials.html" class="nav-link">Tutorials</a>
-            <a href="game.html" class="nav-link">Blocks Game</a>
-            <a href="dungeon.html" class="nav-link">Cyber Dungeon</a>
-        </div>
-    </header>
+    <header class="masthead site-header"><div class="masthead-inner"><a class="brand" href="index.html" aria-label="SuperRobots home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 7V3M3 12H5M19 12H21M9 15H15"/><circle cx="9" cy="11" r=".8" fill="currentColor"/><circle cx="15" cy="11" r=".8" fill="currentColor"/></svg></span>SuperRobots</a><nav aria-label="Main navigation"><a href="index.html">News</a><a href="learn.html">Learn &amp; play</a><a href="tutorials.html" aria-current="page">Tutorials</a><span class="nav-divider" aria-hidden="true"></span><a href="team.html">Our team ↗</a></nav></div></header>
     <main>
         <nav aria-label="Breadcrumb" style="margin-bottom: 2rem;">
-            <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 0.5rem; color: #94a3b8; font-size: 0.95rem; flex-wrap: wrap;">
-                <li><a href="index.html" style="color: #38bdf8; text-decoration: none; font-weight: 600;">Home</a></li>
+            <ol style="list-style: none; padding: 0; margin: 0; display: flex; gap: 0.5rem; color: #626b64; font-size: 0.95rem; flex-wrap: wrap;">
+                <li><a href="index.html" style="color: #b3422d; text-decoration: none; font-weight: 600;">Home</a></li>
                 <li>›</li>
-                <li><a href="tutorials.html" style="color: #38bdf8; text-decoration: none; font-weight: 600;">Tutorials</a></li>
+                <li><a href="tutorials.html" style="color: #b3422d; text-decoration: none; font-weight: 600;">Tutorials</a></li>
                 <li>›</li>
                 <li aria-current="page" style="color: #f8fafc;">What Is an Algorithm? Robot Thinking Explained</li>
             </ol>
