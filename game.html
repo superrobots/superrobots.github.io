@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperRobots - Learn Block Coding & Logic Game</title>
+    <title>Play SuperRobots - Free Block Coding & Logic Game for Kids</title>
     <meta name="description" content="SuperRobots is an interactive web-based educational STEM game where you learn programming logic by guiding a robot through challenging puzzle grids using visual code blocks.">
     <meta name="keywords" content="block-based coding, learn programming logic, educational games, coding for kids, visual code blocks, STEM learning, computational thinking, FLL robotics, SuperRobots">
     
@@ -54,8 +54,8 @@
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #f8fafc;
+            background: linear-gradient(135deg, #f8faf7 0%, #eef3f6 100%);
+            color: #172b3a;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -77,20 +77,20 @@
             margin: 0;
             font-size: 1.5rem;
             font-weight: 800;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
+            background: linear-gradient(to right, #245cce, #7042bd);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .back-link {
-            color: #94a3b8;
+            color: #526474;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.2s;
         }
 
         .back-link:hover {
-            color: #f8fafc;
+            color: #172b3a;
         }
 
         .layout-container {
@@ -135,9 +135,9 @@
         }
 
         .block-btn {
-            background: rgba(15, 23, 42, 0.8);
+            background: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #f8fafc;
+            color: #172b3a;
             padding: 0.8rem;
             border-radius: 4px;
             font-weight: 600;
@@ -225,7 +225,7 @@
 
         .code-item.drag-over {
             filter: brightness(1.3);
-            border-top: 3px solid #f8fafc;
+            border-top: 3px solid #172b3a;
             padding-top: calc(0.6rem - 3px);
             transform: translateY(2px);
             transition: all 0.2s;
@@ -278,9 +278,9 @@
 
         .reset-btn {
             flex: 1;
-            background: rgba(15, 23, 42, 0.8);
+            background: #ffffff;
             border: 1px solid rgba(255,255,255,0.2);
-            color: #94a3b8;
+            color: #526474;
             padding: 1rem;
             border-radius: 4px;
             font-weight: bold;
@@ -310,7 +310,7 @@
         }
 
         .canvas-container {
-            background: #cbd5e1;
+            background: #526474;
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             overflow: hidden;
@@ -379,77 +379,9 @@
             }
         }
 
-        /* Newsletter Section */
-        .newsletter-section {
-            width: 100%;
-            margin-top: 4rem;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 3rem 2rem;
-            text-align: center;
-            box-sizing: border-box;
-        }
 
-        .newsletter-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            color: #f8fafc;
-            margin: 0 0 1rem 0;
-            font-weight: 800;
-        }
-
-        .newsletter-desc {
-            color: #94a3b8;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .newsletter-form {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .newsletter-input {
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 350px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .newsletter-input:focus {
-            border-color: #38bdf8;
-        }
-
-        .newsletter-btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, #38bdf8, #818cf8);
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .newsletter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
-        }
-
-        @media (max-width: 600px) {
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
     </style>
+    <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <!-- Custom Prompt Modal -->
@@ -535,44 +467,8 @@
 
     </div>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section">
-        <h2 class="newsletter-title">Join the SuperRobots Community</h2>
-        <p class="newsletter-desc">Get notified about new games, tutorials, and early access to features.</p>
-        <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-            <script>
-                document.querySelectorAll('.newsletter-form').forEach(form => {
-                    // Only attach once
-                    if (form.dataset.attached) return;
-                    form.dataset.attached = true;
-                    form.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        const btn = form.querySelector('.newsletter-btn');
-                        const email = form.querySelector('.newsletter-input').value;
-                        const originalText = btn.textContent;
-                        btn.textContent = 'Subscribing...';
-                        btn.disabled = true;
-
-                        try {
-                            await fetch('https://script.google.com/macros/s/AKfycbwA3dDW7vIC6MIGxneJtxcUkSPMj0XtXOLiR5dDqmBLxdaZg23_BdaCAM369ERcpoToZg/exec', {
-                                method: 'POST',
-                                mode: 'no-cors',
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                body: new URLSearchParams({ 'email': email })
-                            });
-                            form.innerHTML = '<p style="color: #4ade80; font-weight: bold; margin: 0; padding: 1rem; font-size: 1.2rem;">Thanks for subscribing! Welcome to the SuperRobots community.</p>';
-                        } catch (error) {
-                            btn.textContent = originalText;
-                            btn.disabled = false;
-                            alert('Oops! Something went wrong. Please check your connection and try again.');
-                        }
-                    });
-                });
-            </script>
-    </section>
+    <div id="feedback-container"></div>
+    <script src="feedback.js"></script>
 
     <script src="audio.js"></script>
     <script>

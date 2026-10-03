@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SuperRobots - Coding Games</title>
+    <title>SuperRobots - Free Coding Games & Python Tutorials for Kids</title>
     <meta name="description" content="SuperRobots offers engaging programming games for all ages. Learn logic with block-based coding or master Python in our Cyber Dungeon. FLL robotics, STEM games, coding for kids, and Python tutorials.">
     <meta name="keywords" content="coding for kids, STEM games, Python tutorials, FLL robotics, block-based coding, educational games, learn programming, robotics education, SuperRobots">
     
@@ -52,15 +52,15 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
 
         :root {
-            --bg-dark: #0f172a;
-            --bg-light: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-blue: #38bdf8;
-            --accent-purple: #818cf8;
+            --bg-dark: #f8faf7;
+            --bg-light: #eef3f6;
+            --text-main: #172b3a;
+            --text-muted: #526474;
+            --accent-blue: #245cce;
+            --accent-purple: #7042bd;
             --accent-red: #ef4444;
             --accent-green: #10b981;
-            --glass-bg: rgba(30, 41, 59, 0.6);
+            --glass-bg: #ffffff;
             --glass-border: rgba(255, 255, 255, 0.1);
         }
 
@@ -103,7 +103,7 @@
         }
 
         header {
-            background: rgba(15, 23, 42, 0.8);
+            background: #ffffff;
             backdrop-filter: blur(12px);
             padding: 1.2rem 2rem;
             display: flex;
@@ -166,7 +166,7 @@
             font-weight: 900;
             margin: 0 0 1rem 0;
             line-height: 1.1;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #526474 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -248,7 +248,7 @@
         .card-dungeon .game-title { color: #fca5a5; }
 
         .game-description {
-            color: #cbd5e1;
+            color: #526474;
             font-size: 1.1rem;
             line-height: 1.6;
             margin-bottom: 2rem;
@@ -304,7 +304,7 @@
         }
 
         .btn-superrobots:hover {
-            background: linear-gradient(135deg, #38bdf8, #60a5fa);
+            background: linear-gradient(135deg, #245cce, #60a5fa);
             box-shadow: 0 6px 20px rgba(14, 165, 233, 0.5);
             transform: translateY(-2px);
         }
@@ -365,7 +365,7 @@
             font-size: 2.5rem;
             margin: 0 0 2rem 0;
             text-align: center;
-            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #526474 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -394,83 +394,88 @@
         }
 
         .seo-block p {
-            color: #cbd5e1;
+            color: #526474;
             line-height: 1.7;
             font-size: 1.05rem;
             margin: 0;
         }
 
-        .newsletter-section {
+        .articles-section {
             width: 100%;
-            max-width: 800px;
+            max-width: 1000px;
             margin-top: 4rem;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1));
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 3rem;
-            text-align: center;
-            box-sizing: border-box;
-        }
-
-        .newsletter-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            color: var(--text-main);
-            margin: 0 0 1rem 0;
-        }
-
-        .newsletter-desc {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .newsletter-form {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.4s;
         }
 
-        .newsletter-input {
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            font-size: 1rem;
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             width: 100%;
-            max-width: 350px;
-            outline: none;
-            transition: border-color 0.3s;
         }
 
-        .newsletter-input:focus {
-            border-color: var(--accent-blue);
+        .article-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
         }
 
-        .newsletter-btn {
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            border: none;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: white;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.2);
         }
 
-        .newsletter-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.4);
+        .article-date {
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        @media (max-width: 600px) {
-            .newsletter-form {
-                flex-direction: column;
-            }
+        .article-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            margin: 0 0 1rem 0;
+            color: var(--text-main);
         }
+
+        .article-excerpt {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0 0 1.5rem 0;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            color: var(--accent-blue);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .read-more:hover {
+            color: #1947a7;
+        }
+
     </style>
+    <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <div class="bg-orb orb-1"></div>
@@ -491,8 +496,9 @@
 
     <main>
         <div class="hero-section">
-            <h2 class="hero-title">Choose Your Mission</h2>
-            <p class="hero-subtitle">Embark on a coding journey designed to build foundational STEM skills. Whether you're taking your first steps with visual logic blocks or writing complex Python scripts, we have a challenge waiting for you to develop computational thinking and problem-solving abilities.</p>
+            <p class="hero-eyebrow">Small steps. Big robot adventures.</p>
+            <h2 class="hero-title">Build Your Skills.<br>Choose Your Mission.</h2>
+            <p class="hero-subtitle">From your first code blocks to real Python, learn by helping your robot solve playful challenges.</p>
         </div>
 
         <div class="games-container">
@@ -501,7 +507,7 @@
                 <span class="game-icon">🧩</span>
                 <h3 class="game-title">SuperRobots Game</h3>
                 <p class="game-description">
-                    Learn the fundamentals of programming logic! Guide your robot through intricate maze puzzles by snapping together visual code blocks. Master sequences, loops, and conditional logic in a fun, intuitive environment.
+                    Snap blocks together. Solve mazes. Discover sequences, loops, and logic as you guide your robot to the goal.
                 </p>
                 
                 <ul class="advisory-list">
@@ -530,7 +536,7 @@
                 <span class="game-icon">⚔️</span>
                 <h3 class="game-title">Cyber Dungeon</h3>
                 <p class="game-description">
-                    Step up to text-based coding! Write actual Python commands to navigate treacherous dungeons, battle bug-enemies, and unlock doors. A robust challenge for aspiring software engineers.
+                    Write real Python. Unlock doors. Guide your robot through dungeons and turn every challenge into a new skill.
                 </p>
                 
                 <ul class="advisory-list">
@@ -554,6 +560,36 @@
                 </a>
             </div>
         </div>
+
+        <section class="articles-section">
+            <h2 class="seo-title">Popular Articles & Tutorials</h2>
+            <div class="articles-grid">
+                <!-- Article Card -->
+                <a href="article-what-is-an-algorithm.html" class="article-card">
+                    <span class="article-date">May 15, 2026</span>
+                    <h3 class="article-title">What Is an Algorithm? Robot Thinking Explained</h3>
+                    <p class="article-excerpt">Algorithms explained simply for kids — with real-world examples, a robot maze walkthrough, and Python code to bring the concept to life.</p>
+                    <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <!-- Article Card -->
+                <a href="article-python-vs-scratch.html" class="article-card">
+                    <span class="article-date">May 15, 2026</span>
+                    <h3 class="article-title">Python vs. Scratch: Which Should Kids Learn First?</h3>
+                    <p class="article-excerpt">A clear, side-by-side comparison of Scratch and Python to help parents and teachers choose the right starting point for young learners.</p>
+                    <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+
+                <!-- Article Card -->
+                <a href="article-python-projects-for-kids.html" class="article-card">
+                    <span class="article-date">May 15, 2026</span>
+                    <h3 class="article-title">10 Beginner Python Projects for Kids</h3>
+                    <p class="article-excerpt">Ten fun, achievable Python projects ranked from easiest to moderate — with code snippets. The perfect next step after learning the basics.</p>
+                    <span class="read-more">Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                </a>
+            </div>
+            <a href="tutorials.html" style="margin-top: 2rem; color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 1.1rem;">View All Tutorials →</a>
+        </section>
 
         <section class="seo-section">
             <h2 class="seo-title">Why Learn with SuperRobots?</h2>
@@ -581,43 +617,8 @@
             </div>
         </section>
 
-        <section class="newsletter-section">
-            <h2 class="newsletter-title">Join the SuperRobots Community</h2>
-            <p class="newsletter-desc">Get notified about new games, tutorials, and early access to features.</p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-            <script>
-                document.querySelectorAll('.newsletter-form').forEach(form => {
-                    // Only attach once
-                    if (form.dataset.attached) return;
-                    form.dataset.attached = true;
-                    form.addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        const btn = form.querySelector('.newsletter-btn');
-                        const email = form.querySelector('.newsletter-input').value;
-                        const originalText = btn.textContent;
-                        btn.textContent = 'Subscribing...';
-                        btn.disabled = true;
-
-                        try {
-                            await fetch('https://script.google.com/macros/s/AKfycbwA3dDW7vIC6MIGxneJtxcUkSPMj0XtXOLiR5dDqmBLxdaZg23_BdaCAM369ERcpoToZg/exec', {
-                                method: 'POST',
-                                mode: 'no-cors',
-                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                                body: new URLSearchParams({ 'email': email })
-                            });
-                            form.innerHTML = '<p style="color: #4ade80; font-weight: bold; margin: 0; padding: 1rem; font-size: 1.2rem;">Thanks for subscribing! Welcome to the SuperRobots community.</p>';
-                        } catch (error) {
-                            btn.textContent = originalText;
-                            btn.disabled = false;
-                            alert('Oops! Something went wrong. Please check your connection and try again.');
-                        }
-                    });
-                });
-            </script>
-        </section>
+        <div id="feedback-container"></div>
+        <script src="feedback.js"></script>
     </main>
 </body>
 </html>

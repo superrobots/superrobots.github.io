@@ -40,7 +40,7 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Outfit:wght@700;900&display=swap');
-        :root { --bg-dark:#0f172a; --bg-light:#1e293b; --text-main:#f8fafc; --text-muted:#94a3b8; --accent-blue:#38bdf8; --accent-purple:#818cf8; --accent-green:#10b981; --glass-bg:rgba(30,41,59,0.6); --glass-border:rgba(255,255,255,0.1); }
+        :root { --bg-dark:#f8faf7; --bg-light:#eef3f6; --text-main:#172b3a; --text-muted:#526474; --accent-blue:#245cce; --accent-purple:#7042bd; --accent-green:#10b981; --glass-bg:rgba(30,41,59,0.6); --glass-border:rgba(255,255,255,0.1); }
         body { margin:0; padding:0; font-family:'Inter',sans-serif; background:linear-gradient(135deg,var(--bg-dark) 0%,var(--bg-light) 100%); color:var(--text-main); min-height:100vh; display:flex; flex-direction:column; overflow-x:hidden; }
         header { background:rgba(15,23,42,0.8); backdrop-filter:blur(12px); padding:1.2rem 2rem; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--glass-border); position:relative; z-index:10; }
         header h1 { margin:0; font-family:'Outfit',sans-serif; font-size:1.8rem; font-weight:900; }
@@ -56,17 +56,17 @@
         .article-date { color:var(--accent-purple); font-size:1rem; font-weight:600; margin-bottom:1rem; display:block; }
         .article-title { font-family:'Outfit',sans-serif; font-size:3rem; font-weight:900; margin:0 0 1.5rem 0; line-height:1.2; color:#ffffff; }
         .article-hero-image { width:100%; height:auto; border-radius:16px; margin-bottom:2.5rem; border:1px solid var(--glass-border); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-        .article-content { font-size:1.15rem; line-height:1.8; color:#cbd5e1; }
+        .article-content { font-size:1.15rem; line-height:1.8; color:#526474; }
         .article-content h2 { font-family:'Outfit',sans-serif; font-size:2rem; color:#ffffff; margin-top:3rem; margin-bottom:1.5rem; }
         .article-content p { margin-bottom:1.5rem; }
         .article-content ul, .article-content ol { margin-bottom:1.5rem; padding-left:1.5rem; }
         .article-content li { margin-bottom:0.5rem; }
-        .article-content strong { color:#f8fafc; }
-        .code-block { background:#1e293b; padding:1rem 1.5rem; border-radius:8px; font-family:monospace; border:1px solid #334155; color:#a78bfa; margin-bottom:1.5rem; overflow-x:auto; font-size:0.95rem; line-height:1.7; }
+        .article-content strong { color:#172b3a; }
+        .code-block { background:#eef3f6; padding:1rem 1.5rem; border-radius:8px; font-family:monospace; border:1px solid #334155; color:#7042bd; margin-bottom:1.5rem; overflow-x:auto; font-size:0.95rem; line-height:1.7; }
         .project-card { background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border); border-radius:16px; padding:1.8rem 2rem; margin-bottom:2rem; position:relative; }
         .project-number { position:absolute; top:-14px; left:1.5rem; background:linear-gradient(135deg,var(--accent-blue),var(--accent-purple)); color:#fff; font-family:'Outfit',sans-serif; font-weight:900; font-size:0.9rem; padding:0.2rem 0.8rem; border-radius:20px; }
         .project-card h3 { font-family:'Outfit',sans-serif; color:var(--accent-blue); font-size:1.4rem; margin:0.5rem 0 0.8rem 0; }
-        .project-card p { color:#cbd5e1; margin:0 0 0.8rem 0; font-size:1rem; }
+        .project-card p { color:#526474; margin:0 0 0.8rem 0; font-size:1rem; }
         .difficulty { display:inline-block; font-size:0.8rem; font-weight:700; padding:0.2rem 0.7rem; border-radius:20px; letter-spacing:0.5px; text-transform:uppercase; }
         .diff-easy { background:rgba(16,185,129,0.15); color:var(--accent-green); border:1px solid rgba(16,185,129,0.3); }
         .diff-medium { background:rgba(56,189,248,0.15); color:var(--accent-blue); border:1px solid rgba(56,189,248,0.3); }
@@ -99,6 +99,7 @@
       ]
     }
     </script>
+    <link rel="stylesheet" href="theme.css">
 </head>
 <body>
     <header>

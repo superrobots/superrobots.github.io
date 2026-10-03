@@ -1,0 +1,121 @@
+/* Daylight Robotics: shared surfaces, typography, and interaction states. */
+:root {
+    color-scheme: light;
+    --bg-dark: #f8faf7;
+    --bg-light: #eef3f6;
+    --text-main: #172b3a;
+    --text-muted: #526474;
+    --accent-blue: #245cce;
+    --accent-purple: #7042bd;
+    --accent-red: #b42335;
+    --accent-green: #15803d;
+    --glass-bg: #ffffff;
+    --glass-border: #dce4e9;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
+header { background: #ffffff; border-bottom: 1px solid var(--glass-border); backdrop-filter: none; }
+header h1, .logo-text { background: none; color: var(--text-main); -webkit-text-fill-color: currentColor; }
+.bg-orb, .game-card::before, .sim-card::before { display: none; }
+.hero-title, .page-title, .seo-title, .article-title, .article-content h2, .article-content h3, .section-title {
+    background: none; color: var(--text-main); -webkit-text-fill-color: currentColor;
+}
+.nav-link, .back-link { color: var(--text-muted); }
+.nav-link:hover, .back-link:hover, .read-more:hover { color: var(--accent-blue); }
+.game-card, .article-card, .sim-card, .editor-panel, .simulation-panel {
+    background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: none;
+    box-shadow: 0 4px 18px rgba(23, 43, 58, .04);
+}
+.game-card { border-radius: 18px; padding: 2rem; }
+.game-card:hover, .article-card:hover { transform: translateY(-4px); border-color: #bacbd9; box-shadow: 0 12px 28px rgba(23,43,58,.08); }
+.card-superrobots:hover { border-color: var(--accent-blue); }
+.card-dungeon:hover { border-color: var(--accent-purple); }
+.game-icon { font-size: 2.3rem; }
+.hero-section { margin-bottom: 2.5rem; }
+.hero-subtitle { max-width: 640px; margin: 0 auto; }
+.hero-title { font-size: clamp(2.3rem, 5vw, 3.5rem); letter-spacing: -1.5px; }
+.hero-eyebrow { color: var(--accent-blue); font-size: .8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 1rem; }
+.games-container { gap: 1.5rem; }
+.advisory-list { background: #f3f6f9; }
+.advisory-item { background: #f3f6f9; }
+.play-btn, .download-btn { border-radius: 10px; box-shadow: none; }
+.btn-superrobots, .btn-superrobots:hover, .download-btn, .download-btn:hover { background: var(--accent-blue); color: #fff; }
+.btn-dungeon, .btn-dungeon:hover { background: var(--accent-purple); color: #fff; }
+.run-btn { background: var(--accent-green); color: #fff; border: none; border-radius: 8px; box-shadow: none; text-transform: none; letter-spacing: normal; }
+.run-btn:hover { box-shadow: 0 4px 12px rgba(21,128,61,.18); filter: brightness(.95); }
+.reset-btn, .block-btn { background: #f1f5f9; color: var(--text-main); border-color: var(--glass-border); border-radius: 8px; box-shadow: none; }
+.block-btn:hover { background: #e8eff8; filter: none; box-shadow: none; }
+.code-sequence-container { background: #f3f6f9; border-color: var(--glass-border); }
+.code-item, .code-item::after { background: #fff; color: var(--text-main); border-color: var(--glass-border); }
+.code-item.block-move, .block-btn.block-move { background: #e8f6fb; }
+.code-item.block-loop, .block-btn.block-loop { background: #edf8ef; }
+.code-item.block-logic, .block-btn.block-logic { background: #fff5df; }
+.code-item.drag-over { border-top-color: var(--accent-blue); filter: none; }
+.canvas-container { border-color: #dce4e9; box-shadow: none; }
+#level-intro-text, #reference-panel, #tips-panel { color: var(--text-main) !important; }
+#level-intro-text { background: #edf3ff !important; border-left-color: var(--accent-blue) !important; }
+#top-status-bar { background: #f3f6f9; color: var(--text-main); border-color: var(--glass-border); }
+.stat-label { color: var(--text-muted); }
+.eq-slot, .enemy-icon { background: #fff; border-color: var(--glass-border); }
+#top-status-bar .stat-row span[style] { color: #8a5700 !important; }
+#editor { border: 1px solid var(--glass-border); min-height: 320px; }
+#loading-overlay { background: #f8faf7; color: var(--text-main); }
+/* Dungeon scenery retains its original contrast; controls use the shared light UI. */
+#level-info-panel { background: #fff; color: var(--text-main); border-color: var(--glass-border); }
+#info-title { color: var(--accent-purple); }
+#info-text { color: var(--text-muted); }
+#info-play-btn { background: var(--accent-purple); color: #fff; }
+#status { color: #fff; }
+#cert-modal > div { background: #fff !important; color: var(--text-main) !important; }
+#cert-modal input { background: #f8faf7 !important; color: var(--text-main) !important; }
+.code-block { background: #eff3f8; border-color: var(--glass-border); color: #573198; }
+.article-content { color: var(--text-main); }
+.article-content a { color: var(--accent-blue); }
+.season-card, .award-card, .contact-card { background: #fff; border-color: var(--glass-border); }
+section h2 { background: none; color: var(--text-main); -webkit-text-fill-color: currentColor; }
+.slide-counter { color: #fff; }
+.slideshow-container, .video-section video { box-shadow: 0 4px 18px rgba(23,43,58,.08); }
+#campaign-map { color: #f8fafc; }
+.map-node { color: #fff; }
+.simulation-panel { box-shadow: none; }
+.game-title { color: var(--text-main); }
+.card-superrobots .game-title, .card-dungeon .game-title { color: var(--text-main); }
+.hero-section, .game-card, .articles-section, .glass-card { animation: none; opacity: 1; }
+.editor-panel h3 { color: var(--text-muted) !important; }
+header a[href="dungeon.html"][style] { background: var(--accent-purple) !important; }
+header > div > div[style] { background: #eef3f6 !important; }
+.code-item::after { background: inherit; }
+body .feedback-section { background: #eef3fa; border-color: var(--glass-border); }
+body .feedback-title { color: var(--text-main); }
+body .feedback-desc { color: var(--text-muted); }
+body .feedback-email, body .feedback-input { background: #fff; color: var(--text-main); border: 1px solid #b7c6d3; }
+body .feedback-btn { background: var(--accent-blue); color: #fff; }
+body .feedback-btn:hover { box-shadow: 0 5px 16px rgba(36,92,206,.18); }
+input::placeholder, textarea::placeholder { color: var(--text-muted); opacity: 1; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+    outline: 3px solid var(--accent-blue); outline-offset: 3px;
+}
+button, .play-btn, .download-btn { min-height: 44px; }
+@media (max-width: 600px) {
+    header { padding: 1rem; flex-wrap: wrap; gap: 1rem; }
+    header > div { max-width: 100%; flex-wrap: wrap; justify-content: center; }
+    .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    main { padding: 2.5rem 1rem; }
+    .games-container, .articles-grid { grid-template-columns: minmax(0, 1fr); }
+    .game-card, .article-card { padding: 1.5rem; }
+    .article-title { font-size: 2.2rem; overflow-wrap: anywhere; }
+    .article-content { min-width: 0; overflow-wrap: anywhere; }
+    .comparison-table { table-layout: fixed; font-size: .85rem; }
+    .comparison-table th, .comparison-table td { padding: .65rem .4rem; overflow-wrap: anywhere; }
+    .layout-container, .editor-panel, .simulation-panel { min-width: 0; max-width: 100%; }
+    .canvas-container { max-width: 100%; }
+    .canvas-container canvas { width: 100%; height: auto; }
+    .blocks-palette { grid-template-columns: minmax(0, 1fr); }
+    #top-status-bar { width: 100%; flex-wrap: wrap; gap: .75rem; }
+    .enemy-roster { flex-wrap: wrap; }
+    #level-info-panel { width: calc(100% - 2rem); right: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .game-card, .articles-section, .hero-section { opacity: 1; }
+}
