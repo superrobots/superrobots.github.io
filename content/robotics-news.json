@@ -1,7 +1,103 @@
 {
-  "editionDate": "2026-10-02",
-  "featuredId": "agibot-chimelong",
+  "editionDate": "2026-10-24",
+  "featuredId": "agibot-chengdu-x2",
   "stories": [
+    {
+      "id": "agibot-chengdu-x2",
+      "category": "Real-world robots",
+      "location": "Chengdu",
+      "date": "2026-10-22",
+      "dateLabel": "Announced",
+      "title": "AgiBot X2 robots take visitor-service roles in Chengdu",
+      "summary": "Three X2 humanoids serve visitors at Kuanzhai Alley, with roles spanning welcome desks, cultural interpretation, and retail.",
+      "paragraphs": [
+        "AgiBot says it has partnered with Chengdu Culture & Tourism Group to deploy three X2 humanoids at Kuanzhai Alley. Their jobs include answering visitor questions, explaining local culture, and presenting and handing over retail products.",
+        "The company says the retail system uses a vision-language-action model, which connects what a robot sees and understands with its movements. It reports support for more than 20 product types, over 98% task success, and roughly 30 seconds per task.",
+        "Those performance figures come from AgiBot. The announcement does not establish how the system performs across other shops or how much supervision it needs."
+      ],
+      "source": {
+        "name": "AgiBot",
+        "type": "Company announcement",
+        "url": "https://www.agibot.com.cn/article/315/detail/252.html",
+        "language": "Chinese",
+        "published": "2026-10-22"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Original editorial illustration of a humanoid robot beside abstract architectural forms",
+        "caption": "Editorial illustration by SuperRobots; not a photograph of this deployment or a specific robot model.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
+    {
+      "id": "agibot-hospital-reception",
+      "category": "Real-world robots",
+      "location": "Beijing",
+      "date": "2026-10-22",
+      "dateLabel": "Announced",
+      "title": "X2 joins a hospital reception desk with Ant Afu",
+      "summary": "AgiBot reports a hospital deployment that answers visitor questions and helps people navigate outpatient services.",
+      "paragraphs": [
+        "AgiBot says an X2 humanoid integrated with Ant Afu is working at Peking University People's Hospital. It draws on hospital information to answer routine questions about departments, visits, and directions.",
+        "The announcement cites hospital operating figures through September 30: 46,686 interactions over 66 working days, averaging 707 a day. These are reported usage counts, rather than an independent evaluation of answer accuracy.",
+        "The deployment illustrates a public-service role for an embodied interface: helping visitors find information and their way around a busy building."
+      ],
+      "source": {
+        "name": "AgiBot",
+        "type": "Company announcement",
+        "url": "https://www.agibot.com.cn/article/315/detail/248.html",
+        "language": "Chinese",
+        "published": "2026-10-22"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Original editorial illustration of a humanoid robot beside abstract architectural forms",
+        "caption": "Editorial illustration by SuperRobots; not a photograph of this deployment or a specific robot model.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
+    {
+      "id": "agibot-university-program",
+      "category": "Industry",
+      "location": "China",
+      "date": "2026-10-16",
+      "dateLabel": "Announced",
+      "title": "AgiBot outlines a university robotics training program",
+      "summary": "The company plans more than 1,000 robots and software access for hands-on teaching and research at Chinese universities.",
+      "paragraphs": [
+        "AgiBot says its university initiative will provide more than 1,000 robots across wheeled, humanoid, and quadruped platforms. The first group includes over 20 universities, with Peking, Tsinghua, and Zhejiang among those named.",
+        "The company values the hardware and software membership support at about RMB 200 million. Its AIMA tools are intended to connect classroom work with model training, algorithm development, and experiments on physical robots.",
+        "This is an announced education partnership. Equipment commitments should not be read as confirmation that every robot has already been delivered."
+      ],
+      "source": {
+        "name": "AgiBot",
+        "type": "Company announcement",
+        "url": "https://www.agibot.com.cn/article/315/detail/247.html",
+        "language": "Chinese",
+        "published": "2026-10-16"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Original editorial illustration of a humanoid robot beside abstract architectural forms",
+        "caption": "Editorial illustration by SuperRobots; not a photograph of this deployment or a specific robot model.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
     {
       "id": "guangzhou-robot-show",
       "category": "Real-world robots",

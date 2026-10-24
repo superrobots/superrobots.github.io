@@ -15,7 +15,7 @@ for(const story of content.stories) {
     if(!['Humanoids','Embodied AI','Real-world robots','Industry'].includes(story.category)) throw new Error('Unknown category');
     if(!story.title || !story.summary || !Array.isArray(story.paragraphs) || !story.paragraphs.length) throw new Error('Missing story content');
     const image = story.image;
-    if(!image || !/^assets\/news\/[a-z0-9-]+\.webp$/.test(image.src) || !fs.existsSync(path.join(root,image.src)) || !image.alt || !image.caption || !image.credit || !['cover','contain'].includes(image.fit) || !Number.isInteger(image.width) || image.width<=0 || !Number.isInteger(image.height) || image.height<=0) throw new Error(`Missing or invalid story image: ${story.id}`);
+    if(!image || !/^(?:assets\/news\/[a-z0-9-]+\.webp|assets\/robotics-editorial\.svg)$/.test(image.src) || !fs.existsSync(path.join(root,image.src)) || !image.alt || !image.caption || !image.credit || !['cover','contain'].includes(image.fit) || !Number.isInteger(image.width) || image.width<=0 || !Number.isInteger(image.height) || image.height<=0) throw new Error(`Missing or invalid story image: ${story.id}`);
     for(const url of [image.creditUrl,image.sourceUrl]) if(new URL(url).protocol!=='https:') throw new Error('Image sources must use HTTPS');
     for(const source of [story.source,story.additionalSource].filter(Boolean)) if(new URL(source.url).protocol !== 'https:') throw new Error('Sources must use HTTPS');
 }
