@@ -26,7 +26,7 @@ jobs:
 
       - name: Copy site to deploy directory
         run: |
-          rsync -av --exclude='deploy' --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='content' . ./deploy/
+          rsync -av --exclude='deploy' --exclude='.git' --exclude='.github' --exclude='scripts' --exclude='content' --exclude='local-go' . ./deploy/
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
