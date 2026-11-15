@@ -1,13 +1,162 @@
 {
-  "editionDate": "2026-10-24",
-  "featuredId": "agibot-chengdu-x2",
+  "editionDate": "2026-11-13",
+  "featuredId": "chengdu-gongga-5",
   "stories": [
+    {
+      "id": "chengdu-gongga-5",
+      "category": "Embodied AI",
+      "location": "Chengdu",
+      "date": "2026-11-11",
+      "dateLabel": "Unveiled",
+      "briefPublished": "2026-11-13",
+      "title": "Chengdu unveils a Gongga humanoid designed to replan household tasks",
+      "summary": "The fifth-generation Gongga is designed to remember where objects were, predict the results of a move, and revise its plan when its surroundings change.",
+      "paragraphs": [
+        "The Chengdu Humanoid Robot Innovation Center unveiled its fifth-generation Gongga robot on November 11. Sichuan Online reports that the center designed its new control system for a household where people move things between tasks.",
+        "The center says Gongga combines color and depth cameras with information about its own position to update a 3D map. Its memory stores where objects were seen and what happened during earlier attempts. If an object is moved or a step fails, the robot can update its plan and use a model of the scene to predict the likely effects of its next move.",
+        "The reports describe the center's design and capability claims. They give no success rates across unfamiliar homes or timetable for consumer availability."
+      ],
+      "source": {
+        "name": "Sichuan Online",
+        "type": "Chinese news report",
+        "url": "https://sichuan.scol.com.cn/ggxw/202611/83355185.html",
+        "language": "Chinese",
+        "published": "2026-11-11"
+      },
+      "additionalSource": {
+        "name": "Chengdu Daily / People's Daily Online",
+        "url": "https://sc.people.com.cn/n2/2026/1112/c345167-41748516.html"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Illustration of a humanoid robot on a platform beside abstract buildings",
+        "caption": "SuperRobots editorial illustration of a humanoid robot.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
+    {
+      "id": "ubtech-yongda-u1-pro",
+      "category": "Real-world robots",
+      "location": "China",
+      "date": "2026-11-11",
+      "dateLabel": "Announced",
+      "briefPublished": "2026-11-13",
+      "title": "Yongda Auto agrees to buy 400 UBTECH humanoids",
+      "summary": "The companies plan to use the U1 Pro for product demonstrations, sales promotion, and customer service, with delivery targeted by the end of 2026.",
+      "paragraphs": [
+        "Chinese auto dealer Yongda Auto agreed to buy 400 U1 Pro humanoids under a partnership announced on November 11, according to The Paper. UBTECH is targeting delivery by year-end. The companies also plan to open a joint robot showroom in Shanghai.",
+        "Red Star News describes the full-body U1 Pro as a stationary robot designed for conversation. The proposed uses center on helping customers experience products and interacting with visitors at dealerships.",
+        "The coverage confirms the announced purchase and delivery target. It gives no confirmed count of units delivered to Yongda or final contract price."
+      ],
+      "source": {
+        "name": "The Paper",
+        "type": "Chinese news report",
+        "url": "https://www.thepaper.cn/newsDetail_forward_34455328",
+        "language": "Chinese",
+        "published": "2026-11-11"
+      },
+      "additionalSource": {
+        "name": "Red Star News",
+        "url": "https://static.cdsb.com/micropub/Articles/202611/3b08f0513d7a37d5c8443d846ca463c7.html"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Illustration of a humanoid robot on a platform beside abstract buildings",
+        "caption": "SuperRobots editorial illustration of humanoid robotics.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
+    {
+      "id": "beijing-embodied-robotics-plan",
+      "category": "Industry",
+      "location": "Beijing",
+      "date": "2026-11-11",
+      "dateLabel": "Issued",
+      "briefPublished": "2026-11-13",
+      "title": "Beijing plans real-world tests for embodied AI robots",
+      "summary": "The city's 2026–2028 plan calls for a shared test site and aims to collect more than one million hours of robotics data across at least 100 real-world settings.",
+      "paragraphs": [
+        "Beijing's municipal industry bureau issued its 2026–2028 action plan for embodied AI robots on November 11. The plan calls for a test site with several kinds of robots. Organizations that use robots would propose tasks, and teams building AI models would try to complete them under a common evaluation process.",
+        "Beijing aims to collect more than one million hours of data across at least 100 real-world settings. The plan also calls for pilots in manufacturing, warehousing, retail, and public services, plus a testing and certification system covering safety and reliability.",
+        "The policy took effect on November 11. The test site, data collection and application pilots are program goals through 2028."
+      ],
+      "source": {
+        "name": "Beijing Municipal Government",
+        "type": "Official policy document",
+        "url": "https://www.beijing.gov.cn/zhengce/gfxwj/202611/t20261111_4942067.html",
+        "language": "Chinese",
+        "published": "2026-11-11"
+      },
+      "additionalSource": {
+        "name": "Beijing Municipal Bureau of Economy and Information Technology overview",
+        "url": "https://www.beijing.gov.cn/zhengce/zcjd/202611/t20261111_4942070.html"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Illustration of a humanoid robot on a platform beside abstract buildings",
+        "caption": "SuperRobots editorial illustration of a humanoid robot in a built environment.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
+    {
+      "id": "joyson-unitree-compute-backpack",
+      "category": "Embodied AI",
+      "location": "China",
+      "date": "2026-11-10",
+      "dateLabel": "Delivered",
+      "briefPublished": "2026-11-13",
+      "title": "Joyson delivers its first robot compute backpack to Unitree",
+      "summary": "The add-on combines a computer and power system so robots can process sensor data and run AI models locally.",
+      "paragraphs": [
+        "Joyson Electronics says its robotics subsidiary delivered a first compute backpack to Unitree on November 10. The external module includes a local computing platform and its own power system. Joyson says the design can work with Unitree's humanoid, four-legged, and wheeled robots.",
+        "The idea is to give a robot more room to process sensor inputs and run AI models on board. Joyson also says the companies are working on pilots for auto-parts production and other manufacturing tasks.",
+        "The announcement describes a first delivery. It gives no measured improvement in battery life or timetable for broader availability."
+      ],
+      "source": {
+        "name": "Joyson Electronics",
+        "type": "Company announcement",
+        "url": "https://www.joyson.com/index.php/news/info/1448.html",
+        "language": "Chinese",
+        "published": "2026-11-13"
+      },
+      "additionalSource": {
+        "name": "Shanghai Securities News",
+        "url": "https://www.cnstock.com/commonDetail/827048"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Illustration of a humanoid robot on a platform beside abstract buildings",
+        "caption": "SuperRobots editorial illustration of humanoid robotics.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
     {
       "id": "agibot-chengdu-x2",
       "category": "Real-world robots",
       "location": "Chengdu",
       "date": "2026-10-22",
       "dateLabel": "Announced",
+      "briefPublished": "2026-10-24",
       "title": "AgiBot X2 robots take visitor-service roles in Chengdu",
       "summary": "Three X2 humanoids serve visitors at Kuanzhai Alley, with roles spanning welcome desks, cultural interpretation, and retail.",
       "paragraphs": [
@@ -40,6 +189,7 @@
       "location": "Beijing",
       "date": "2026-10-22",
       "dateLabel": "Announced",
+      "briefPublished": "2026-10-24",
       "title": "X2 joins a hospital reception desk with Ant Afu",
       "summary": "AgiBot reports a hospital deployment that answers visitor questions and helps people navigate outpatient services.",
       "paragraphs": [
@@ -72,6 +222,7 @@
       "location": "China",
       "date": "2026-10-16",
       "dateLabel": "Announced",
+      "briefPublished": "2026-10-24",
       "title": "AgiBot outlines a university robotics training program",
       "summary": "The company plans more than 1,000 robots and software access for hands-on teaching and research at Chinese universities.",
       "paragraphs": [
@@ -104,6 +255,7 @@
       "location": "Guangzhou",
       "date": "2026-10-02",
       "dateLabel": "Reported",
+      "briefPublished": "2026-10-02",
       "title": "Humanoid robots take the stage in Guangzhou",
       "summary": "A National Day show puts coordinated humanoid performances and public interaction in the spotlight at the Guangdong Science Center.",
       "paragraphs": [
@@ -135,6 +287,7 @@
       "location": "Shanghai",
       "date": "2026-09-30",
       "dateLabel": "Announced",
+      "briefPublished": "2026-10-02",
       "title": "AgiBot’s A3 gets a native NetEase Cloud Music integration",
       "summary": "Voice-controlled music is scheduled to reach the full-size humanoid on October 15. Music-generated movement remains a development goal.",
       "paragraphs": [
@@ -166,6 +319,7 @@
       "location": "Hengqin",
       "date": "2026-09-28",
       "dateLabel": "Reported",
+      "briefPublished": "2026-10-02",
       "title": "More than 300 robots join the everyday life of a theme park",
       "summary": "AgiBot and Chimelong put robots to work across performances, visitor guidance, education, retail, and hospitality in Hengqin.",
       "paragraphs": [
@@ -198,6 +352,7 @@
       "location": "Hangzhou",
       "date": "2026-09-28",
       "dateLabel": "Released",
+      "briefPublished": "2026-10-02",
       "title": "Unitree releases its humanoid base model and fine-tuning code",
       "summary": "The Chinese project README records a September 28 release of UnifoLM-WLA-1.0-Base and tools for adapting the model.",
       "paragraphs": [
@@ -229,6 +384,7 @@
       "location": "Shenzhen",
       "date": "2026-09-23",
       "dateLabel": "Reported",
+      "briefPublished": "2026-10-02",
       "title": "A wheeled tennis robot meets Wang Qiang on court",
       "summary": "LimX Dynamics and Enhance pair a TRON 2 mobile platform with a tennis-training system at the Billie Jean King Cup finals.",
       "paragraphs": [
@@ -260,6 +416,7 @@
       "location": "Hangzhou",
       "date": "2026-09-22",
       "dateLabel": "Reported",
+      "briefPublished": "2026-10-02",
       "title": "Unitree’s G1+ adds stronger joints and richer sensing",
       "summary": "The upgraded humanoid brings a two-axis neck, stereo and wide-angle vision, touch sensing, and external power support.",
       "paragraphs": [
@@ -295,6 +452,7 @@
       "location": "Shenzhen",
       "date": "2026-09-17",
       "dateLabel": "Announced",
+      "briefPublished": "2026-10-02",
       "title": "D-Robotics raises $400 million for robot chips and development tools",
       "summary": "The Series C round backs Sunrise chips and a software platform spanning data collection, training, simulation, and deployment.",
       "paragraphs": [
