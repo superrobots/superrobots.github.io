@@ -12,10 +12,13 @@ application, package installation, or a runtime backend.
 1. Read and verify original Chinese news reports or primary technical sources.
 2. Edit `content/robotics-news.json`: set the edition date, select a featured
    story, and write concise English summaries with source links and source dates.
+   Set `briefPublished` to the date SuperRobots first publishes each English brief.
 3. Keep company claims attributed. Distinguish announcements, demonstrations,
    released features, and future plans. Do not copy full articles.
-   Each story must have a relevant local image in `assets/news/`, descriptive
-   English alt text, a caption, and linked credit in its `image` metadata.
+   Each story must have a relevant local image, descriptive English alt text,
+   a caption, and linked credit in its `image` metadata. Store source images in
+   `assets/news/`. The shared SuperRobots illustration is also available with
+   an editorial illustration caption.
    Keep the original image URL and any applicable license notices. Optimize
    images as WebP; use `fit: "contain"` for posters or diagrams to avoid cropping
    text. The build rejects stories with missing images or incomplete metadata.
