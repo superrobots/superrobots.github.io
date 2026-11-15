@@ -78,6 +78,7 @@
         <lastmod>2026-05-15</lastmod>
         <priority>0.6</priority>
     </url>
+    <url><loc>https://superrobots.org/robotics-lab-packages.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
     <url><loc>https://superrobots.org/learn.html</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
     <url><loc>https://superrobots.org/news/agibot-chengdu-x2.html</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
     <url><loc>https://superrobots.org/news/agibot-hospital-reception.html</loc><lastmod>2026-10-24</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
