@@ -1,7 +1,71 @@
 {
-  "editionDate": "2026-11-13",
-  "featuredId": "chengdu-gongga-5",
+  "editionDate": "2026-11-25",
+  "featuredId": "xpeng-iron-retail-training",
   "stories": [
+    {
+      "id": "xpeng-iron-retail-training",
+      "category": "Humanoids",
+      "location": "Guangzhou",
+      "date": "2026-11-25",
+      "dateLabel": "Announced",
+      "briefPublished": "2026-11-25",
+      "title": "XPENG sets a 2027 retail training timetable for its IRON humanoid",
+      "summary": "XPENG says IRON will begin training as a store assistant in early 2027, with a public release targeted for the second quarter.",
+      "paragraphs": [
+        "XPENG presented its updated IRON humanoid at its November 25 AI Day in Guangzhou. The company also introduced Turing Physical AI Architecture, a framework it says connects perception, decisions and motion across its vehicles and robots.",
+        "XPENG plans to start training IRON in its own stores in the first quarter of 2027. It set a separate target for a public release in the second quarter. Both milestones are company targets."
+      ],
+      "source": {
+        "name": "XPENG",
+        "type": "Company announcement",
+        "url": "https://www.xpeng.com/pressroom/news/01a212b0d830a1e838d68a02a2110174",
+        "language": "English",
+        "published": "2026-11-25"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Illustration of a humanoid robot on a platform beside abstract buildings",
+        "caption": "SuperRobots editorial illustration of a humanoid robot.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
+    {
+      "id": "robotera-china-post-guangdong",
+      "category": "Real-world robots",
+      "location": "Guangdong",
+      "date": "2026-11-17",
+      "dateLabel": "Reported",
+      "briefPublished": "2026-11-25",
+      "title": "ROBOTERA reports humanoid deployments at 11 Guangdong postal hubs",
+      "summary": "The robot maker says its China Post deployment now spans eleven hubs in eight cities, following a pilot in Guangzhou.",
+      "paragraphs": [
+        "ROBOTERA announced on November 17 that humanoid robots were deployed at eleven hubs run by China Post's Guangdong branch. The company traced the rollout to a March pilot in Guangzhou.",
+        "The work includes parcel induction, which feeds items into a sorting line. ROBOTERA disclosed the number of sites, while the number of robots at those sites remains undisclosed."
+      ],
+      "source": {
+        "name": "ROBOTERA via PR Newswire",
+        "type": "Company announcement",
+        "url": "https://www.prnewswire.co.uk/news-releases/robotera-expands-humanoid-robot-deployment-across-china-posts-guangdong-network-reaching-eight-cities-province-wide-302941879.html",
+        "language": "English",
+        "published": "2026-11-17"
+      },
+      "image": {
+        "src": "assets/robotics-editorial.svg",
+        "alt": "Illustration of a humanoid robot on a platform beside abstract buildings",
+        "caption": "SuperRobots editorial illustration of a humanoid robot.",
+        "credit": "SuperRobots",
+        "creditUrl": "https://superrobots.org/",
+        "sourceUrl": "https://superrobots.org/assets/robotics-editorial.svg",
+        "width": 900,
+        "height": 520,
+        "fit": "contain"
+      }
+    },
     {
       "id": "chengdu-gongga-5",
       "category": "Embodied AI",
