@@ -69,8 +69,7 @@
   font-weight: 600;
 }
 
-.lab-jump a,
-.lab-order-contact a {
+.lab-jump a {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -125,12 +124,15 @@
   margin: 0;
 }
 
-.lab-page .lab-order-button {
+.lab-page .lab-order-button:not([hidden]) {
   display: block;
+  width: 100%;
   padding: 12px 14px;
+  border: 0;
   border-radius: 6px;
   background: var(--accent);
   color: white;
+  cursor: pointer;
   font-weight: 700;
   text-align: center;
 }

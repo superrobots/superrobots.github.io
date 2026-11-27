@@ -120,6 +120,16 @@
         section ul { color: #626b64; line-height: 1.8; }
         section a { color: var(--accent-blue); transition: color 0.2s; }
         section a:hover { color: var(--accent-purple); }
+        .team-contact-button {
+            padding: 0.5rem 1rem;
+            border: 1px solid currentColor;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font: inherit;
+            font-weight: 600;
+        }
 
         .glass-card {
             background: var(--glass-bg); backdrop-filter: blur(16px);
@@ -205,6 +215,7 @@
         }
     </style>
     <link rel="stylesheet" href="theme.css">
+    <script src="contact-email.js" defer></script>
 </head>
 
 <body>
@@ -473,12 +484,10 @@
         <section id="contact" style="display:none;">
             <div class="glass-card" style="animation-delay:0.1s;">
                 <h2>Get In Touch</h2>
-                <p>
-                    Interested in collaborating, sponsoring, or learning more about our work?<br>
-                    Reach us at <a href="mailto:zhutoulala@gmail.com">zhutoulala@gmail.com</a>
-                </p>
+                <p>Interested in collaborating, sponsoring, or learning more about our work?</p>
+                <button class="team-contact-button" type="button" data-contact-email="team" hidden>Email the team</button>
+                <noscript><p>Enable JavaScript to open a contact email.</p></noscript>
                 <div style="margin-top:1rem;">
-                    <span class="award-badge">📧 zhutoulala@gmail.com</span>
                     <span class="award-badge">🆔 Team #70620</span>
                 </div>
             </div>
